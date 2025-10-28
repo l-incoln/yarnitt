@@ -1,0 +1,9 @@
+{
+  "name": "yarnitt",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "scripts": {
+    "dev": "echo \"Run frontend and backend separately\"",
+    "lint": "echo \"Run linters in subpackages\""
+  }
+}

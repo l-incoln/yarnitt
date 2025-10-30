@@ -81,4 +81,4 @@ async function start() {
   }
 }
 
-start();EOF
+start();

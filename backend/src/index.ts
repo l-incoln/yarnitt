@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import serveIndex from 'serve-index';
 import productsRouter from './routes/products';
+import authRoutes from './routes/auth';
 
 dotenv.config();
 
@@ -43,6 +44,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Mount product routes (see backend/src/routes/products.ts)
 app.use('/products', productsRouter);
+
+// Mount auth routes
+app.use('/api/auth', authRoutes);
 
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));

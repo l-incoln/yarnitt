@@ -81,4 +81,11 @@ async function start() {
   }
 }
 
-start();EOF
+start();
+// --- auth bootstrap (inserted by feat/auth-mongoose) --- import mongoose from "mongoose"; import dotenv from "dotenv"; import authRoutes from "./routes/auth";
+
+dotenv.config();
+
+const mongoUri = process.env.MONGO_URI || "mongodb://localhost:27017/yarnitt"; mongoose.connect(mongoUri).then(() => console.log("Mongo connected")).catch((err) => console.error("Mongo connect error", err));
+
+app.use("/api/auth", authRoutes); // --- end auth bootstrap ---

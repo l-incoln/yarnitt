@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 import { User } from "../models/User";
 import { signAccessToken, signRefreshToken } from "../utils/jwt";
 
-// Email validation regex
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Email validation regex - simple and safe regex that avoids ReDoS
+// This regex has linear time complexity and is not vulnerable to catastrophic backtracking
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /**
  * Register a new user

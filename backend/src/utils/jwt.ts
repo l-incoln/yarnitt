@@ -14,7 +14,7 @@ export interface TokenPayload {
  */
 export function signAccessToken(payload: TokenPayload): string {
   return jwt.sign(payload, JWT_SECRET, {
-    expiresIn: ACCESS_TOKEN_TTL as string,
+    expiresIn: ACCESS_TOKEN_TTL,
   } as jwt.SignOptions);
 }
 
@@ -23,7 +23,7 @@ export function signAccessToken(payload: TokenPayload): string {
  */
 export function signRefreshToken(payload: TokenPayload): string {
   return jwt.sign(payload, JWT_SECRET, {
-    expiresIn: REFRESH_TOKEN_TTL as string,
+    expiresIn: REFRESH_TOKEN_TTL,
   } as jwt.SignOptions);
 }
 

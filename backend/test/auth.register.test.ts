@@ -10,6 +10,9 @@ let mongoServer: MongoMemoryServer | null = null;
 let app: express.Application;
 
 beforeAll(async () => {
+  // Disable rate limiting for tests
+  process.env.DISABLE_RATE_LIMIT = "true";
+  
   let mongoUri: string;
 
   // Check if MONGO_URI is provided in environment (for CI/CD or local with MongoDB running)

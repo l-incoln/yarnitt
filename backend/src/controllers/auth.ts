@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 import { User } from "../models/User";
 import { signAccessToken, signRefreshToken } from "../utils/jwt";
 
-// Email validation regex
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Email validation regex - simplified to avoid ReDoS vulnerability
+// Accepts basic email format: localpart@domain.tld
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 export async function register(req: Request, res: Response) {
   try {
@@ -14,6 +15,13 @@ export async function register(req: Request, res: Response) {
     if (!email || !password) {
       return res.status(400).json({
         error: "Email and password are required",
+      });
+    }
+
+    // Validate email length to prevent DoS
+    if (email.length > 254) {
+      return res.status(400).json({
+        error: "Email is too long",
       });
     }
 

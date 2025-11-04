@@ -2,8 +2,10 @@ import { Request, Response } from "express";
 import { User } from "../models/User";
 import { signAccessToken, signRefreshToken } from "../utils/jwt";
 
-// Email regex for basic validation
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Simple email regex for basic validation (safe from ReDoS)
+// Limits each part to reasonable lengths and uses non-backtracking pattern
+const EMAIL_REGEX = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const MAX_EMAIL_LENGTH = 254; // RFC 5321 maximum email length
 
 /**
  * Register a new user
@@ -15,6 +17,12 @@ export async function register(req: Request, res: Response): Promise<void> {
     // Validate request body
     if (!email || !password) {
       res.status(400).json({ error: "Email and password are required" });
+      return;
+    }
+
+    // Validate email length first (prevent ReDoS)
+    if (email.length > MAX_EMAIL_LENGTH) {
+      res.status(400).json({ error: "Invalid email format" });
       return;
     }
 

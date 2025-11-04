@@ -3,7 +3,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import path from "path";
+import mongoose from "mongoose";
 import { query } from "./db";
+import authRoutes from "./routes/auth";
 
 dotenv.config();
 
@@ -13,7 +15,16 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT_BACKEND || 4000;
 
+// Connect to MongoDB
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/yarnitt_dev";
+mongoose.connect(MONGO_URI)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("MongoDB connection error:", err));
+
 app.get("/api/ping", (_req, res) => res.json({ ok: true }));
+
+// Auth routes
+app.use("/auth", authRoutes);
 
 // Simple products list (replace with real model/controller later)
 app.get("/api/products", async (_req, res) => {

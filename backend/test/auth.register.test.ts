@@ -6,15 +6,32 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import authRoutes from "../src/routes/auth";
 import { User } from "../src/models/User";
 
-let mongoServer: MongoMemoryServer;
+let mongoServer: MongoMemoryServer | null = null;
 let app: express.Application;
 
 beforeAll(async () => {
-  // Create in-memory MongoDB instance
-  mongoServer = await MongoMemoryServer.create();
-  const mongoUri = mongoServer.getUri();
+  let mongoUri: string;
 
-  // Connect to the in-memory database
+  // Check if MONGO_URI is provided in environment (for CI/CD or local with MongoDB running)
+  if (process.env.MONGO_URI) {
+    mongoUri = process.env.MONGO_URI;
+    console.log("Using provided MONGO_URI for tests");
+  } else {
+    // Try to use in-memory MongoDB server
+    try {
+      mongoServer = await MongoMemoryServer.create();
+      mongoUri = mongoServer.getUri();
+      console.log("Using in-memory MongoDB server for tests");
+    } catch (error) {
+      console.error("Failed to create in-memory MongoDB server:", error);
+      console.log("To run tests, either:");
+      console.log("1. Ensure MongoDB is accessible and set MONGO_URI environment variable");
+      console.log("2. Or allow network access for mongodb-memory-server to download binaries");
+      throw error;
+    }
+  }
+
+  // Connect to the database
   await mongoose.connect(mongoUri);
 
   // Create Express app for testing
@@ -24,9 +41,13 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  // Disconnect and stop the in-memory database
+  // Disconnect from database
   await mongoose.disconnect();
-  await mongoServer.stop();
+  
+  // Stop in-memory server if it was created
+  if (mongoServer) {
+    await mongoServer.stop();
+  }
 });
 
 beforeEach(async () => {

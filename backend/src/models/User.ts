@@ -1,43 +1,30 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
-import bcrypt from "bcrypt";
-
-export type UserRole = "buyer" | "seller" | "admin";
+import { Schema, model, Document } from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 export interface IUser extends Document {
-  name?: string;
   email: string;
-  phone?: string;
   passwordHash: string;
-  role: UserRole;
-  verified: boolean;
+  name?: string;
   createdAt: Date;
-  comparePassword(candidate: string): Promise<boolean>;
+  setPassword(password: string): Promise<void>;
+  verifyPassword(password: string): Promise<boolean>;
 }
 
-const UserSchema: Schema<IUser> = new Schema({
-  name: { type: String },
-  email: { type: String, required: true, unique: true, lowercase: true, index: true },
-  phone: { type: String },
+const UserSchema = new Schema<IUser>({
+  email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   passwordHash: { type: String, required: true },
-  role: { type: String, enum: ["buyer", "seller", "admin"], default: "buyer" },
-  verified: { type: Boolean, default: false },
+  name: { type: String, default: '' },
   createdAt: { type: Date, default: Date.now },
 });
 
-// Hash password before saving when passwordHash field is modified
-UserSchema.pre<IUser>("save", async function (next) {
-  if (!this.isModified("passwordHash")) return next();
-  const maybe = this.passwordHash || ""; // if already hashed by bcrypt, skip
-  // bcrypt hashes start with "$2a$" "$2b$" or "$2y$"
-  if (maybe.startsWith("$2a$") || maybe.startsWith("$2b$") || maybe.startsWith("$2y$")) return next();
+UserSchema.methods.setPassword = async function (password: string) {
   const salt = await bcrypt.genSalt(10);
-  this.passwordHash = await bcrypt.hash(maybe, salt);
-  next();
-});
-
-UserSchema.methods.comparePassword = function (candidate: string) {
-  return bcrypt.compare(candidate, this.passwordHash);
+  this.passwordHash = await bcrypt.hash(password, salt);
 };
 
-const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
+UserSchema.methods.verifyPassword = async function (password: string) {
+  return bcrypt.compare(password, this.passwordHash);
+};
+
+export const User = model<IUser>('User', UserSchema);
 export default User;

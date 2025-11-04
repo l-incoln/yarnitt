@@ -122,7 +122,7 @@ describe("POST /auth/register", () => {
   it("should return 400 for invalid email format", async () => {
     const invalidEmails = [
       "notanemail",
-      "missing@domain",
+      "nodot@domain",
       "@nodomain.com",
       "spaces in@email.com",
       "",

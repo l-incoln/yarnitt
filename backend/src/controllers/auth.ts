@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import { User } from "../models/User";
 import { signAccessToken, signRefreshToken } from "../utils/jwt";
 
-// Simple email validation regex
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Simple email validation regex - validates basic email format
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /**
  * Register a new user

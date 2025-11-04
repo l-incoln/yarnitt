@@ -30,7 +30,7 @@ docker-compose up -d db
 
 # Then run tests
 cd backend
-MONGO_URI="mongodb://yarnitt:yarnittpass@localhost:5432/yarnitt_test" npm test
+MONGO_URI="mongodb://yarnitt:yarnittpass@localhost:27017/yarnitt_test" npm test
 ```
 
 ## Running Tests

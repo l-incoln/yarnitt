@@ -45,9 +45,6 @@ beforeEach(async () => {
   }
 });
 
-// Helper to skip tests if MongoDB is not available
-const describeIfMongo = mongoose.connection.readyState === 0 ? describe.skip : describe;
-
 describe("POST /auth/register", () => {
   it("should successfully register a new user and return 201 with tokens", async () => {
     if (!mongoServer) {

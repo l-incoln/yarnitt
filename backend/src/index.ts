@@ -1,48 +1,84 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import bodyParser from "body-parser";
-import path from "path";
-import { query } from "./db";
+import path from 'path';
+import fs from 'fs';
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import serveIndex from 'serve-index';
+import productsRouter from './routes/products';
 
 dotenv.config();
 
+const PORT = Number(process.env.PORT || 4000);
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/yarnitt_dev';
+const UPLOADS_DIR = path.join(__dirname, '..', 'uploads'); // backend/uploads
+
 const app = express();
+
+// Basic middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-const PORT = process.env.PORT_BACKEND || 4000;
+// Ensure uploads directory exists
+try {
+  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+} catch (err) {
+  console.error('Failed to create uploads directory:', err);
+}
 
-app.get("/api/ping", (_req, res) => res.json({ ok: true }));
+// Serve uploaded files at /uploads
+// In dev we also expose an index (directory listing); in production consider disabling.
+app.use(
+  '/uploads',
+  express.static(UPLOADS_DIR, {
+    index: false,
+    maxAge: process.env.NODE_ENV === 'production' ? '1d' : 0,
+  })
+);
 
-// Simple products list (replace with real model/controller later)
-app.get("/api/products", async (_req, res) => {
+if (process.env.NODE_ENV !== 'production') {
+  // show directory listing in development only
+  app.use('/uploads', serveIndex(UPLOADS_DIR, { icons: true }));
+}
+
+// Mount product routes (see backend/src/routes/products.ts)
+app.use('/products', productsRouter);
+
+// Health check
+app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));
+
+// Generic error handler
+app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+  console.error('Unhandled error:', err);
+  res.status(500).json({ message: 'Internal server error' });
+});
+
+// Connect to MongoDB and start server
+async function start() {
   try {
-    // Example: read first 10 products from DB if available
-    const r = await query("SELECT p.id, p.title, p.price, p.currency FROM products p LIMIT 10");
-    if (r && r.rows && r.rows.length) {
-      return res.json(r.rows);
-    }
+    await mongoose.connect(MONGO_URI, {
+      // useNewUrlParser/useUnifiedTopology are default in mongoose v6+
+    } as any);
+    console.log('Connected to MongoDB');
+
+    const server = app.listen(PORT, () => {
+      console.log(`Backend listening on http://localhost:${PORT}`);
+    });
+
+    // graceful shutdown
+    const shutdown = async () => {
+      console.log('Shutting down...');
+      server.close();
+      await mongoose.disconnect();
+      process.exit(0);
+    };
+
+    process.on('SIGINT', shutdown);
+    process.on('SIGTERM', shutdown);
   } catch (err) {
-    // ignore and fallback to sample
+    console.error('Failed to start app:', err);
+    process.exit(1);
   }
+}
 
-  res.json([
-    {
-      id: "11111111-1111-1111-1111-111111111111",
-      title: "Creme Baby Blanket",
-      price: 3200,
-      currency: "KES",
-      images: [{ url: "/uploads/sample1.jpg", thumbnail_url: "/uploads/sample1-thumb.jpg", order: 0 }],
-      is_sponsored: true
-    }
-  ]);
-});
-
-// Serve development uploads folder
-const uploadsDir = path.join(__dirname, "..", "uploads");
-app.use("/uploads", express.static(uploadsDir));
-
-app.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`);
-});
+start();

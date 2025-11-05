@@ -1,0 +1,1 @@
+export default { preset: 'ts-jest', testEnvironment: 'node', testMatch: ['/tests//.test.(ts|js)'], collectCoverage: true, collectCoverageFrom: ['src/**/.ts', '!src/**/index.ts'], coverageDirectory: 'coverage', moduleFileExtensions: ['ts', 'js', 'json', 'node'], }; 

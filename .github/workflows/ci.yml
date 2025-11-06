@@ -45,7 +45,7 @@ jobs:
       - name: Backend: tests (if present)
         run: |
           if npm run -w backend -s test 2>/dev/null; then
-            npm run -w backend test --if-present
+            npm run -w backend test
           else
             echo "No backend test script; skipping"
           fi
@@ -53,7 +53,7 @@ jobs:
       - name: Frontend: tests (if present)
         run: |
           if npm run -w frontend -s test 2>/dev/null; then
-            npm run -w frontend test --if-present
+            npm run -w frontend test
           else
             echo "No frontend test script; skipping"
           fi

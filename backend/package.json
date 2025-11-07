@@ -5,6 +5,7 @@
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn src/index.ts",
     "test": "jest --runInBand",
+    "test:integration": "jest --config jest.integration.config.js --runInBand",
     "migrate:latest": "node-pg-migrate up",
     "migrate:down": "node-pg-migrate down",
     "migrate:create": "node-pg-migrate create",

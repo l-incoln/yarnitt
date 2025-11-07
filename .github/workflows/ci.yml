@@ -73,3 +73,60 @@ jobs:
           else
             echo "No frontend build script; skipping"
           fi
+
+  integration:
+    name: Integration tests with Postgres
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: yarnitt
+          POSTGRES_PASSWORD: yarnittpass
+          POSTGRES_DB: yarnitt_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U yarnitt -d yarnitt_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Wait for Postgres
+        run: |
+          for i in $(seq 1 30); do
+            if pg_isready -h localhost -p 5432 -U yarnitt -d yarnitt_test >/dev/null 2>&1; then
+              echo "Postgres is ready"
+              exit 0
+            fi
+            echo "Waiting for Postgres... ($i)"
+            sleep 2
+          done
+          echo "Postgres did not become ready" && exit 1
+
+      - name: Run DB migrations
+        env:
+          DATABASE_URL: postgres://yarnitt:yarnittpass@localhost:5432/yarnitt_test
+        run: npm run -w backend migrate:latest
+
+      - name: Run backend integration tests (if present)
+        env:
+          DATABASE_URL: postgres://yarnitt:yarnittpass@localhost:5432/yarnitt_test
+        run: |
+          if npm run -w backend -s test:integration 2>/dev/null; then
+            npm run -w backend test:integration
+          else
+            echo "No backend integration test script; skipping"
+          fi

@@ -4,13 +4,19 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn src/index.ts",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "migrate:latest": "node-pg-migrate up",
+    "migrate:down": "node-pg-migrate down",
+    "migrate:create": "node-pg-migrate create",
+    "migrate:reset": "node-pg-migrate reset",
+    "db:seed": "psql \"$DATABASE_URL\" -f ./backend/seeds/seed_users.sql || true"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.0"
+    "mongoose": "^7.0.0",
+    "pg": "^8.10.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
@@ -25,6 +31,7 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.2.0"
+    "typescript": "^5.2.0",
+    "node-pg-migrate": "^7.0.0"
   }
 }

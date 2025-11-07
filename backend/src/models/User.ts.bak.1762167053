@@ -1,0 +1,22 @@
+import mongoose, { Schema, Document, Model } from "mongoose"; import bcrypt from "bcrypt";
+
+export type UserRole = "buyer" | "seller" | "admin";
+
+export interface IUser extends Document { name?: string; email: string; phone?: string; passwordHash: string; role: UserRole; verified: boolean; createdAt: Date; comparePassword(candidate: string): Promise<boolean>; }
+
+const UserSchema: Schema<IUser> = new Schema({ name: { type: String }, email: { type: String, required: true, unique: true, lowercase: true, index: true }, phone: { type: String }, passwordHash: { type: String, required: true }, role: { type: String, enum: ["buyer", "seller", "admin"], default: "buyer" }, verified: { type: Boolean, default: false }, createdAt: { type: Date, default: Date.now }, });
+
+// Hash password before saving when passwordHash field is modified UserSchema.pre<IUser>("save", async function (next) { if (!this.isModified("passwordHash")) return next(); const maybe = this.passwordHash || ""; // if already hashed by bcrypt, skip if (maybe.startsWith("
+2
+a
+") || maybe.startsWith("
+2
+b
+") || maybe.startsWith("
+2
+y
+")) return next(); const salt = await bcrypt.genSalt(10); this.passwordHash = await bcrypt.hash(maybe, salt); next(); });
+
+UserSchema.methods.comparePassword = function (candidate: string) { return bcrypt.compare(candidate, this.passwordHash); };
+
+const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", UserSchema); export default User;

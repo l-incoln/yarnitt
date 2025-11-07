@@ -1,9 +1,15 @@
 {
   "name": "yarnitt",
   "private": true,
-  "workspaces": ["frontend", "backend"],
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
     "dev": "echo \"Run frontend and backend separately\"",
     "lint": "echo \"Run linters in subpackages\""
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }

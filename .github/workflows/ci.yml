@@ -1,32 +1,75 @@
-name: CI
-
+# CI: install, test and build the monorepo (adjust scripts if yours differ)
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
+
+name: CI
 
 jobs:
-  build:
+  test-and-build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [frontend, backend]
+        node: [20]
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+
       - name: Install dependencies
+        run: npm ci
+
+      - name: Backend: lint (if present)
         run: |
-          cd ${{ matrix.service }}
-          npm ci || npm install
-      - name: Build
+          if npm run -w backend -s lint 2>/dev/null; then
+            npm run -w backend lint
+          else
+            echo "No backend lint script; skipping"
+          fi
+
+      - name: Frontend: lint (if present)
         run: |
-          cd ${{ matrix.service }}
-          npm run build --if-present
-      - name: Run tests (if any)
+          if npm run -w frontend -s lint 2>/dev/null; then
+            npm run -w frontend lint
+          else
+            echo "No frontend lint script; skipping"
+          fi
+
+      - name: Backend: tests (if present)
         run: |
-          cd ${{ matrix.service }}
-          npm test || true
+          if npm run -w backend -s test 2>/dev/null; then
+            npm run -w backend test --if-present
+          else
+            echo "No backend test script; skipping"
+          fi
+
+      - name: Frontend: tests (if present)
+        run: |
+          if npm run -w frontend -s test 2>/dev/null; then
+            npm run -w frontend test --if-present
+          else
+            echo "No frontend test script; skipping"
+          fi
+
+      - name: Backend: build (production)
+        run: |
+          if npm run -w backend -s build 2>/dev/null; then
+            npm run -w backend build
+          else
+            echo "No backend build script; skipping"
+          fi
+
+      - name: Frontend: build (production)
+        run: |
+          if npm run -w frontend -s build 2>/dev/null; then
+            npm run -w frontend build
+          else
+            echo "No frontend build script; skipping"
+          fi

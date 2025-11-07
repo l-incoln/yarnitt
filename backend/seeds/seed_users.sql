@@ -1,5 +1,4 @@
-INSERT INTO users (email, password_hash)
+INSERT INTO users (id, email, password_hash, role, name, created_at)
 VALUES
-  ('alice@example.com', 'fakehash1'),
-  ('bob@example.com', 'fakehash2')
-ON CONFLICT DO NOTHING;
+  ('00000000-0000-0000-0000-000000000002', 'test@example.com', 'password-hash-placeholder', 'buyer', 'Test User', NOW())
+ON CONFLICT (email) DO NOTHING;

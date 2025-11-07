@@ -1,20 +1,15 @@
 version: '3.8'
 services:
   db:
-    image: postgres:15-alpine
+    image: postgres:15
+    ports:
+      - "5433:5432"
     environment:
       POSTGRES_USER: yarnitt
       POSTGRES_PASSWORD: yarnittpass
       POSTGRES_DB: yarnitt_test
-    ports:
-      - "5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U yarnitt -d yarnitt_test"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
-      retries: 10
-    volumes:
-      - db-test-data:/var/lib/postgresql/data
-
-volumes:
-  db-test-data:
+      retries: 5

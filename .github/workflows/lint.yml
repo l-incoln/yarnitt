@@ -1,1 +1,35 @@
-(oneline: paste the exact lint.yml YAML contents from the file block above)
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+name: Lint & Typecheck
+
+jobs:
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install backend dependencies (including devDeps) for lint/typecheck
+        working-directory: backend
+        run: |
+          npm ci
+        env:
+          CI: true
+
+      - name: Run lint
+        working-directory: backend
+        run: npm run lint
+
+      - name: Run typecheck
+        working-directory: backend
+        run: npm run typecheck

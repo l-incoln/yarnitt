@@ -1,75 +1,60 @@
-# CI: install, test and build the monorepo (adjust scripts if yours differ)
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-
 name: CI
 
+on:
+  push:
+    branches:
+      - main
+      - 'feat/**'
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  test-and-build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [20]
+  integration-tests:
+    runs-on: ubuntu-20.04
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: yarnitt
+          POSTGRES_PASSWORD: yarnittpass
+          POSTGRES_DB: yarnitt_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U yarnitt -d yarnitt_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DATABASE_URL: postgres://yarnitt:yarnittpass@127.0.0.1:5432/yarnitt_test
+      CI: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Backend: lint (if present)
+      - name: Install deps
         run: |
-          if npm run -w backend -s lint 2>/dev/null; then
-            npm run -w backend lint
-          else
-            echo "No backend lint script; skipping"
-          fi
+          cd backend
+          npm ci
 
-      - name: Frontend: lint (if present)
+      - name: Wait for Postgres
         run: |
-          if npm run -w frontend -s lint 2>/dev/null; then
-            npm run -w frontend lint
-          else
-            echo "No frontend lint script; skipping"
-          fi
+          sudo apt-get update -y
+          sudo apt-get install -y postgresql-client
+          for i in $(seq 1 30); do
+            pg_isready -h 127.0.0.1 -p 5432 -U yarnitt && break || sleep 2
+          done
 
-      - name: Backend: tests (if present)
+      - name: Run DB integration tests
         run: |
-          if npm run -w backend -s test 2>/dev/null; then
-            npm run -w backend test --if-present
-          else
-            echo "No backend test script; skipping"
-          fi
-
-      - name: Frontend: tests (if present)
-        run: |
-          if npm run -w frontend -s test 2>/dev/null; then
-            npm run -w frontend test --if-present
-          else
-            echo "No frontend test script; skipping"
-          fi
-
-      - name: Backend: build (production)
-        run: |
-          if npm run -w backend -s build 2>/dev/null; then
-            npm run -w backend build
-          else
-            echo "No backend build script; skipping"
-          fi
-
-      - name: Frontend: build (production)
-        run: |
-          if npm run -w frontend -s build 2>/dev/null; then
-            npm run -w frontend build
-          else
-            echo "No frontend build script; skipping"
-          fi
+          cd backend
+          npx --yes --package jest --package ts-jest jest --preset=ts-jest --runTestsByPath=tests/integration/db.test.ts --runInBand

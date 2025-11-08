@@ -15,8 +15,6 @@ module.exports = [
     plugins: {
       '@typescript-eslint': tseslint,
     },
-    rules: {
-      ...tseslint.configs.recommended.rules,
-    },
+    rules: tseslint.configs.recommended.rules,
   },
 ];

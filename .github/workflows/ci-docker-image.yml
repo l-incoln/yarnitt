@@ -1,0 +1,60 @@
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+name: CI — build backend image and run tests inside container
+
+jobs:
+  build-and-test-in-image:
+    name: Build Docker image and run tests in container
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Create docker network
+        run: |
+          docker network create yarnitt-test-net || true
+
+      - name: Start Postgres container on network
+        run: |
+          docker run -d --name yarnitt-pg --network yarnitt-test-net \
+            -e POSTGRES_USER=yarnitt \
+            -e POSTGRES_PASSWORD=yarnittpass \
+            -e POSTGRES_DB=yarnitt_test \
+            postgres:14
+
+      - name: Wait for Postgres to be ready
+        run: |
+          for i in $(seq 1 30); do
+            docker exec yarnitt-pg pg_isready -U yarnitt -d yarnitt_test && break
+            echo "Waiting for Postgres..."
+            sleep 2
+          done
+
+      - name: Build backend Docker test image (with dev deps)
+        run: |
+          docker build --target test -f backend/Dockerfile -t yarnitt-backend:test .
+
+      - name: Run tests inside built image (connects to yarnitt-pg)
+        env:
+          DATABASE_URL: postgres://yarnitt:yarnittpass@yarnitt-pg:5432/yarnitt_test
+        run: |
+          docker run --rm --network yarnitt-test-net \
+            -e DATABASE_URL="$DATABASE_URL" \
+            yarnitt-backend:test \
+            sh -c "npm ci --silent && npx jest --runInBand --config jest.config.cjs"
+
+      - name: Cleanup containers and network
+        if: always()
+        run: |
+          docker rm -f yarnitt-pg || true
+          docker network rm yarnitt-test-net || true

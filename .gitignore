@@ -7,3 +7,5 @@ build/
 .DS_Store
 uploads/backend/package.json.bak
 tmp/
+backend/uploads/
+frontend/public/

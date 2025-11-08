@@ -5,4 +5,5 @@ dist/
 build/
 .vscode/
 .DS_Store
-uploads/
+uploads/backend/package.json.bak
+tmp/

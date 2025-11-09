@@ -26,7 +26,7 @@ export async function authMiddleware(req: Request, res: Response, next: NextFunc
     const user = await User.findById(userId).exec();
     if (!user) return res.status(401).send({ error: "User not found" });
 
-    # attach user using a typed request augmentation (avoids `any`)
+    // attach user using a typed request augmentation (avoids `any`)
     const reqWithUser = req as Request & { user?: unknown };
     reqWithUser.user = user;
 

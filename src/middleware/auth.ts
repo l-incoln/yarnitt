@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import User from "../models/User";
 
-// Import at runtime to avoid TS import mismatch if utils/jwt exports differ
+// allow a runtime require here but silence the ESLint rule for this line
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { verifyAccessToken } = require("../utils/jwt") as {
   verifyAccessToken?: (token: string) => unknown;
 };
@@ -16,15 +17,19 @@ export async function authMiddleware(req: Request, res: Response, next: NextFunc
 
     if (!payload || typeof payload !== "object") return res.status(401).send({ error: "Invalid token" });
 
-    // Narrow payload safely; prefer explicit properties if available
-    // @ts-expect-error runtime payload shape
-    const userId = (payload as any).sub ?? (payload as any).userId;
+    const payloadObj = payload as Record<string, unknown>;
+    const userId =
+      typeof payloadObj.sub === "string" ? payloadObj.sub : (payloadObj.userId as string | undefined);
+
     if (!userId) return res.status(401).send({ error: "Invalid token payload" });
 
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).exec();
     if (!user) return res.status(401).send({ error: "User not found" });
 
-    (req as any).user = user;
+    # attach user without using `any` (use unknown-based cast to satisfy lint)
+    const reqWithUser = req as Request & { user?: unknown };
+    reqWithUser.user = user;
+
     return next();
   } catch (err) {
     return res.status(401).send({ error: "Unauthorized" });

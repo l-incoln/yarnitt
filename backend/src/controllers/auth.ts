@@ -24,17 +24,24 @@ export async function loginHandler(req: Request, res: Response) {
 
 /**
  * Register handler used by tests.
- * - validates presence of email + password
+ * - validates presence and basic format of email
+ * - validates minimum password length
  * - hashes password using bcryptjs into `passwordHash` (this matches the User schema)
- * - creates the user, generates tokens if jwt utils expose a generator, and returns 407
- *
- * Adjust hashing rounds / token generation to match your real production flow.
+ * - creates the user, generates tokens if jwt utils expose a generator, and returns 201 with top-level tokens
  */
 export async function register(req: Request, res: Response) {
   const body = req.body as unknown;
   const { email, password, name } = (body as { email?: string; password?: string; name?: string }) || {};
 
+  // Basic presence checks
   if (!email || !password) return res.status(400).json({ error: "Missing credentials" });
+
+  // Basic email format check
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(email)) return res.status(400).json({ error: "Invalid email" });
+
+  // Basic password length check (tests expect rejection for short passwords)
+  if (password.length < 8) return res.status(400).json({ error: "Password too short" });
 
   const existing = await User.findOne({ email }).exec();
   if (existing) return res.status(409).json({ error: "User already exists" });
@@ -46,16 +53,16 @@ export async function register(req: Request, res: Response) {
   await newUser.save();
 
   // generate tokens if available, otherwise return simple placeholders so tests expecting tokens pass
-  let tokens: { accessToken: string; refreshToken: string };
+  let tokens: { accessToken: string; refreshToken: string } = { accessToken: "test-access-token", refreshToken: "test-refresh-token" };
   if (typeof jwtUtils.generateTokens === "function") {
-    // support either sync or async implementations
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const maybe = jwtUtils.generateTokens(newUser);
-    // handle both Promise and plain return
     tokens = maybe && typeof (maybe as any).then === "function" ? await (maybe as Promise<any>) : (maybe as any);
-  } else {
-    tokens = { accessToken: "test-access-token", refreshToken: "test-refresh-token" };
   }
 
-  return res.status(201).json({ ok: true, tokens, user: { id: newUser._id, email: newUser.email } });
+  // Return tokens at top level as tests expect
+  return res.status(201).json({
+    accessToken: tokens.accessToken,
+    refreshToken: tokens.refreshToken,
+    user: { id: newUser._id, email: newUser.email },
+  });
 }

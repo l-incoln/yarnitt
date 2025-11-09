@@ -1,7 +1,35 @@
-import { Request, Response, NextFunction } from "express"; import { verifyAccessToken } from "../utils/jwt"; import User from "../models/User";
+import { Request, Response, NextFunction } from "express";
+import User from "../models/User";
 
-export async function requireAuth(req: Request, res: Response, next: NextFunction) { const header = req.headers.authorization; if (!header || !header.startsWith("Bearer ")) return res.status(401).json({ message: "missing auth token" });
+// allow a runtime require here but silence the ESLint rule for this line
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { verifyAccessToken } = require("../utils/jwt") as {
+  verifyAccessToken?: (token: string) => unknown;
+};
 
-const token = header.split(" ")[1]; try { const payload = verifyAccessToken(token); const user = await User.findById((payload as any).sub); if (!user) return res.status(401).json({ message: "user not found" }); (req as any).user = user; next(); } catch (err) { return res.status(401).json({ message: "invalid token" }); } }
+export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return res.status(401).send({ error: "Missing authorization" });
 
-export function requireRole(required: "buyer" | "seller" | "admin") { return (req: Request, res: Response, next: NextFunction) => { const user = (req as any).user; if (!user) return res.status(401).json({ message: "not authenticated" }); if (user.role !== required && user.role !== "admin") { return res.status(403).json({ message: "insufficient role" }); } next(); }; }
+    const token = authHeader.split(" ")[1];
+    const payload = verifyAccessToken ? verifyAccessToken(token) : null;
+
+    if (!payload || typeof payload !== "object") return res.status(401).send({ error: "Invalid token" });
+
+    const payloadObj = payload as Record<string, unknown>;
+    const userId =
+      typeof payloadObj.sub === "string" ? payloadObj.sub : (payloadObj.userId as string | undefined);
+
+    if (!userId) return res.status(401).send({ error: "Invalid token payload" });
+
+    const user = await User.findById(userId).exec();
+    if (!user) return res.status(401).send({ error: "User not found" });
+
+    (req as any).user = user;
+
+    return next();
+  } catch (err) {
+    return res.status(401).send({ error: "Unauthorized" });
+  }
+}

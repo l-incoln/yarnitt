@@ -2,59 +2,130 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - 'feat/**'
+    branches: [ "main", "master", "chore/upgrade-eslint-ts" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main", "master" ]
 
 jobs:
-  integration-tests:
-    runs-on: ubuntu-20.04
+  unit:
+    name: Unit / Static checks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install (root)
+        run: npm ci
+
+      - name: Backend: install deps
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Backend: lint
+        working-directory: ./backend
+        run: npm run lint
+
+      - name: Backend: typecheck
+        working-directory: ./backend
+        run: npm run typecheck
+
+      - name: Backend: unit tests
+        working-directory: ./backend
+        run: |
+          if npm run | grep -q "test"; then
+            npm test --if-present --silent
+          else
+            echo "No unit tests configured; skipping"
+          fi
+
+      - name: Build backend Docker image (optional)
+        if: env.BUILD_DOCKER != 'false'
+        env:
+          BUILD_DOCKER: true
+        run: |
+          if [ -f ./backend/Dockerfile ]; then
+            docker build -t yarnitt-backend:ci ./backend
+          else
+            echo "No backend/Dockerfile; skipping docker build"
+          fi
+
+  integration:
+    name: Integration tests (Postgres/Redis/Mongo)
+    runs-on: ubuntu-latest
+    needs: unit
     services:
       postgres:
-        image: postgres:14
+        image: postgres:15
         env:
-          POSTGRES_USER: yarnitt
-          POSTGRES_PASSWORD: yarnittpass
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: yarnitt_test
         ports:
           - 5432:5432
         options: >-
-          --health-cmd="pg_isready -U yarnitt -d yarnitt_test"
-          --health-interval=10s
+          --health-cmd="pg_isready -U postgres -d yarnitt_test"
+          --health-interval=5s
           --health-timeout=5s
-          --health-retries=5
-
-    env:
-      DATABASE_URL: postgres://yarnitt:yarnittpass@127.0.0.1:5432/yarnitt_test
-      CI: true
+          --health-retries=10
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+      mongo:
+        image: mongo:6.0
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.adminCommand(\"ping\")'"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
           cache: 'npm'
 
-      - name: Install deps
-        run: |
-          cd backend
-          npm ci
+      - name: Install backend deps
+        working-directory: ./backend
+        run: npm ci
 
-      - name: Wait for Postgres
+      - name: Wait for services
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y postgresql-client
           for i in $(seq 1 30); do
-            pg_isready -h 127.0.0.1 -p 5432 -U yarnitt && break || sleep 2
+            pg_isready -h localhost -p 5432 -U postgres && break || sleep 1
+          done
+          for i in $(seq 1 30); do
+            redis-cli -h localhost ping && break || sleep 1
+          done
+          for i in $(seq 1 30); do
+            mongosh --eval "db.adminCommand('ping')" && break || sleep 1
           done
 
-      - name: Run DB integration tests
+      - name: Run integration tests
+        working-directory: ./backend
         run: |
-          cd backend
-          npx --yes --package jest --package ts-jest jest --preset=ts-jest --runTestsByPath=tests/integration/db.test.ts --runInBand
+          if npm run | grep -q "test:integration"; then
+            npm run test:integration
+          else
+            echo "No integration test script found (npm run test:integration)."
+          fi

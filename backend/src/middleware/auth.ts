@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import User from "../models/User";
 
 // allow a runtime require here but silence the ESLint rule for this line
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+ 
 const { verifyAccessToken } = require("../utils/jwt") as {
   verifyAccessToken?: (token: string) => unknown;
 };

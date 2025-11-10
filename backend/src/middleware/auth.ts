@@ -1,37 +1,24 @@
-import { Request, Response, NextFunction } from "express";
-import User from "../models/User";
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
 
-// allow a runtime require here but silence the ESLint rule for this line
- 
-const { verifyAccessToken } = require("../utils/jwt") as {
-  verifyAccessToken?: (token: string) => unknown;
-};
+export interface AuthRequest extends Request {
+  user?: any;
+}
 
-export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
-  try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) return res.status(401).send({ error: "Missing authorization" });
-
-    const token = authHeader.split(" ")[1];
-    const payload = verifyAccessToken ? verifyAccessToken(token) : null;
-
-    if (!payload || typeof payload !== "object") return res.status(401).send({ error: "Invalid token" });
-
-    const payloadObj = payload as Record<string, unknown>;
-    const userId =
-      typeof payloadObj.sub === "string" ? payloadObj.sub : (payloadObj.userId as string | undefined);
-
-    if (!userId) return res.status(401).send({ error: "Invalid token payload" });
-
-    const user = await User.findById(userId).exec();
-    if (!user) return res.status(401).send({ error: "User not found" });
-
-    // attach user using a typed request augmentation (avoids `any`)
-    const reqWithUser = req as Request & { user?: unknown };
-    reqWithUser.user = user;
-
-    return next();
-  } catch (err) {
-    return res.status(401).send({ error: "Unauthorized" });
-  }
+export function requireAuth(role?: string) {
+  return (req: AuthRequest, res: Response, next: NextFunction) => {
+    const header = req.headers.authorization;
+    if (!header) return res.status(401).json({ error: 'No auth header' });
+    const token = header.split(' ')[1];
+    try {
+      const payload = jwt.verify(token, process.env.JWT_SECRET || 'change-me') as any;
+      req.user = payload;
+      if (role && payload.role !== role && payload.role !== 'ADMIN') {
+        return res.status(403).json({ error: 'Forbidden' });
+      }
+      next();
+    } catch (err) {
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+  };
 }

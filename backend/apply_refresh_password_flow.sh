@@ -1,3 +1,145 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Run from repository root. This will:
+# - backup existing files
+# - write new files for refresh-token + forgot/reset password flow
+# - install backend deps, start the backend in background
+# - seed DB and run quick tests
+# Usage:
+#   chmod +x apply_refresh_password_flow.sh
+#   ./apply_refresh_password_flow.sh
+
+ROOT="$(pwd)"
+BACKEND="$ROOT/backend"
+TS_SRC="$BACKEND/src"
+
+echo "Working from $ROOT"
+
+# Ensure backend tree exists
+if [ ! -d "$BACKEND" ]; then
+  echo "Error: backend directory not found at $BACKEND"
+  exit 1
+fi
+
+timestamp() { date +%Y%m%d%H%M%S; }
+TS="$(timestamp)"
+
+echo "Creating backups of changed files (timestamp: $TS)..."
+mkdir -p "$BACKEND"/backups/"$TS"
+
+backup_file() {
+  local file="$1"
+  if [ -f "$file" ]; then
+    cp -v "$file" "$BACKEND/backups/$TS/$(basename "$file").bak"
+  fi
+}
+
+# Files to overwrite/create
+FILES_TO_BACKUP=(
+  "$TS_SRC/models/User.ts"
+  "$TS_SRC/models/RefreshToken.ts"
+  "$TS_SRC/utils/jwt.ts"
+  "$TS_SRC/routes/auth.ts"
+)
+
+for f in "${FILES_TO_BACKUP[@]}"; do
+  backup_file "$f"
+done
+
+echo "Writing backend/src/models/User.ts..."
+cat > "$TS_SRC/models/User.ts" <<'TS'
+import mongoose, { Schema, Document } from 'mongoose';
+
+export type Role = 'BUYER' | 'SELLER' | 'ADMIN';
+
+export interface IUser extends Document {
+  email: string;
+  passwordHash: string;
+  name?: string;
+  phone?: string;
+  role: Role;
+  createdAt: Date;
+
+  // Password reset fields
+  resetPasswordTokenHash?: string | null;
+  resetPasswordExpires?: Date | null;
+}
+
+const UserSchema: Schema = new Schema<IUser>(
+  {
+    email: { type: String, required: true, unique: true, index: true },
+    passwordHash: { type: String, required: true },
+    name: { type: String },
+    phone: { type: String },
+    role: { type: String, enum: ['BUYER', 'SELLER', 'ADMIN'], default: 'BUYER' },
+
+    // Password reset
+    resetPasswordTokenHash: { type: String, default: null },
+    resetPasswordExpires: { type: Date, default: null },
+  },
+  { timestamps: true }
+);
+
+const User = mongoose.model<IUser>('User', UserSchema);
+export default User;
+TS
+
+echo "Writing backend/src/models/RefreshToken.ts..."
+cat > "$TS_SRC/models/RefreshToken.ts" <<'TS'
+import mongoose, { Schema, Document, Types } from 'mongoose';
+
+export interface IRefreshToken extends Document {
+  user: Types.ObjectId;
+  tokenHash: string;
+  revoked: boolean;
+  replacedBy?: string | null;
+  expiresAt: Date;
+  createdAt: Date;
+}
+
+const RefreshTokenSchema: Schema = new Schema<IRefreshToken>(
+  {
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
+    tokenHash: { type: String, required: true, index: true },
+    revoked: { type: Boolean, default: false },
+    replacedBy: { type: String, default: null },
+    expiresAt: { type: Date, required: true, index: true },
+  },
+  { timestamps: { createdAt: true, updatedAt: false } }
+);
+
+const RefreshToken = mongoose.model<IRefreshToken>('RefreshToken', RefreshTokenSchema);
+export default RefreshToken;
+TS
+
+echo "Writing backend/src/utils/jwt.ts..."
+cat > "$TS_SRC/utils/jwt.ts" <<'TS'
+import jwt from 'jsonwebtoken';
+
+const ACCESS_EXPIRY = process.env.ACCESS_TOKEN_EXPIRY || '1h';
+const REFRESH_EXPIRY_SECONDS = parseInt(process.env.REFRESH_TOKEN_SECONDS || String(7 * 24 * 60 * 60), 10);
+
+export function signAccessToken(payload: { userId: string; role?: string }) {
+  const token = jwt.sign(
+    { userId: payload.userId, role: payload.role || 'BUYER' },
+    process.env.JWT_SECRET || 'change-me',
+    { expiresIn: ACCESS_EXPIRY }
+  );
+  return token;
+}
+
+export function verifyAccess(token: string) {
+  return jwt.verify(token, process.env.JWT_SECRET || 'change-me') as any;
+}
+
+export function getRefreshExpirySeconds() {
+  return REFRESH_EXPIRY_SECONDS;
+}
+TS
+
+echo "Writing backend/src/routes/auth.ts..."
+cat > "$TS_SRC/routes/auth.ts" <<'TS'
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
@@ -205,3 +347,74 @@ router.post('/reset-password', async (req, res) => {
 });
 
 export default router;
+TS
+
+echo "Installing backend dependencies (this may take a minute)..."
+cd "$BACKEND"
+npm install --no-audit --no-fund
+
+echo "Killing any existing ts-node-dev processes (if any)..."
+pkill -f ts-node-dev || true
+
+echo "Starting backend dev server in background (logs => /tmp/backend-dev.log)..."
+# use nohup so the script can continue; ts-node-dev will watch files.
+nohup npm run dev > /tmp/backend-dev.log 2>&1 &
+SERVER_PID=$!
+echo "Server started with PID $SERVER_PID (logs: /tmp/backend-dev.log)"
+cd "$ROOT"
+
+echo "Waiting for server to start..."
+sleep 4
+
+echo "Seeding DB (npx ts-node backend/scripts/seed.ts)..."
+npx ts-node backend/scripts/seed.ts || true
+
+echo "Quick smoke tests..."
+
+echo "Health check:"
+curl -s http://localhost:4000/healthz || true
+echo
+echo "Products list (first 200 chars):"
+curl -s http://localhost:4000/products | sed -n '1,10p' || true
+echo
+
+# login to get tokens for buyer@test (seed may have created it)
+LOGIN_RESP=$(curl -s -X POST "http://localhost:4000/api/auth/login" -H "Content-Type: application/json" -d '{"email":"buyer@test","password":"pass"}' || true)
+echo "Login response (buyer@test):"
+echo "$LOGIN_RESP" | sed -n '1,200p'
+echo
+
+# extract refresh token using python (fails gracefully if not present)
+REFRESH_TOKEN=""
+ACCESS_TOKEN=""
+if command -v python3 >/dev/null 2>&1; then
+  REFRESH_TOKEN=$(echo "$LOGIN_RESP" | python3 -c "import sys, json; d=json.load(sys.stdin) if sys.stdin.readable() else {}; print(d.get('tokens',{}).get('refreshToken',''))" || true)
+  ACCESS_TOKEN=$(echo "$LOGIN_RESP" | python3 -c "import sys, json; d=json.load(sys.stdin) if sys.stdin.readable() else {}; print(d.get('tokens',{}).get('accessToken',''))" || true)
+fi
+
+if [ -n "$REFRESH_TOKEN" ]; then
+  echo "Testing /api/auth/refresh with the returned refresh token..."
+  REFRESH_RESP=$(curl -s -X POST "http://localhost:4000/api/auth/refresh" -H "Content-Type: application/json" -d "{\"refreshToken\":\"$REFRESH_TOKEN\"}" || true)
+  echo "$REFRESH_RESP" | sed -n '1,200p'
+fi
+
+echo "Testing forgot-password (will return reset token in dev):"
+FP_RESP=$(curl -s -X POST "http://localhost:4000/api/auth/forgot-password" -H "Content-Type: application/json" -d '{"email":"buyer@test"}' || true)
+echo "$FP_RESP" | sed -n '1,200p'
+# extract reset token if python3 is available
+RESET_TOKEN=""
+if command -v python3 >/dev/null 2>&1; then
+  RESET_TOKEN=$(echo "$FP_RESP" | python3 -c "import sys,json; print(json.load(sys.stdin).get('resetToken',''))" || true)
+fi
+
+if [ -n "$RESET_TOKEN" ]; then
+  echo "Testing reset-password with the token returned..."
+  RP_RESP=$(curl -s -X POST "http://localhost:4000/api/auth/reset-password" -H "Content-Type: application/json" -d "{\"token\":\"$RESET_TOKEN\",\"password\":\"newpass123\"}" || true)
+  echo "$RP_RESP" | sed -n '1,200p'
+  echo "Now try logging in with the new password (buyer@test / newpass123):"
+  LOGIN_AFTER=$(curl -s -X POST "http://localhost:4000/api/auth/login" -H "Content-Type: application/json" -d '{"email":"buyer@test","password":"newpass123"}' || true)
+  echo "$LOGIN_AFTER" | sed -n '1,200p'
+fi
+
+echo "All done. Backend log: /tmp/backend-dev.log"
+echo "If you want to stop the background dev server run: pkill -f ts-node-dev"

@@ -4,6 +4,7 @@ import { forgotPasswordRateLimiter, registerRateLimiter } from '../middleware/ra
 
 const router = Router();
 
+// Rate limiting middleware is applied before each handler to prevent abuse
 router.post('/auth/register', registerRateLimiter, register);
 router.post('/auth/forgot-password', forgotPasswordRateLimiter, forgotPassword);
 

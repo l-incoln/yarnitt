@@ -10,3 +10,9 @@ tmp/
 backend/uploads/
 frontend/public/
 backend/package.json.bak
+
+# Local backups and installer scripts (do not commit)
+backend/backups/
+apply_.sh
+backend/apply_.sh
+backend/backups/**

@@ -7,6 +7,30 @@ function isValidEmail(email: string) {
   return re.test(email);
 }
 
+// TODO: Implement Redis-backed rate limiting for this endpoint
+// This is a stub that accepts all requests - needs rate limiter (5 requests allowed, 6th should return 429)
+export async function forgotPassword(req: Request, res: Response) {
+  try {
+    const { email } = req.body || {};
+    if (!email) {
+      return res.status(400).json({ error: 'email is required' });
+    }
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ error: 'invalid email' });
+    }
+
+    // Stub: In a real implementation, this would:
+    // 1. Check rate limit (Redis) - return 429 if exceeded
+    // 2. Generate password reset token
+    // 3. Send email with reset link
+    
+    return res.status(200).json({ message: 'If the email exists, a password reset link has been sent' });
+  } catch (err: any) {
+    console.error('forgotPassword error', err);
+    return res.status(500).json({ error: 'internal error' });
+  }
+}
+
 export async function register(req: Request, res: Response) {
   try {
     const { email, password, name } = req.body || {};

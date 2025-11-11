@@ -16,3 +16,6 @@ backend/backups/
 apply_.sh
 backend/apply_.sh
 backend/backups/**
+
+# Local backup
+docker-compose.yml.bak

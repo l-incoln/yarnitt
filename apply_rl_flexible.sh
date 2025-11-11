@@ -1,3 +1,21 @@
+#!/usr/bin/env bash
+# Safe one-shot installer to add rate-limiter-flexible-based forgot-password limiter,
+# back up existing file, install packages, start redis (if missing), restart backend and run test.
+set -euo pipefail
+
+ROOT="$PWD"
+AUTH_FILE="$ROOT/backend/src/routes/auth.ts"
+BACKUP_DIR="$ROOT/backend/backups/auth-replace-$(date +%Y%m%d%H%M%S)"
+mkdir -p "$(dirname "$AUTH_FILE")" "$BACKUP_DIR"
+
+if [ -f "$AUTH_FILE" ]; then
+  cp -v "$AUTH_FILE" "$BACKUP_DIR/$(basename "$AUTH_FILE").bak" || true
+fi
+
+echo "Writing new $AUTH_FILE (backup saved to $BACKUP_DIR)..."
+
+# Write the TypeScript file reliably using a heredoc with single-quote delimiter
+cat > "$AUTH_FILE" <<'TS'
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
@@ -260,3 +278,37 @@ router.post('/reset-password', async (req, res) => {
 });
 
 export default router;
+TS
+
+echo "Installing npm packages (rate-limiter-flexible + redis@^4) in backend..."
+cd "$ROOT/backend"
+npm install --no-audit --no-fund rate-limiter-flexible redis@^4 || true
+cd "$ROOT"
+
+# ensure a local redis container is running
+if ! docker ps --format '{{.Names}}' | grep -q '^redis-local$'; then
+  echo "Starting redis-local container..."
+  docker run -d --name redis-local -p 6379:6379 redis:7
+  sleep 2
+fi
+
+# restart backend with REDIS_URL set (background)
+echo "Restarting backend (REDIS_URL=redis://127.0.0.1:6379) ..."
+pkill -f ts-node-dev || true
+nohup bash -lc "cd \"$ROOT/backend\" && REDIS_URL=redis://127.0.0.1:6379 MAIL_SEND_MODE=dev npm run dev" > /tmp/backend-dev.log 2>&1 &
+
+sleep 3
+echo "=== /tmp/backend-dev.log (tail) ==="
+tail -n 200 /tmp/backend-dev.log || true
+
+echo
+echo "Running forgot-password 6-request test (first 5 allowed, 6th should be 429 if limiter active):"
+for i in $(seq 1 6); do
+  printf "\nRequest %d:\n" "$i"
+  curl -s -w "\nHTTP_STATUS:%{http_code}\n" -X POST "http://127.0.0.1:4000/api/auth/forgot-password" \
+    -H "Content-Type: application/json" \
+    -d '{"email":"buyer@test"}' || true
+done
+
+echo
+echo "Backup of previous file (if it existed) saved to: $BACKUP_DIR/$(basename "$AUTH_FILE").bak"

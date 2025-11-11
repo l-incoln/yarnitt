@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
 export async function connect(uri: string) {
-  // keep this minimal and typed so lint/typecheck are satisfied
+  // If you previously computed duration but didn't use it, remove or prefix with _
   await mongoose.connect(uri);
 }

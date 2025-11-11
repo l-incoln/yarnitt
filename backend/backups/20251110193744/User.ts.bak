@@ -9,10 +9,6 @@ export interface IUser extends Document {
   phone?: string;
   role: Role;
   createdAt: Date;
-
-  // Password reset fields
-  resetPasswordTokenHash?: string | null;
-  resetPasswordExpires?: Date | null;
 }
 
 const UserSchema: Schema = new Schema<IUser>(
@@ -22,10 +18,6 @@ const UserSchema: Schema = new Schema<IUser>(
     name: { type: String },
     phone: { type: String },
     role: { type: String, enum: ['BUYER', 'SELLER', 'ADMIN'], default: 'BUYER' },
-
-    // Password reset
-    resetPasswordTokenHash: { type: String, default: null },
-    resetPasswordExpires: { type: Date, default: null },
   },
   { timestamps: true }
 );

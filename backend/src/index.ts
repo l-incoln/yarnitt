@@ -5,8 +5,12 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import serveIndex from 'serve-index';
+
 import productsRouter from './routes/products';
 import authRoutes from './routes/auth';
+import sellerRouter from './routes/seller';
+import ordersRouter from './routes/orders';
+import paymentRouter from './routes/payments';
 
 dotenv.config();
 
@@ -28,7 +32,6 @@ try {
 }
 
 // Serve uploaded files at /uploads
-// In dev we also expose an index (directory listing); in production consider disabling.
 app.use(
   '/uploads',
   express.static(UPLOADS_DIR, {
@@ -38,15 +41,15 @@ app.use(
 );
 
 if (process.env.NODE_ENV !== 'production') {
-  // show directory listing in development only
   app.use('/uploads', serveIndex(UPLOADS_DIR, { icons: true }));
 }
 
-// Mount product routes (see backend/src/routes/products.ts)
-app.use('/products', productsRouter);
-
-// Mount auth routes
+// Mount routes
 app.use('/api/auth', authRoutes);
+app.use('/products', productsRouter); // public product listing
+app.use('/api/seller', sellerRouter); // seller-protected endpoints
+app.use('/api/orders', ordersRouter); // order creation (buyer)
+app.use('/api/payments', paymentRouter); // callbacks/handlers
 
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));
@@ -60,9 +63,7 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 // Connect to MongoDB and start server
 async function start() {
   try {
-    await mongoose.connect(MONGO_URI, {
-      // useNewUrlParser/useUnifiedTopology are default in mongoose v6+
-    } as any);
+    await mongoose.connect(MONGO_URI);
     console.log('Connected to MongoDB');
 
     const server = app.listen(PORT, () => {

@@ -60,3 +60,11 @@ export const forgotPasswordRateLimiter = createRateLimiter({
   maxRequests: 5,
   keyPrefix: 'rl:forgot-password'
 });
+
+// Rate limiter for register endpoint
+// Allows 10 registrations per hour to prevent abuse
+export const registerRateLimiter = createRateLimiter({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  maxRequests: 10,
+  keyPrefix: 'rl:register'
+});

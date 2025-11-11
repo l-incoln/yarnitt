@@ -3,6 +3,11 @@ import { User } from '../models/User';
 import { signAccessToken, signRefreshToken } from '../utils/jwt';
 
 function isValidEmail(email: string) {
+  // Simple email validation that avoids ReDoS vulnerability
+  // Matches basic email format without complex nested quantifiers
+  if (typeof email !== 'string' || email.length > 320) {
+    return false;
+  }
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 }

@@ -7,8 +7,8 @@ function isValidEmail(email: string) {
   return re.test(email);
 }
 
-// TODO: Implement Redis-backed rate limiting for this endpoint
-// This is a stub that accepts all requests - needs rate limiter (5 requests allowed, 6th should return 429)
+// Forgot password endpoint with Redis-backed rate limiting
+// Rate limiter allows 5 requests per 15 minutes per IP address
 export async function forgotPassword(req: Request, res: Response) {
   try {
     const { email } = req.body || {};

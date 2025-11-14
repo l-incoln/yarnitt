@@ -1,11 +1,53 @@
-services: db: image: postgres:15 environment: POSTGRES_USER: yarnitt POSTGRES_PASSWORD: yarnittpass POSTGRES_DB: yarnitt_test ports:
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: yarnitt
+      POSTGRES_PASSWORD: yarnittpass
+      POSTGRES_DB: yarnitt_test
+    ports:
+      - "5433:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
 
-"5433:5432" volumes:
-db-data:/var/lib/postgresql/data restart: unless-stopped
-mongo: image: mongo:6 ports: - "27017:27017" restart: unless-stopped volumes: - mongo-data:/data/db
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
 
-redis: image: redis:7 # removed container_name to avoid networking surprises on CI ports: - "6379:6379" restart: unless-stopped
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
 
-backend: build: context: ./backend dockerfile: Dockerfile environment: DATABASE_URL: "postgres://yarnitt:yarnittpass@db:5432/yarnitt_test" MONGO_URI: "mongodb://mongo:27017/yarnitt" NODE_ENV: "development" PORT: "4000" REDIS_URL: "redis://redis:6379" REDIS_HOST: "redis" REDIS_PORT: "6379" ports: - "3000:3000" - "4000:4000" depends_on: - db - mongo - redis command: sh -c "npm ci && (npm run start:dev || npm run start)" restart: unless-stopped
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: "postgres://yarnitt:yarnittpass@db:5432/yarnitt_test"
+      MONGO_URI: "mongodb://mongo:27017/yarnitt"
+      NODE_ENV: "development"
+      PORT: "4000"
+      REDIS_URL: "redis://redis:6379"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
+    ports:
+      - "3000:3000"
+      - "4000:4000"
+    depends_on:
+      - db
+      - mongo
+      - redis
+    command: sh -c "npm ci && (npm run start:dev || npm run start)"
+    restart: unless-stopped
 
-volumes: db-data: mongo-data:
+volumes:
+  db-data:
+  mongo-data:
+  redis-data:

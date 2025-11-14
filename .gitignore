@@ -5,4 +5,8 @@ dist/
 build/
 .vscode/
 .DS_Store
-uploads/
+uploads/docker-compose.yml.bak
+backend/package.json.bak
+backend/backups/
+tmp/
+# local backups and temporary files (auto-added)

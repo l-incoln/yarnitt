@@ -13,6 +13,7 @@
     "cd": "^0.3.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
+    "emitter": "^0.0.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.0",

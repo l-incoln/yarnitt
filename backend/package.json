@@ -8,10 +8,15 @@
     "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js"
   },
   "dependencies": {
+    "backend": "file:..",
     "bcryptjs": "^2.4.3",
+    "cd": "^0.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.0"
+    "mongoose": "^7.0.0",
+    "serve-index": "^1.9.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",

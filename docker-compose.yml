@@ -44,7 +44,6 @@ services:
       - db
       - mongo
       - redis
-    command: sh -c "npm ci && npm run build && (npm run start:dev || npm run start)"
     restart: unless-stopped
 
 volumes:

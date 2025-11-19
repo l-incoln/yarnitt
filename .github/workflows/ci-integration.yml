@@ -19,7 +19,7 @@ jobs:
       - name: Build and start services with docker compose
         run: |
           docker compose down --remove-orphans || true
-          docker compose up -d --build
+          docker compose build --no-cache && docker compose up -d
 
       - name: Wait for backend to be ready
         run: |

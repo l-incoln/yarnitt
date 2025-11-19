@@ -1,21 +1,21 @@
 FROM node:18-alpine
 
-# install build deps if needed (alpine)
+# install build deps (esbuild may require build tools)
 RUN apk add --no-cache python3 make g++ || true
 
 WORKDIR /usr/src/app
 
-# copy package manifests first to install deps
+# copy package manifests and install (will install dev deps needed for build)
 COPY package*.json ./
-# use npm ci to get a reproducible install
 RUN npm ci --no-audit --no-fund
 
-# copy source
+# copy source then build into dist/
 COPY . .
+RUN npm run build
 
-# default port (compose uses 4000)
+# runtime settings
 ENV PORT=4000
 EXPOSE 4000
 
-# default start (docker-compose may override)
+# run the built output
 CMD ["npm", "run", "start"]

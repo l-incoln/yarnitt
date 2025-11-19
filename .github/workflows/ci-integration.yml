@@ -1,0 +1,50 @@
+name: CI - integration (docker-compose)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build and start services with docker compose
+        run: |
+          docker compose down --remove-orphans || true
+          docker compose build --no-cache && docker compose up -d
+
+      - name: Wait for backend to be ready
+        run: |
+          echo "Waiting up to 300s for backend at http://localhost:4000/"
+          for i in $(seq 1 300); do
+            if curl -sSf http://localhost:4000/ >/dev/null 2>&1; then
+              echo "Backend ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Backend didn't become ready within 60s" >&2
+          docker compose logs --no-log-prefix --tail=200 backend || true
+          exit 1
+
+      - name: Run integration test
+        env:
+          CI: true
+        run: |
+          node ./tests/integration/run-forgot-rl.js
+
+      - name: Upload backend logs (on failure)
+        if: failure()
+        run: docker compose logs --no-log-prefix --tail=500 backend || true
+
+      - name: Teardown
+        if: always()
+        run: docker compose down --remove-orphans

@@ -1,0 +1,902 @@
+﻿2025-11-18T16:09:35.1165836Z Current runner version: '2.329.0'
+2025-11-18T16:09:35.1190756Z ##[group]Runner Image Provisioner
+2025-11-18T16:09:35.1191523Z Hosted Compute Agent
+2025-11-18T16:09:35.1192022Z Version: 20251016.436
+2025-11-18T16:09:35.1192565Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+2025-11-18T16:09:35.1193179Z Build Date: 2025-10-15T20:44:12Z
+2025-11-18T16:09:35.1193713Z ##[endgroup]
+2025-11-18T16:09:35.1194172Z ##[group]Operating System
+2025-11-18T16:09:35.1194681Z Ubuntu
+2025-11-18T16:09:35.1195085Z 24.04.3
+2025-11-18T16:09:35.1195493Z LTS
+2025-11-18T16:09:35.1195906Z ##[endgroup]
+2025-11-18T16:09:35.1196320Z ##[group]Runner Image
+2025-11-18T16:09:35.1196993Z Image: ubuntu-24.04
+2025-11-18T16:09:35.1197396Z Version: 20251112.124.1
+2025-11-18T16:09:35.1198333Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+2025-11-18T16:09:35.1199704Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+2025-11-18T16:09:35.1200588Z ##[endgroup]
+2025-11-18T16:09:35.1201554Z ##[group]GITHUB_TOKEN Permissions
+2025-11-18T16:09:35.1203948Z Contents: read
+2025-11-18T16:09:35.1204426Z Metadata: read
+2025-11-18T16:09:35.1204840Z Packages: read
+2025-11-18T16:09:35.1205317Z ##[endgroup]
+2025-11-18T16:09:35.1207591Z Secret source: Actions
+2025-11-18T16:09:35.1208515Z Prepare workflow directory
+2025-11-18T16:09:35.1522481Z Prepare all required actions
+2025-11-18T16:09:35.1563074Z Getting action download info
+2025-11-18T16:09:40.8180785Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-11-18T16:09:41.2854444Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2025-11-18T16:09:41.4927285Z Complete job name: integration
+2025-11-18T16:09:41.5529257Z ##[group]Run actions/checkout@v4
+2025-11-18T16:09:41.5530021Z with:
+2025-11-18T16:09:41.5530349Z   repository: l-incoln/yarnitt
+2025-11-18T16:09:41.5530934Z   token: ***
+2025-11-18T16:09:41.5531284Z   ssh-strict: true
+2025-11-18T16:09:41.5531607Z   ssh-user: git
+2025-11-18T16:09:41.5531936Z   persist-credentials: true
+2025-11-18T16:09:41.5532233Z   clean: true
+2025-11-18T16:09:41.5532597Z   sparse-checkout-cone-mode: true
+2025-11-18T16:09:41.5532939Z   fetch-depth: 1
+2025-11-18T16:09:41.5533243Z   fetch-tags: false
+2025-11-18T16:09:41.5533622Z   show-progress: true
+2025-11-18T16:09:41.5533921Z   lfs: false
+2025-11-18T16:09:41.5534210Z   submodules: false
+2025-11-18T16:09:41.5534533Z   set-safe-directory: true
+2025-11-18T16:09:41.5535107Z ##[endgroup]
+2025-11-18T16:09:41.6547643Z Syncing repository: l-incoln/yarnitt
+2025-11-18T16:09:41.6549314Z ##[group]Getting Git version info
+2025-11-18T16:09:41.6549923Z Working directory is '/home/runner/work/yarnitt/yarnitt'
+2025-11-18T16:09:41.6550807Z [command]/usr/bin/git version
+2025-11-18T16:09:41.7645572Z git version 2.51.2
+2025-11-18T16:09:41.7675043Z ##[endgroup]
+2025-11-18T16:09:41.7689700Z Temporarily overriding HOME='/home/runner/work/_temp/a98b4061-8dd3-4488-a35c-21cb2a4ab499' before making global git config changes
+2025-11-18T16:09:41.7690773Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-18T16:09:41.7695048Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yarnitt/yarnitt
+2025-11-18T16:09:41.7848544Z Deleting the contents of '/home/runner/work/yarnitt/yarnitt'
+2025-11-18T16:09:41.7852690Z ##[group]Initializing the repository
+2025-11-18T16:09:41.7857962Z [command]/usr/bin/git init /home/runner/work/yarnitt/yarnitt
+2025-11-18T16:09:41.8506905Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-11-18T16:09:41.8507727Z hint: is subject to change. To configure the initial branch name to use in all
+2025-11-18T16:09:41.8508389Z hint: of your new repositories, which will suppress this warning, call:
+2025-11-18T16:09:41.8508835Z hint:
+2025-11-18T16:09:41.8509265Z hint: 	git config --global init.defaultBranch <name>
+2025-11-18T16:09:41.8509705Z hint:
+2025-11-18T16:09:41.8510331Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-11-18T16:09:41.8510919Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-11-18T16:09:41.8511379Z hint:
+2025-11-18T16:09:41.8511664Z hint: 	git branch -m <name>
+2025-11-18T16:09:41.8511970Z hint:
+2025-11-18T16:09:41.8512384Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-11-18T16:09:41.8536936Z Initialized empty Git repository in /home/runner/work/yarnitt/yarnitt/.git/
+2025-11-18T16:09:41.8550230Z [command]/usr/bin/git remote add origin https://github.com/l-incoln/yarnitt
+2025-11-18T16:09:41.8688983Z ##[endgroup]
+2025-11-18T16:09:41.8689627Z ##[group]Disabling automatic garbage collection
+2025-11-18T16:09:41.8693610Z [command]/usr/bin/git config --local gc.auto 0
+2025-11-18T16:09:41.8724666Z ##[endgroup]
+2025-11-18T16:09:41.8725232Z ##[group]Setting up auth
+2025-11-18T16:09:41.8731280Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-18T16:09:41.8762145Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-18T16:09:42.0433430Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-18T16:09:42.0460646Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-18T16:09:42.0636942Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-11-18T16:09:42.0676314Z ##[endgroup]
+2025-11-18T16:09:42.0677943Z ##[group]Fetching the repository
+2025-11-18T16:09:42.0685603Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4c7f8b0d416e154c959b66b56d22bf19ef323a17:refs/remotes/pull/13/merge
+2025-11-18T16:09:42.6986087Z From https://github.com/l-incoln/yarnitt
+2025-11-18T16:09:42.6988405Z  * [new ref]         4c7f8b0d416e154c959b66b56d22bf19ef323a17 -> pull/13/merge
+2025-11-18T16:09:42.7053542Z ##[endgroup]
+2025-11-18T16:09:42.7054429Z ##[group]Determining the checkout info
+2025-11-18T16:09:42.7055578Z ##[endgroup]
+2025-11-18T16:09:42.7061925Z [command]/usr/bin/git sparse-checkout disable
+2025-11-18T16:09:42.7193596Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-11-18T16:09:42.7223199Z ##[group]Checking out the ref
+2025-11-18T16:09:42.7228136Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/13/merge
+2025-11-18T16:09:42.7800830Z Note: switching to 'refs/remotes/pull/13/merge'.
+2025-11-18T16:09:42.7801462Z 
+2025-11-18T16:09:42.7801883Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-11-18T16:09:42.7802737Z changes and commit them, and you can discard any commits you make in this
+2025-11-18T16:09:42.7803607Z state without impacting any branches by switching back to a branch.
+2025-11-18T16:09:42.7804106Z 
+2025-11-18T16:09:42.7804454Z If you want to create a new branch to retain commits you create, you may
+2025-11-18T16:09:42.7805203Z do so (now or later) by using -c with the switch command. Example:
+2025-11-18T16:09:42.7805606Z 
+2025-11-18T16:09:42.7805815Z   git switch -c <new-branch-name>
+2025-11-18T16:09:42.7806123Z 
+2025-11-18T16:09:42.7806320Z Or undo this operation with:
+2025-11-18T16:09:42.7806792Z 
+2025-11-18T16:09:42.7806951Z   git switch -
+2025-11-18T16:09:42.7807174Z 
+2025-11-18T16:09:42.7807558Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-11-18T16:09:42.7808024Z 
+2025-11-18T16:09:42.7808709Z HEAD is now at 4c7f8b0 Merge e1a2a27ad45eb5e49374f3d8d65ce54fe83171c2 into 1157948a9227772e9cfbd72eb568eca03810fc71
+2025-11-18T16:09:42.7810720Z ##[endgroup]
+2025-11-18T16:09:42.7844669Z [command]/usr/bin/git log -1 --format=%H
+2025-11-18T16:09:42.7864036Z 4c7f8b0d416e154c959b66b56d22bf19ef323a17
+2025-11-18T16:09:42.8072556Z ##[group]Run actions/setup-node@v4
+2025-11-18T16:09:42.8072877Z with:
+2025-11-18T16:09:42.8073107Z   node-version: 18
+2025-11-18T16:09:42.8073337Z   always-auth: false
+2025-11-18T16:09:42.8073569Z   check-latest: false
+2025-11-18T16:09:42.8073972Z   token: ***
+2025-11-18T16:09:42.8074185Z ##[endgroup]
+2025-11-18T16:09:43.0865815Z Attempting to download 18...
+2025-11-18T16:09:43.6327253Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+2025-11-18T16:09:43.9969717Z Extracting ...
+2025-11-18T16:09:44.0059193Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/94f89cf3-df06-4a3f-b4ad-b05f28359e5c -f /home/runner/work/_temp/0836e8ee-0679-464c-ada3-9c30aa95ce64
+2025-11-18T16:09:44.9416252Z Adding to the cache ...
+2025-11-18T16:09:46.0941397Z ##[group]Environment details
+2025-11-18T16:09:46.3950826Z node: v18.20.8
+2025-11-18T16:09:46.3951278Z npm: 10.8.2
+2025-11-18T16:09:46.3951510Z yarn: 1.22.22
+2025-11-18T16:09:46.3952196Z ##[endgroup]
+2025-11-18T16:09:46.4064096Z ##[group]Run docker compose down --remove-orphans || true
+2025-11-18T16:09:46.4064604Z [36;1mdocker compose down --remove-orphans || true[0m
+2025-11-18T16:09:46.4064902Z [36;1mdocker compose up -d --build[0m
+2025-11-18T16:09:46.4093168Z shell: /usr/bin/bash -e {0}
+2025-11-18T16:09:46.4093459Z ##[endgroup]
+2025-11-18T16:09:49.5718714Z  redis Pulling 
+2025-11-18T16:09:49.5719102Z  db Pulling 
+2025-11-18T16:09:49.5719349Z  mongo Pulling 
+2025-11-18T16:09:50.1489118Z  0e4bc2bd6656 Pulling fs layer 
+2025-11-18T16:09:50.1489612Z  e213bd2560e2 Pulling fs layer 
+2025-11-18T16:09:50.1489975Z  9fcd228516aa Pulling fs layer 
+2025-11-18T16:09:50.1490351Z  2e6036390374 Pulling fs layer 
+2025-11-18T16:09:50.1490756Z  5a19b1f63ace Pulling fs layer 
+2025-11-18T16:09:50.1491123Z  dd23ed782cae Pulling fs layer 
+2025-11-18T16:09:50.1491516Z  b10108f2d223 Pulling fs layer 
+2025-11-18T16:09:50.1491951Z  4eb4a683c389 Pulling fs layer 
+2025-11-18T16:09:50.1492330Z  b475dc4bba47 Pulling fs layer 
+2025-11-18T16:09:50.1492789Z  2c64a0db539b Pulling fs layer 
+2025-11-18T16:09:50.1493143Z  6e6c09f9e058 Pulling fs layer 
+2025-11-18T16:09:50.1493503Z  304e9b7c93e6 Pulling fs layer 
+2025-11-18T16:09:50.1493895Z  95bcad39f7ff Pulling fs layer 
+2025-11-18T16:09:50.1494301Z  fa51353b2c9b Pulling fs layer 
+2025-11-18T16:09:50.1518705Z  dd23ed782cae Waiting 
+2025-11-18T16:09:50.1519189Z  b10108f2d223 Waiting 
+2025-11-18T16:09:50.1519646Z  4eb4a683c389 Waiting 
+2025-11-18T16:09:50.1520004Z  b475dc4bba47 Waiting 
+2025-11-18T16:09:50.1520367Z  2c64a0db539b Waiting 
+2025-11-18T16:09:50.1520702Z  2e6036390374 Waiting 
+2025-11-18T16:09:50.1521033Z  5a19b1f63ace Waiting 
+2025-11-18T16:09:50.1521368Z  6e6c09f9e058 Waiting 
+2025-11-18T16:09:50.1521682Z  304e9b7c93e6 Waiting 
+2025-11-18T16:09:50.1522048Z  95bcad39f7ff Waiting 
+2025-11-18T16:09:50.1522397Z  fa51353b2c9b Waiting 
+2025-11-18T16:09:50.1540806Z  af6eca94c810 Pulling fs layer 
+2025-11-18T16:09:50.1541315Z  1ad79419bb76 Pulling fs layer 
+2025-11-18T16:09:50.1541660Z  afdef96060ff Pulling fs layer 
+2025-11-18T16:09:50.1541905Z  dc9abaf2c8ff Pulling fs layer 
+2025-11-18T16:09:50.1542202Z  a2be9b1fc57a Pulling fs layer 
+2025-11-18T16:09:50.1542465Z  9d81a4e85c6a Pulling fs layer 
+2025-11-18T16:09:50.1542684Z  af6eca94c810 Waiting 
+2025-11-18T16:09:50.1542924Z  9d6e74542339 Pulling fs layer 
+2025-11-18T16:09:50.1543323Z  cde22982277a Pulling fs layer 
+2025-11-18T16:09:50.1543619Z  1ad79419bb76 Waiting 
+2025-11-18T16:09:50.1543838Z  afdef96060ff Waiting 
+2025-11-18T16:09:50.1544303Z  dc9abaf2c8ff Waiting 
+2025-11-18T16:09:50.1544606Z  9d6e74542339 Waiting 
+2025-11-18T16:09:50.1544889Z  a2be9b1fc57a Waiting 
+2025-11-18T16:09:50.1545146Z  cde22982277a Waiting 
+2025-11-18T16:09:50.1545346Z  9d81a4e85c6a Waiting 
+2025-11-18T16:09:50.1728594Z  8e44f01296e3 Pulling fs layer 
+2025-11-18T16:09:50.1729121Z  44fc29a25beb Pulling fs layer 
+2025-11-18T16:09:50.1729695Z  39af693970c0 Pulling fs layer 
+2025-11-18T16:09:50.1729962Z  517b08eaf3cc Pulling fs layer 
+2025-11-18T16:09:50.1730346Z  186a03b51bfa Pulling fs layer 
+2025-11-18T16:09:50.1730654Z  fe77c85f37cb Pulling fs layer 
+2025-11-18T16:09:50.1730887Z  4f4fb700ef54 Pulling fs layer 
+2025-11-18T16:09:50.1731128Z  8e44f01296e3 Waiting 
+2025-11-18T16:09:50.1731423Z  a43f12641297 Pulling fs layer 
+2025-11-18T16:09:50.1731716Z  44fc29a25beb Waiting 
+2025-11-18T16:09:50.1732005Z  fe77c85f37cb Waiting 
+2025-11-18T16:09:50.1732282Z  517b08eaf3cc Waiting 
+2025-11-18T16:09:50.1732579Z  4f4fb700ef54 Waiting 
+2025-11-18T16:09:50.1732893Z  186a03b51bfa Waiting 
+2025-11-18T16:09:50.1733180Z  a43f12641297 Waiting 
+2025-11-18T16:09:50.2721905Z  9fcd228516aa Downloading [>                                                  ]  68.17kB/6.437MB
+2025-11-18T16:09:50.2986194Z  0e4bc2bd6656 Downloading [>                                                  ]  311.3kB/29.78MB
+2025-11-18T16:09:50.3541284Z  9fcd228516aa Verifying Checksum 
+2025-11-18T16:09:50.3543339Z  9fcd228516aa Download complete 
+2025-11-18T16:09:50.3741893Z  e213bd2560e2 Downloading [=======================================>           ]     935B/1.169kB
+2025-11-18T16:09:50.3742651Z  e213bd2560e2 Download complete 
+2025-11-18T16:09:50.4003264Z  0e4bc2bd6656 Downloading [===========>                                       ]  7.008MB/29.78MB
+2025-11-18T16:09:50.4724085Z  2e6036390374 Downloading [>                                                  ]  13.25kB/1.257MB
+2025-11-18T16:09:50.4965731Z  2e6036390374 Verifying Checksum 
+2025-11-18T16:09:50.4966815Z  2e6036390374 Download complete 
+2025-11-18T16:09:50.4970170Z  5a19b1f63ace Downloading [>                                                  ]  84.44kB/8.204MB
+2025-11-18T16:09:50.5002961Z  0e4bc2bd6656 Downloading [====================>                              ]   12.5MB/29.78MB
+2025-11-18T16:09:50.5980015Z  5a19b1f63ace Downloading [========================================>          ]   6.59MB/8.204MB
+2025-11-18T16:09:50.6014646Z  0e4bc2bd6656 Downloading [=============================>                     ]  17.69MB/29.78MB
+2025-11-18T16:09:50.6073097Z  dd23ed782cae Downloading [>                                                  ]  13.25kB/1.311MB
+2025-11-18T16:09:50.6373418Z  5a19b1f63ace Verifying Checksum 
+2025-11-18T16:09:50.6375869Z  5a19b1f63ace Download complete 
+2025-11-18T16:09:50.6432106Z  dd23ed782cae Verifying Checksum 
+2025-11-18T16:09:50.6432791Z  dd23ed782cae Download complete 
+2025-11-18T16:09:50.7113722Z  0e4bc2bd6656 Downloading [=======================================>           ]  23.79MB/29.78MB
+2025-11-18T16:09:50.7601599Z  b10108f2d223 Downloading [==================================================>]     116B/116B
+2025-11-18T16:09:50.7602344Z  b10108f2d223 Download complete 
+2025-11-18T16:09:50.7705178Z  4eb4a683c389 Downloading [==============>                                    ]     935B/3.14kB
+2025-11-18T16:09:50.7705988Z  4eb4a683c389 Downloading [==================================================>]   3.14kB/3.14kB
+2025-11-18T16:09:50.7706708Z  4eb4a683c389 Download complete 
+2025-11-18T16:09:50.8069186Z  0e4bc2bd6656 Verifying Checksum 
+2025-11-18T16:09:50.8069701Z  0e4bc2bd6656 Download complete 
+2025-11-18T16:09:50.8582350Z  0e4bc2bd6656 Extracting [>                                                  ]  327.7kB/29.78MB
+2025-11-18T16:09:50.8870421Z  b475dc4bba47 Downloading [>                                                  ]    526kB/111MB
+2025-11-18T16:09:50.8902810Z  2c64a0db539b Downloading [====>                                              ]     935B/9.881kB
+2025-11-18T16:09:50.8908495Z  2c64a0db539b Downloading [==================================================>]  9.881kB/9.881kB
+2025-11-18T16:09:50.8909431Z  2c64a0db539b Verifying Checksum 
+2025-11-18T16:09:50.8909884Z  2c64a0db539b Download complete 
+2025-11-18T16:09:50.9204480Z  6e6c09f9e058 Downloading [==================================================>]     129B/129B
+2025-11-18T16:09:50.9207475Z  6e6c09f9e058 Verifying Checksum 
+2025-11-18T16:09:50.9208860Z  6e6c09f9e058 Download complete 
+2025-11-18T16:09:50.9616031Z  0e4bc2bd6656 Extracting [============>                                      ]  7.537MB/29.78MB
+2025-11-18T16:09:50.9942559Z  304e9b7c93e6 Downloading [==================================================>]     167B/167B
+2025-11-18T16:09:50.9943156Z  304e9b7c93e6 Verifying Checksum 
+2025-11-18T16:09:50.9943550Z  304e9b7c93e6 Download complete 
+2025-11-18T16:09:51.0241861Z  b475dc4bba47 Downloading [==>                                                ]  6.402MB/111MB
+2025-11-18T16:09:51.0495709Z  95bcad39f7ff Downloading [========>                                          ]     936B/5.839kB
+2025-11-18T16:09:51.0496714Z  95bcad39f7ff Downloading [==================================================>]  5.839kB/5.839kB
+2025-11-18T16:09:51.0497754Z  95bcad39f7ff Download complete 
+2025-11-18T16:09:51.0716736Z  0e4bc2bd6656 Extracting [===================>                               ]   11.8MB/29.78MB
+2025-11-18T16:09:51.1177251Z  fa51353b2c9b Downloading [==================================================>]     185B/185B
+2025-11-18T16:09:51.1178265Z  fa51353b2c9b Verifying Checksum 
+2025-11-18T16:09:51.1178736Z  fa51353b2c9b Download complete 
+2025-11-18T16:09:51.1257114Z  b475dc4bba47 Downloading [=======>                                           ]  17.04MB/111MB
+2025-11-18T16:09:51.1722866Z  0e4bc2bd6656 Extracting [===============================>                   ]  19.01MB/29.78MB
+2025-11-18T16:09:51.2092893Z  af6eca94c810 Downloading [>                                                  ]  302.9kB/29.54MB
+2025-11-18T16:09:51.2262545Z  1ad79419bb76 Downloading [==========================>                        ]     934B/1.781kB
+2025-11-18T16:09:51.2264517Z  1ad79419bb76 Downloading [==================================================>]  1.781kB/1.781kB
+2025-11-18T16:09:51.2265205Z  1ad79419bb76 Verifying Checksum 
+2025-11-18T16:09:51.2265672Z  1ad79419bb76 Download complete 
+2025-11-18T16:09:51.2295922Z  b475dc4bba47 Downloading [==========>                                        ]  22.93MB/111MB
+2025-11-18T16:09:51.2736720Z  0e4bc2bd6656 Extracting [===========================================>       ]  25.89MB/29.78MB
+2025-11-18T16:09:51.3125506Z  af6eca94c810 Downloading [====>                                              ]  2.748MB/29.54MB
+2025-11-18T16:09:51.3562409Z  afdef96060ff Downloading [>                                                  ]  15.83kB/1.514MB
+2025-11-18T16:09:51.3604025Z  b475dc4bba47 Downloading [============>                                      ]  26.65MB/111MB
+2025-11-18T16:09:51.3701462Z  afdef96060ff Verifying Checksum 
+2025-11-18T16:09:51.4064855Z  afdef96060ff Download complete 
+2025-11-18T16:09:51.4065586Z  0e4bc2bd6656 Extracting [============================================>      ]  26.21MB/29.78MB
+2025-11-18T16:09:51.4153651Z  af6eca94c810 Downloading [===============>                                   ]  9.159MB/29.54MB
+2025-11-18T16:09:51.4702526Z  b475dc4bba47 Downloading [================>                                  ]  36.27MB/111MB
+2025-11-18T16:09:51.4854928Z  dc9abaf2c8ff Downloading [>                                                  ]  9.145kB/898.1kB
+2025-11-18T16:09:51.4935901Z  dc9abaf2c8ff Verifying Checksum 
+2025-11-18T16:09:51.4936218Z  dc9abaf2c8ff Download complete 
+2025-11-18T16:09:51.5115422Z  0e4bc2bd6656 Extracting [===============================================>   ]  28.18MB/29.78MB
+2025-11-18T16:09:51.5184173Z  af6eca94c810 Downloading [============================>                      ]  17.05MB/29.54MB
+2025-11-18T16:09:51.5766533Z  b475dc4bba47 Downloading [================>                                  ]  37.33MB/111MB
+2025-11-18T16:09:51.5995119Z  a2be9b1fc57a Downloading [==================================================>]     116B/116B
+2025-11-18T16:09:51.5996153Z  a2be9b1fc57a Verifying Checksum 
+2025-11-18T16:09:51.5997174Z  a2be9b1fc57a Download complete 
+2025-11-18T16:09:51.6260716Z  af6eca94c810 Downloading [================================>                  ]  19.49MB/29.54MB
+2025-11-18T16:09:51.6779663Z  0e4bc2bd6656 Extracting [================================================>  ]  29.16MB/29.78MB
+2025-11-18T16:09:51.6937915Z  b475dc4bba47 Downloading [===================>                               ]  42.67MB/111MB
+2025-11-18T16:09:51.7139541Z  9d81a4e85c6a Downloading [==================================================>]     267B/267B
+2025-11-18T16:09:51.7140273Z  9d81a4e85c6a Verifying Checksum 
+2025-11-18T16:09:51.7140755Z  9d81a4e85c6a Download complete 
+2025-11-18T16:09:51.7467571Z  0e4bc2bd6656 Extracting [==================================================>]  29.78MB/29.78MB
+2025-11-18T16:09:51.7470628Z  af6eca94c810 Downloading [=====================================>             ]  22.24MB/29.54MB
+2025-11-18T16:09:51.7770647Z  0e4bc2bd6656 Pull complete 
+2025-11-18T16:09:51.7785895Z  e213bd2560e2 Extracting [==================================================>]  1.169kB/1.169kB
+2025-11-18T16:09:51.7791383Z  e213bd2560e2 Extracting [==================================================>]  1.169kB/1.169kB
+2025-11-18T16:09:51.8073693Z  b475dc4bba47 Downloading [=======================>                           ]  52.28MB/111MB
+2025-11-18T16:09:51.8176950Z  af6eca94c810 Verifying Checksum 
+2025-11-18T16:09:51.8178552Z  af6eca94c810 Download complete 
+2025-11-18T16:09:51.9239679Z  9d6e74542339 Downloading [>                                                  ]  528.1kB/234.8MB
+2025-11-18T16:09:51.9243492Z  b475dc4bba47 Downloading [========================>                          ]  54.41MB/111MB
+2025-11-18T16:09:51.9414384Z  cde22982277a Downloading [=========>                                         ]     935B/5.002kB
+2025-11-18T16:09:51.9417350Z  cde22982277a Downloading [==================================================>]  5.002kB/5.002kB
+2025-11-18T16:09:51.9417950Z  cde22982277a Verifying Checksum 
+2025-11-18T16:09:51.9418384Z  cde22982277a Download complete 
+2025-11-18T16:09:51.9551931Z  af6eca94c810 Extracting [>                                                  ]  327.7kB/29.54MB
+2025-11-18T16:09:52.0252190Z  9d6e74542339 Downloading [=>                                                 ]  4.779MB/234.8MB
+2025-11-18T16:09:52.0389579Z  b475dc4bba47 Downloading [=========================>                         ]  57.59MB/111MB
+2025-11-18T16:09:52.0569942Z  8e44f01296e3 Downloading [>                                                  ]  282.7kB/28.23MB
+2025-11-18T16:09:52.0583918Z  af6eca94c810 Extracting [===========>                                       ]  6.881MB/29.54MB
+2025-11-18T16:09:52.1328528Z  9d6e74542339 Downloading [=>                                                 ]  7.963MB/234.8MB
+2025-11-18T16:09:52.1604569Z  8e44f01296e3 Downloading [============>                                      ]  7.207MB/28.23MB
+2025-11-18T16:09:52.1607202Z  b475dc4bba47 Downloading [===========================>                       ]  60.81MB/111MB
+2025-11-18T16:09:52.1698857Z  af6eca94c810 Extracting [=================>                                 ]  10.16MB/29.54MB
+2025-11-18T16:09:52.2350859Z  9d6e74542339 Downloading [==>                                                ]  13.29MB/234.8MB
+2025-11-18T16:09:52.2614284Z  8e44f01296e3 Downloading [==========================>                        ]  14.77MB/28.23MB
+2025-11-18T16:09:52.2705610Z  b475dc4bba47 Downloading [=================================>                 ]   73.6MB/111MB
+2025-11-18T16:09:52.2726807Z  af6eca94c810 Extracting [==============================>                    ]  18.02MB/29.54MB
+2025-11-18T16:09:52.5760720Z  8e44f01296e3 Downloading [============================================>      ]   25.2MB/28.23MB
+2025-11-18T16:09:52.5761657Z  9d6e74542339 Downloading [===>                                               ]  16.48MB/234.8MB
+2025-11-18T16:09:52.5804106Z  af6eca94c810 Extracting [======================================>            ]  22.94MB/29.54MB
+2025-11-18T16:09:52.5839853Z  8e44f01296e3 Verifying Checksum 
+2025-11-18T16:09:52.5840820Z  8e44f01296e3 Download complete 
+2025-11-18T16:09:52.5849450Z  b475dc4bba47 Downloading [===================================>               ]  78.39MB/111MB
+2025-11-18T16:09:52.6739254Z  9d6e74542339 Downloading [====>                                              ]   23.4MB/234.8MB
+2025-11-18T16:09:52.7016855Z  44fc29a25beb Downloading [==========================================>        ]     935B/1.105kB
+2025-11-18T16:09:52.7197640Z  44fc29a25beb Download complete 
+2025-11-18T16:09:52.7218520Z  b475dc4bba47 Downloading [=========================================>         ]  92.24MB/111MB
+2025-11-18T16:09:52.7445810Z  8e44f01296e3 Extracting [>                                                  ]  294.9kB/28.23MB
+2025-11-18T16:09:52.7766208Z  9d6e74542339 Downloading [=====>                                             ]   26.6MB/234.8MB
+2025-11-18T16:09:52.7965598Z  af6eca94c810 Extracting [===========================================>       ]  25.89MB/29.54MB
+2025-11-18T16:09:52.8318724Z  b475dc4bba47 Downloading [===========================================>       ]  97.01MB/111MB
+2025-11-18T16:09:52.8487707Z  8e44f01296e3 Extracting [==========>                                        ]  6.193MB/28.23MB
+2025-11-18T16:09:52.8531781Z  39af693970c0 Downloading [==================================================>]     874B/874B
+2025-11-18T16:09:52.8532460Z  39af693970c0 Verifying Checksum 
+2025-11-18T16:09:52.8532912Z  39af693970c0 Download complete 
+2025-11-18T16:09:52.8928509Z  9d6e74542339 Downloading [======>                                            ]  30.32MB/234.8MB
+2025-11-18T16:09:52.8987213Z  af6eca94c810 Extracting [===============================================>   ]  28.18MB/29.54MB
+2025-11-18T16:09:52.9487361Z  e213bd2560e2 Pull complete 
+2025-11-18T16:09:52.9494503Z  9fcd228516aa Extracting [>                                                  ]  65.54kB/6.437MB
+2025-11-18T16:09:52.9776029Z  8e44f01296e3 Extracting [=================>                                 ]  10.03MB/28.23MB
+2025-11-18T16:09:52.9930657Z  517b08eaf3cc Downloading [>                                                  ]  14.62kB/1.438MB
+2025-11-18T16:09:52.9949086Z  9d6e74542339 Downloading [=======>                                           ]   36.2MB/234.8MB
+2025-11-18T16:09:52.9964362Z  b475dc4bba47 Downloading [==============================================>    ]  103.9MB/111MB
+2025-11-18T16:09:53.0057206Z  517b08eaf3cc Download complete 
+2025-11-18T16:09:53.0500421Z  9fcd228516aa Extracting [====================================>              ]  4.653MB/6.437MB
+2025-11-18T16:09:53.0632545Z  af6eca94c810 Extracting [=================================================> ]  29.16MB/29.54MB
+2025-11-18T16:09:53.0799239Z  8e44f01296e3 Extracting [=======================>                           ]  13.27MB/28.23MB
+2025-11-18T16:09:53.0966208Z  b475dc4bba47 Downloading [===============================================>   ]  106.1MB/111MB
+2025-11-18T16:09:53.1155638Z  9fcd228516aa Extracting [==================================================>]  6.437MB/6.437MB
+2025-11-18T16:09:53.1294015Z  9d6e74542339 Downloading [========>                                          ]  39.39MB/234.8MB
+2025-11-18T16:09:53.1295755Z  186a03b51bfa Downloading [>                                                  ]  154.6kB/15.35MB
+2025-11-18T16:09:53.1763226Z  af6eca94c810 Extracting [==================================================>]  29.54MB/29.54MB
+2025-11-18T16:09:53.1841666Z  8e44f01296e3 Extracting [==================================>                ]  19.46MB/28.23MB
+2025-11-18T16:09:53.2758330Z  9d6e74542339 Downloading [=========>                                         ]  42.57MB/234.8MB
+2025-11-18T16:09:53.2817714Z  b475dc4bba47 Downloading [=================================================> ]  109.8MB/111MB
+2025-11-18T16:09:53.2819729Z  186a03b51bfa Downloading [========================================>          ]   12.5MB/15.35MB
+2025-11-18T16:09:53.2825924Z  186a03b51bfa Verifying Checksum 
+2025-11-18T16:09:53.2826506Z  186a03b51bfa Download complete 
+2025-11-18T16:09:53.2849819Z  b475dc4bba47 Verifying Checksum 
+2025-11-18T16:09:53.2850647Z  b475dc4bba47 Download complete 
+2025-11-18T16:09:53.2864214Z  8e44f01296e3 Extracting [======================================>            ]  21.53MB/28.23MB
+2025-11-18T16:09:53.3751138Z  af6eca94c810 Pull complete 
+2025-11-18T16:09:53.3768042Z  1ad79419bb76 Extracting [==================================================>]  1.781kB/1.781kB
+2025-11-18T16:09:53.3771822Z  1ad79419bb76 Extracting [==================================================>]  1.781kB/1.781kB
+2025-11-18T16:09:53.3789740Z  9fcd228516aa Pull complete 
+2025-11-18T16:09:53.3853124Z  2e6036390374 Extracting [=>                                                 ]  32.77kB/1.257MB
+2025-11-18T16:09:53.3897531Z  9d6e74542339 Downloading [==========>                                        ]  47.36MB/234.8MB
+2025-11-18T16:09:53.4035076Z  4f4fb700ef54 Downloading [==================================================>]      32B/32B
+2025-11-18T16:09:53.4036073Z  fe77c85f37cb Downloading [==================================================>]      97B/97B
+2025-11-18T16:09:53.4124585Z  4f4fb700ef54 Verifying Checksum 
+2025-11-18T16:09:53.4125781Z  fe77c85f37cb Verifying Checksum 
+2025-11-18T16:09:53.4126792Z  fe77c85f37cb Download complete 
+2025-11-18T16:09:53.4127508Z  4f4fb700ef54 Download complete 
+2025-11-18T16:09:53.4221148Z  1ad79419bb76 Pull complete 
+2025-11-18T16:09:53.4231798Z  afdef96060ff Extracting [=>                                                 ]  32.77kB/1.514MB
+2025-11-18T16:09:53.4442849Z  2e6036390374 Extracting [==================================================>]  1.257MB/1.257MB
+2025-11-18T16:09:53.4709259Z  2e6036390374 Pull complete 
+2025-11-18T16:09:53.4829194Z  5a19b1f63ace Extracting [>                                                  ]   98.3kB/8.204MB
+2025-11-18T16:09:53.5091513Z  8e44f01296e3 Extracting [==========================================>        ]  23.89MB/28.23MB
+2025-11-18T16:09:53.5108085Z  9d6e74542339 Downloading [==========>                                        ]  50.55MB/234.8MB
+2025-11-18T16:09:53.5384474Z  afdef96060ff Extracting [========================================>          ]  1.212MB/1.514MB
+2025-11-18T16:09:53.5411962Z  a43f12641297 Downloading [==================================================>]     571B/571B
+2025-11-18T16:09:53.5413024Z  a43f12641297 Verifying Checksum 
+2025-11-18T16:09:53.5413500Z  a43f12641297 Download complete 
+2025-11-18T16:09:53.5854006Z  afdef96060ff Extracting [==================================================>]  1.514MB/1.514MB
+2025-11-18T16:09:53.5908161Z  5a19b1f63ace Extracting [==================>                                ]  3.047MB/8.204MB
+2025-11-18T16:09:53.6281498Z  9d6e74542339 Downloading [===========>                                       ]  54.81MB/234.8MB
+2025-11-18T16:09:53.6348245Z  afdef96060ff Pull complete 
+2025-11-18T16:09:53.6360358Z  dc9abaf2c8ff Extracting [=>                                                 ]  32.77kB/898.1kB
+2025-11-18T16:09:53.6562205Z  dc9abaf2c8ff Extracting [==================================================>]  898.1kB/898.1kB
+2025-11-18T16:09:53.6669024Z  8e44f01296e3 Extracting [===============================================>   ]  26.84MB/28.23MB
+2025-11-18T16:09:53.6858020Z  dc9abaf2c8ff Pull complete 
+2025-11-18T16:09:53.6869701Z  a2be9b1fc57a Extracting [==================================================>]     116B/116B
+2025-11-18T16:09:53.6874475Z  a2be9b1fc57a Extracting [==================================================>]     116B/116B
+2025-11-18T16:09:53.6967069Z  a2be9b1fc57a Pull complete 
+2025-11-18T16:09:53.6975696Z  9d81a4e85c6a Extracting [==================================================>]     267B/267B
+2025-11-18T16:09:53.6980517Z  9d81a4e85c6a Extracting [==================================================>]     267B/267B
+2025-11-18T16:09:53.6986537Z  5a19b1f63ace Extracting [=============================>                     ]  4.817MB/8.204MB
+2025-11-18T16:09:53.7252080Z  9d81a4e85c6a Pull complete 
+2025-11-18T16:09:53.7278551Z  9d6e74542339 Downloading [============>                                      ]  58.56MB/234.8MB
+2025-11-18T16:09:53.7988064Z  5a19b1f63ace Extracting [===========================================>       ]  7.176MB/8.204MB
+2025-11-18T16:09:53.8348313Z  5a19b1f63ace Extracting [==================================================>]  8.204MB/8.204MB
+2025-11-18T16:09:53.8433142Z  9d6e74542339 Downloading [=============>                                     ]  61.23MB/234.8MB
+2025-11-18T16:09:53.8761982Z  5a19b1f63ace Pull complete 
+2025-11-18T16:09:53.8772008Z  dd23ed782cae Extracting [=>                                                 ]  32.77kB/1.311MB
+2025-11-18T16:09:53.9284092Z  dd23ed782cae Extracting [==================================================>]  1.311MB/1.311MB
+2025-11-18T16:09:53.9403174Z  8e44f01296e3 Extracting [================================================>  ]  27.43MB/28.23MB
+2025-11-18T16:09:53.9441569Z  9d6e74542339 Downloading [==============>                                    ]  67.11MB/234.8MB
+2025-11-18T16:09:53.9674761Z  dd23ed782cae Pull complete 
+2025-11-18T16:09:53.9690097Z  b10108f2d223 Extracting [==================================================>]     116B/116B
+2025-11-18T16:09:53.9694147Z  b10108f2d223 Extracting [==================================================>]     116B/116B
+2025-11-18T16:09:53.9793752Z  b10108f2d223 Pull complete 
+2025-11-18T16:09:53.9806954Z  4eb4a683c389 Extracting [==================================================>]   3.14kB/3.14kB
+2025-11-18T16:09:53.9810862Z  4eb4a683c389 Extracting [==================================================>]   3.14kB/3.14kB
+2025-11-18T16:09:53.9901669Z  4eb4a683c389 Pull complete 
+2025-11-18T16:09:54.0424429Z  b475dc4bba47 Extracting [>                                                  ]  557.1kB/111MB
+2025-11-18T16:09:54.0471644Z  8e44f01296e3 Extracting [==================================================>]  28.23MB/28.23MB
+2025-11-18T16:09:54.0504782Z  9d6e74542339 Downloading [===============>                                   ]  70.85MB/234.8MB
+2025-11-18T16:09:54.0833207Z  8e44f01296e3 Pull complete 
+2025-11-18T16:09:54.0843855Z  44fc29a25beb Extracting [==================================================>]  1.105kB/1.105kB
+2025-11-18T16:09:54.0851293Z  44fc29a25beb Extracting [==================================================>]  1.105kB/1.105kB
+2025-11-18T16:09:54.1041961Z  44fc29a25beb Pull complete 
+2025-11-18T16:09:54.1052802Z  39af693970c0 Extracting [==================================================>]     874B/874B
+2025-11-18T16:09:54.1054978Z  39af693970c0 Extracting [==================================================>]     874B/874B
+2025-11-18T16:09:54.1298684Z  39af693970c0 Pull complete 
+2025-11-18T16:09:54.1308889Z  517b08eaf3cc Extracting [=>                                                 ]  32.77kB/1.438MB
+2025-11-18T16:09:54.1471590Z  b475dc4bba47 Extracting [==>                                                ]  5.014MB/111MB
+2025-11-18T16:09:54.1548554Z  517b08eaf3cc Extracting [==================================================>]  1.438MB/1.438MB
+2025-11-18T16:09:54.1555249Z  517b08eaf3cc Extracting [==================================================>]  1.438MB/1.438MB
+2025-11-18T16:09:54.1767304Z  9d6e74542339 Downloading [================>                                  ]   76.7MB/234.8MB
+2025-11-18T16:09:54.1806459Z  517b08eaf3cc Pull complete 
+2025-11-18T16:09:54.1834216Z  186a03b51bfa Extracting [>                                                  ]  163.8kB/15.35MB
+2025-11-18T16:09:54.2543180Z  b475dc4bba47 Extracting [====>                                              ]  8.913MB/111MB
+2025-11-18T16:09:54.2786896Z  9d6e74542339 Downloading [=================>                                 ]  84.14MB/234.8MB
+2025-11-18T16:09:54.2836571Z  186a03b51bfa Extracting [========================>                          ]  7.373MB/15.35MB
+2025-11-18T16:09:54.3699029Z  b475dc4bba47 Extracting [=====>                                             ]  12.81MB/111MB
+2025-11-18T16:09:54.3792549Z  9d6e74542339 Downloading [===================>                               ]  89.48MB/234.8MB
+2025-11-18T16:09:54.3885391Z  186a03b51bfa Extracting [=================================================> ]  15.07MB/15.35MB
+2025-11-18T16:09:54.3949551Z  186a03b51bfa Extracting [==================================================>]  15.35MB/15.35MB
+2025-11-18T16:09:54.4439634Z  186a03b51bfa Pull complete 
+2025-11-18T16:09:54.4452316Z  fe77c85f37cb Extracting [==================================================>]      97B/97B
+2025-11-18T16:09:54.4454989Z  fe77c85f37cb Extracting [==================================================>]      97B/97B
+2025-11-18T16:09:54.4527650Z  fe77c85f37cb Pull complete 
+2025-11-18T16:09:54.4538494Z  4f4fb700ef54 Extracting [==================================================>]      32B/32B
+2025-11-18T16:09:54.4540650Z  4f4fb700ef54 Extracting [==================================================>]      32B/32B
+2025-11-18T16:09:54.4611884Z  4f4fb700ef54 Pull complete 
+2025-11-18T16:09:54.4705699Z  b475dc4bba47 Extracting [=======>                                           ]  16.15MB/111MB
+2025-11-18T16:09:54.4720998Z  a43f12641297 Extracting [==================================================>]     571B/571B
+2025-11-18T16:09:54.4729531Z  a43f12641297 Extracting [==================================================>]     571B/571B
+2025-11-18T16:09:54.4852329Z  a43f12641297 Pull complete 
+2025-11-18T16:09:54.4918153Z  redis Pulled 
+2025-11-18T16:09:54.4986287Z  9d6e74542339 Downloading [===================>                               ]  93.73MB/234.8MB
+2025-11-18T16:09:54.5756320Z  b475dc4bba47 Extracting [=========>                                         ]  21.73MB/111MB
+2025-11-18T16:09:54.6017688Z  9d6e74542339 Downloading [====================>                              ]  96.39MB/234.8MB
+2025-11-18T16:09:54.6783981Z  b475dc4bba47 Extracting [=============>                                     ]  30.08MB/111MB
+2025-11-18T16:09:54.7025169Z  9d6e74542339 Downloading [======================>                            ]    106MB/234.8MB
+2025-11-18T16:09:54.7821216Z  b475dc4bba47 Extracting [=================>                                 ]  39.55MB/111MB
+2025-11-18T16:09:54.8070800Z  9d6e74542339 Downloading [========================>                          ]  117.2MB/234.8MB
+2025-11-18T16:09:54.8885504Z  b475dc4bba47 Extracting [======================>                            ]  49.02MB/111MB
+2025-11-18T16:09:54.9195777Z  9d6e74542339 Downloading [==========================>                        ]  125.2MB/234.8MB
+2025-11-18T16:09:54.9889717Z  b475dc4bba47 Extracting [========================>                          ]  55.15MB/111MB
+2025-11-18T16:09:55.0272919Z  9d6e74542339 Downloading [===========================>                       ]  130.5MB/234.8MB
+2025-11-18T16:09:55.0949759Z  b475dc4bba47 Extracting [============================>                      ]  62.39MB/111MB
+2025-11-18T16:09:55.1304261Z  9d6e74542339 Downloading [=============================>                     ]  139.6MB/234.8MB
+2025-11-18T16:09:55.1975217Z  b475dc4bba47 Extracting [================================>                  ]  72.97MB/111MB
+2025-11-18T16:09:55.2311998Z  9d6e74542339 Downloading [===============================>                   ]  148.7MB/234.8MB
+2025-11-18T16:09:55.3030878Z  b475dc4bba47 Extracting [====================================>              ]  81.89MB/111MB
+2025-11-18T16:09:55.3436950Z  9d6e74542339 Downloading [=================================>                 ]  158.8MB/234.8MB
+2025-11-18T16:09:55.4087362Z  b475dc4bba47 Extracting [=========================================>         ]  91.36MB/111MB
+2025-11-18T16:09:55.4618163Z  9d6e74542339 Downloading [==================================>                ]    162MB/234.8MB
+2025-11-18T16:09:55.5104253Z  b475dc4bba47 Extracting [===========================================>       ]  95.81MB/111MB
+2025-11-18T16:09:55.5837355Z  9d6e74542339 Downloading [===================================>               ]  165.7MB/234.8MB
+2025-11-18T16:09:55.6266861Z  b475dc4bba47 Extracting [=============================================>     ]  100.3MB/111MB
+2025-11-18T16:09:55.7178192Z  9d6e74542339 Downloading [====================================>              ]  170.5MB/234.8MB
+2025-11-18T16:09:55.7285998Z  b475dc4bba47 Extracting [==============================================>    ]  104.2MB/111MB
+2025-11-18T16:09:55.8223883Z  9d6e74542339 Downloading [====================================>              ]  173.2MB/234.8MB
+2025-11-18T16:09:55.8290274Z  b475dc4bba47 Extracting [===============================================>   ]  106.4MB/111MB
+2025-11-18T16:09:55.9310548Z  b475dc4bba47 Extracting [================================================>  ]  108.1MB/111MB
+2025-11-18T16:09:55.9566026Z  9d6e74542339 Downloading [=====================================>             ]  175.8MB/234.8MB
+2025-11-18T16:09:56.0795944Z  9d6e74542339 Downloading [======================================>            ]  180.1MB/234.8MB
+2025-11-18T16:09:56.0975419Z  b475dc4bba47 Extracting [=================================================> ]  109.7MB/111MB
+2025-11-18T16:09:56.1859759Z  9d6e74542339 Downloading [=======================================>           ]  183.3MB/234.8MB
+2025-11-18T16:09:56.1936277Z  b475dc4bba47 Extracting [==================================================>]    111MB/111MB
+2025-11-18T16:09:56.2963314Z  9d6e74542339 Downloading [=======================================>           ]    186MB/234.8MB
+2025-11-18T16:09:56.3992165Z  9d6e74542339 Downloading [========================================>          ]  188.1MB/234.8MB
+2025-11-18T16:09:56.5257631Z  9d6e74542339 Downloading [========================================>          ]  190.8MB/234.8MB
+2025-11-18T16:09:56.6292600Z  9d6e74542339 Downloading [========================================>          ]  192.4MB/234.8MB
+2025-11-18T16:09:56.7298628Z  9d6e74542339 Downloading [=========================================>         ]  195.6MB/234.8MB
+2025-11-18T16:09:56.8330309Z  9d6e74542339 Downloading [==========================================>        ]  200.9MB/234.8MB
+2025-11-18T16:09:56.8847471Z  b475dc4bba47 Pull complete 
+2025-11-18T16:09:56.8860099Z  2c64a0db539b Extracting [==================================================>]  9.881kB/9.881kB
+2025-11-18T16:09:56.8862378Z  2c64a0db539b Extracting [==================================================>]  9.881kB/9.881kB
+2025-11-18T16:09:56.9340543Z  9d6e74542339 Downloading [============================================>      ]  207.8MB/234.8MB
+2025-11-18T16:09:56.9654533Z  2c64a0db539b Pull complete 
+2025-11-18T16:09:56.9720914Z  6e6c09f9e058 Extracting [==================================================>]     129B/129B
+2025-11-18T16:09:56.9724314Z  6e6c09f9e058 Extracting [==================================================>]     129B/129B
+2025-11-18T16:09:56.9814325Z  6e6c09f9e058 Pull complete 
+2025-11-18T16:09:56.9825160Z  304e9b7c93e6 Extracting [==================================================>]     167B/167B
+2025-11-18T16:09:56.9829952Z  304e9b7c93e6 Extracting [==================================================>]     167B/167B
+2025-11-18T16:09:56.9916507Z  304e9b7c93e6 Pull complete 
+2025-11-18T16:09:56.9925671Z  95bcad39f7ff Extracting [==================================================>]  5.839kB/5.839kB
+2025-11-18T16:09:56.9927812Z  95bcad39f7ff Extracting [==================================================>]  5.839kB/5.839kB
+2025-11-18T16:09:57.0003732Z  95bcad39f7ff Pull complete 
+2025-11-18T16:09:57.0013394Z  fa51353b2c9b Extracting [==================================================>]     185B/185B
+2025-11-18T16:09:57.0016081Z  fa51353b2c9b Extracting [==================================================>]     185B/185B
+2025-11-18T16:09:57.0161336Z  fa51353b2c9b Pull complete 
+2025-11-18T16:09:57.0259013Z  db Pulled 
+2025-11-18T16:09:57.0345650Z  9d6e74542339 Downloading [=============================================>     ]  215.8MB/234.8MB
+2025-11-18T16:09:57.1542333Z  9d6e74542339 Downloading [================================================>  ]  226.5MB/234.8MB
+2025-11-18T16:09:57.2239477Z  9d6e74542339 Verifying Checksum 
+2025-11-18T16:09:57.2240391Z  9d6e74542339 Download complete 
+2025-11-18T16:09:57.2355408Z  9d6e74542339 Extracting [>                                                  ]  557.1kB/234.8MB
+2025-11-18T16:09:57.3424069Z  9d6e74542339 Extracting [=>                                                 ]  8.913MB/234.8MB
+2025-11-18T16:09:57.4439116Z  9d6e74542339 Extracting [===>                                               ]  18.38MB/234.8MB
+2025-11-18T16:09:57.5476110Z  9d6e74542339 Extracting [=====>                                             ]  27.85MB/234.8MB
+2025-11-18T16:09:57.6540346Z  9d6e74542339 Extracting [=======>                                           ]  37.32MB/234.8MB
+2025-11-18T16:09:57.7581552Z  9d6e74542339 Extracting [==========>                                        ]  47.91MB/234.8MB
+2025-11-18T16:09:57.8656717Z  9d6e74542339 Extracting [===========>                                       ]  53.48MB/234.8MB
+2025-11-18T16:09:57.9720838Z  9d6e74542339 Extracting [==============>                                    ]  68.52MB/234.8MB
+2025-11-18T16:09:58.0786688Z  9d6e74542339 Extracting [=================>                                 ]  80.77MB/234.8MB
+2025-11-18T16:09:58.1785536Z  9d6e74542339 Extracting [====================>                              ]   94.7MB/234.8MB
+2025-11-18T16:09:58.2839109Z  9d6e74542339 Extracting [=====================>                             ]  102.5MB/234.8MB
+2025-11-18T16:09:58.3883750Z  9d6e74542339 Extracting [=======================>                           ]    112MB/234.8MB
+2025-11-18T16:09:58.4887643Z  9d6e74542339 Extracting [==========================>                        ]  122.6MB/234.8MB
+2025-11-18T16:09:58.5925812Z  9d6e74542339 Extracting [===========================>                       ]  129.2MB/234.8MB
+2025-11-18T16:09:58.6966946Z  9d6e74542339 Extracting [=============================>                     ]  138.7MB/234.8MB
+2025-11-18T16:09:58.8033556Z  9d6e74542339 Extracting [===============================>                   ]  147.1MB/234.8MB
+2025-11-18T16:09:58.9063811Z  9d6e74542339 Extracting [=================================>                 ]  155.4MB/234.8MB
+2025-11-18T16:09:59.0085493Z  9d6e74542339 Extracting [==================================>                ]  160.4MB/234.8MB
+2025-11-18T16:09:59.1138747Z  9d6e74542339 Extracting [====================================>              ]    171MB/234.8MB
+2025-11-18T16:09:59.2175120Z  9d6e74542339 Extracting [======================================>            ]    181MB/234.8MB
+2025-11-18T16:09:59.3229923Z  9d6e74542339 Extracting [=========================================>         ]  193.3MB/234.8MB
+2025-11-18T16:09:59.4245501Z  9d6e74542339 Extracting [============================================>      ]  207.2MB/234.8MB
+2025-11-18T16:09:59.5283164Z  9d6e74542339 Extracting [==============================================>    ]  216.7MB/234.8MB
+2025-11-18T16:09:59.6323607Z  9d6e74542339 Extracting [================================================>  ]  226.2MB/234.8MB
+2025-11-18T16:09:59.7700314Z  9d6e74542339 Extracting [=================================================> ]  231.2MB/234.8MB
+2025-11-18T16:09:59.9687556Z  9d6e74542339 Extracting [=================================================> ]    234MB/234.8MB
+2025-11-18T16:10:00.1118844Z  9d6e74542339 Extracting [=================================================> ]  234.5MB/234.8MB
+2025-11-18T16:10:00.1420437Z  9d6e74542339 Extracting [==================================================>]  234.8MB/234.8MB
+2025-11-18T16:10:01.5276701Z  9d6e74542339 Pull complete 
+2025-11-18T16:10:01.5285028Z  cde22982277a Extracting [==================================================>]  5.002kB/5.002kB
+2025-11-18T16:10:01.5289903Z  cde22982277a Extracting [==================================================>]  5.002kB/5.002kB
+2025-11-18T16:10:01.5359280Z  cde22982277a Pull complete 
+2025-11-18T16:10:01.5406498Z  mongo Pulled 
+2025-11-18T16:10:03.9240905Z #1 [internal] load local bake definitions
+2025-11-18T16:10:04.0714456Z #1 reading from stdin 388B done
+2025-11-18T16:10:04.0714825Z #1 DONE 0.0s
+2025-11-18T16:10:04.1782561Z 
+2025-11-18T16:10:04.1783149Z #2 [internal] load build definition from Dockerfile
+2025-11-18T16:10:04.1783533Z #2 transferring dockerfile: 476B done
+2025-11-18T16:10:04.1783791Z #2 DONE 0.0s
+2025-11-18T16:10:04.1783899Z 
+2025-11-18T16:10:04.1784116Z #3 [auth] library/node:pull token for registry-1.docker.io
+2025-11-18T16:10:04.3288910Z #3 DONE 0.0s
+2025-11-18T16:10:04.3289160Z 
+2025-11-18T16:10:04.3289467Z #4 [internal] load metadata for docker.io/library/node:18-alpine
+2025-11-18T16:10:04.5992997Z #4 DONE 0.5s
+2025-11-18T16:10:04.7327040Z 
+2025-11-18T16:10:04.7327676Z #5 [internal] load .dockerignore
+2025-11-18T16:10:04.7328229Z #5 transferring context: 2B done
+2025-11-18T16:10:04.7328618Z #5 DONE 0.0s
+2025-11-18T16:10:04.7328793Z 
+2025-11-18T16:10:04.7329007Z #6 [internal] load build context
+2025-11-18T16:10:04.7329496Z #6 transferring context: 2.04MB 0.0s done
+2025-11-18T16:10:04.7329921Z #6 DONE 0.0s
+2025-11-18T16:10:04.7330125Z 
+2025-11-18T16:10:04.7331027Z #7 [1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-18T16:10:04.7331855Z #7 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2025-11-18T16:10:04.7332587Z #7 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0B / 1.26MB 0.1s
+2025-11-18T16:10:04.7333230Z #7 sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 7.67kB / 7.67kB done
+2025-11-18T16:10:04.7333862Z #7 sha256:929b04d7c782f04f615cf785488fed452b6569f87c73ff666ad553a7554f0006 1.72kB / 1.72kB done
+2025-11-18T16:10:04.7334509Z #7 sha256:ee77c6cd7c1886ecc802ad6cedef3a8ec1ea27d1fb96162bf03dd3710839b8da 6.18kB / 6.18kB done
+2025-11-18T16:10:04.7335147Z #7 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0B / 3.64MB 0.1s
+2025-11-18T16:10:04.7335764Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0B / 40.01MB 0.1s
+2025-11-18T16:10:04.8514377Z #7 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 1.26MB / 1.26MB 0.2s done
+2025-11-18T16:10:04.8515730Z #7 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.1s done
+2025-11-18T16:10:04.8518908Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 3.15MB / 40.01MB 0.2s
+2025-11-18T16:10:04.8520233Z #7 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+2025-11-18T16:10:04.8521374Z #7 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0B / 446B 0.2s
+2025-11-18T16:10:05.0325268Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 11.53MB / 40.01MB 0.4s
+2025-11-18T16:10:05.0326234Z #7 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 446B / 446B 0.2s done
+2025-11-18T16:10:05.4329621Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 16.78MB / 40.01MB 0.8s
+2025-11-18T16:10:05.6324064Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 23.07MB / 40.01MB 1.0s
+2025-11-18T16:10:05.8318884Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 34.60MB / 40.01MB 1.2s
+2025-11-18T16:10:05.9325572Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 40.01MB / 40.01MB 1.3s done
+2025-11-18T16:10:06.0400609Z #7 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.1s
+2025-11-18T16:10:06.9482585Z #7 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.9s done
+2025-11-18T16:10:06.9484267Z #7 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+2025-11-18T16:10:07.1564406Z #7 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.0s done
+2025-11-18T16:10:07.1566674Z #7 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 done
+2025-11-18T16:10:07.1568066Z #7 DONE 2.4s
+2025-11-18T16:10:07.1568274Z 
+2025-11-18T16:10:07.1568708Z #8 [2/6] RUN apk add --no-cache python3 make g++ || true
+2025-11-18T16:10:07.1713138Z #8 0.165 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+2025-11-18T16:10:07.3967346Z #8 0.240 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+2025-11-18T16:10:07.5533438Z #8 0.547 (1/29) Installing libstdc++-dev (14.2.0-r4)
+2025-11-18T16:10:07.6742168Z #8 0.668 (2/29) Installing jansson (2.14-r4)
+2025-11-18T16:10:07.7787516Z #8 0.671 (3/29) Installing zstd-libs (1.5.6-r2)
+2025-11-18T16:10:07.7788113Z #8 0.679 (4/29) Installing binutils (2.43.1-r3)
+2025-11-18T16:10:07.7788528Z #8 0.743 (5/29) Installing libgomp (14.2.0-r4)
+2025-11-18T16:10:07.7788962Z #8 0.748 (6/29) Installing libatomic (14.2.0-r4)
+2025-11-18T16:10:07.7789335Z #8 0.750 (7/29) Installing gmp (6.3.0-r2)
+2025-11-18T16:10:07.7789704Z #8 0.757 (8/29) Installing isl26 (0.26-r1)
+2025-11-18T16:10:07.7790086Z #8 0.773 (9/29) Installing mpfr4 (4.2.1-r0)
+2025-11-18T16:10:07.9394145Z #8 0.780 (10/29) Installing mpc1 (1.3.1-r1)
+2025-11-18T16:10:07.9394973Z #8 0.783 (11/29) Installing gcc (14.2.0-r4)
+2025-11-18T16:10:08.5882925Z #8 1.582 (12/29) Installing musl-dev (1.2.5-r9)
+2025-11-18T16:10:08.7904551Z #8 1.634 (13/29) Installing g++ (14.2.0-r4)
+2025-11-18T16:10:08.8815080Z #8 1.876 (14/29) Installing make (4.4.1-r2)
+2025-11-18T16:10:09.0878089Z #8 1.880 (15/29) Installing libbz2 (1.0.8-r6)
+2025-11-18T16:10:09.0878835Z #8 1.883 (16/29) Installing libexpat (2.7.3-r0)
+2025-11-18T16:10:09.0879240Z #8 1.886 (17/29) Installing libffi (3.4.7-r0)
+2025-11-18T16:10:09.0879609Z #8 1.889 (18/29) Installing gdbm (1.24-r0)
+2025-11-18T16:10:09.0879966Z #8 1.892 (19/29) Installing xz-libs (5.6.3-r1)
+2025-11-18T16:10:09.0880345Z #8 1.896 (20/29) Installing mpdecimal (4.0.0-r0)
+2025-11-18T16:10:09.0880843Z #8 1.900 (21/29) Installing ncurses-terminfo-base (6.5_p20241006-r3)
+2025-11-18T16:10:09.0881328Z #8 1.905 (22/29) Installing libncursesw (6.5_p20241006-r3)
+2025-11-18T16:10:09.0881789Z #8 1.910 (23/29) Installing libpanelw (6.5_p20241006-r3)
+2025-11-18T16:10:09.0882193Z #8 1.912 (24/29) Installing readline (8.2.13-r0)
+2025-11-18T16:10:09.0882590Z #8 1.917 (25/29) Installing sqlite-libs (3.48.0-r4)
+2025-11-18T16:10:09.0882976Z #8 1.931 (26/29) Installing python3 (3.12.12-r0)
+2025-11-18T16:10:09.0949001Z #8 2.089 (27/29) Installing python3-pycache-pyc0 (3.12.12-r0)
+2025-11-18T16:10:09.1967717Z #8 2.183 (28/29) Installing pyc (3.12.12-r0)
+2025-11-18T16:10:09.1968396Z #8 2.183 (29/29) Installing python3-pyc (3.12.12-r0)
+2025-11-18T16:10:09.1969004Z #8 2.183 Executing busybox-1.37.0-r12.trigger
+2025-11-18T16:10:09.1969537Z #8 2.191 OK: 269 MiB in 46 packages
+2025-11-18T16:10:09.6695201Z #8 DONE 2.7s
+2025-11-18T16:10:09.8642647Z 
+2025-11-18T16:10:09.8643234Z #9 [3/6] WORKDIR /usr/src/app
+2025-11-18T16:10:09.8643793Z #9 DONE 0.0s
+2025-11-18T16:10:09.8644015Z 
+2025-11-18T16:10:09.8644314Z #10 [4/6] COPY package*.json ./
+2025-11-18T16:10:09.8644822Z #10 DONE 0.0s
+2025-11-18T16:10:09.8645042Z 
+2025-11-18T16:10:09.8645283Z #11 [5/6] RUN npm ci --no-audit --no-fund
+2025-11-18T16:10:13.2184906Z #11 3.505 npm warn deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+2025-11-18T16:10:13.3697299Z #11 3.656 npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2025-11-18T16:10:13.5151876Z #11 3.685 npm warn deprecated try-resolve@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:13.5153596Z #11 3.729 npm warn deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+2025-11-18T16:10:13.5155123Z #11 3.801 npm warn deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+2025-11-18T16:10:13.6571563Z #11 3.944 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2025-11-18T16:10:13.7984685Z #11 3.997 npm warn deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+2025-11-18T16:10:13.7987816Z #11 4.085 npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+2025-11-18T16:10:13.7989712Z #11 4.085 npm warn deprecated
+2025-11-18T16:10:13.7990547Z #11 4.085 npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+2025-11-18T16:10:13.9604681Z #11 4.247 npm warn deprecated natives@1.1.6: This module relies on Node.js's internals and will break at some point. Do not use it, and update to graceful-fs@4.x.
+2025-11-18T16:10:14.1285478Z #11 4.415 npm warn deprecated lodash.template@3.6.2: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
+2025-11-18T16:10:14.3267579Z #11 4.613 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-11-18T16:10:14.4803903Z #11 4.767 npm warn deprecated gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+2025-11-18T16:10:14.6315738Z #11 4.767 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-11-18T16:10:15.1521166Z #11 5.438 npm warn deprecated babel-plugin-remove-debugger@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3684140Z #11 5.438 npm warn deprecated babel-plugin-runtime@1.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3687797Z #11 5.438 npm warn deprecated babel-plugin-react-display-name@1.0.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3689625Z #11 5.439 npm warn deprecated babel-plugin-remove-console@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3691421Z #11 5.464 npm warn deprecated babel-plugin-inline-environment-variables@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3693129Z #11 5.464 npm warn deprecated babel-plugin-eval@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3694789Z #11 5.464 npm warn deprecated babel-plugin-undefined-to-void@1.1.6: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3696815Z #11 5.483 npm warn deprecated babel-plugin-react-constant-elements@1.0.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3698586Z #11 5.492 npm warn deprecated babel-plugin-property-literals@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3700332Z #11 5.496 npm warn deprecated babel-plugin-proto-to-assign@1.0.4: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3702012Z #11 5.497 npm warn deprecated babel-plugin-jscript@1.0.4: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3703856Z #11 5.497 npm warn deprecated babel-plugin-member-expression-literals@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3705675Z #11 5.504 npm warn deprecated babel-plugin-constant-folding@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:15.3708024Z #11 5.504 npm warn deprecated babel-plugin-dead-code-elimination@1.0.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:10:16.6162467Z #11 6.902 npm warn deprecated graceful-fs@1.2.3: please upgrade to graceful-fs 4 for compatibility with current and future versions of Node.js
+2025-11-18T16:10:16.8069109Z #11 6.920 npm warn deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:10:16.8070266Z #11 6.921 npm warn deprecated glob@4.5.3: Glob versions prior to v9 are no longer supported
+2025-11-18T16:10:16.8071194Z #11 6.943 npm warn deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:10:16.8635338Z #11 7.150 npm warn deprecated glob@5.0.15: Glob versions prior to v9 are no longer supported
+2025-11-18T16:10:17.0552661Z #11 7.169 npm warn deprecated glob@3.1.21: Glob versions prior to v9 are no longer supported
+2025-11-18T16:10:17.0554171Z #11 7.191 npm warn deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:10:18.1237782Z #11 8.410 npm warn deprecated core-js@1.2.7: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+2025-11-18T16:10:18.7037519Z #11 8.990 
+2025-11-18T16:10:18.7038289Z #11 8.990 added 951 packages in 9s
+2025-11-18T16:10:18.8558406Z #11 8.992 npm notice
+2025-11-18T16:10:18.8558989Z #11 8.992 npm notice New major version of npm available! 10.8.2 -> 11.6.2
+2025-11-18T16:10:18.8559562Z #11 8.992 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+2025-11-18T16:10:18.8560045Z #11 8.992 npm notice To update run: npm install -g npm@11.6.2
+2025-11-18T16:10:18.8560355Z #11 8.992 npm notice
+2025-11-18T16:10:19.0176771Z #11 DONE 9.3s
+2025-11-18T16:10:19.1960232Z 
+2025-11-18T16:10:19.1960771Z #12 [6/6] COPY . .
+2025-11-18T16:10:19.1961122Z #12 DONE 0.0s
+2025-11-18T16:10:19.1961309Z 
+2025-11-18T16:10:19.1961489Z #13 exporting to image
+2025-11-18T16:10:19.1961863Z #13 exporting layers
+2025-11-18T16:10:21.6382271Z #13 exporting layers 2.6s done
+2025-11-18T16:10:21.6842281Z #13 writing image sha256:fe5391880a19e0ce7d9603931dd5541201ab6a7379cb4328edbc309e739e2e68 done
+2025-11-18T16:10:21.6842876Z  backend  Built
+2025-11-18T16:10:21.6843189Z #13 naming to docker.io/library/yarnitt-backend done
+2025-11-18T16:10:21.6843587Z #13 DONE 2.6s
+2025-11-18T16:10:21.6843759Z 
+2025-11-18T16:10:21.6843980Z #14 resolving provenance for metadata file
+2025-11-18T16:10:21.6844332Z #14 DONE 0.0s
+2025-11-18T16:10:21.6852293Z  Network yarnitt_default  Creating
+2025-11-18T16:10:21.7109913Z  Network yarnitt_default  Created
+2025-11-18T16:10:21.7165366Z  Volume "yarnitt_mongo-data"  Creating
+2025-11-18T16:10:21.7253602Z  Volume "yarnitt_mongo-data"  Created
+2025-11-18T16:10:21.7258387Z  Volume "yarnitt_db-data"  Creating
+2025-11-18T16:10:21.7329327Z  Volume "yarnitt_db-data"  Created
+2025-11-18T16:10:21.7333411Z  Container yarnitt-mongo-1  Creating
+2025-11-18T16:10:21.7334222Z  Container yarnitt-redis-1  Creating
+2025-11-18T16:10:21.7335109Z  Container yarnitt-db-1  Creating
+2025-11-18T16:10:21.7622922Z  Container yarnitt-redis-1  Created
+2025-11-18T16:10:21.7623561Z  Container yarnitt-db-1  Created
+2025-11-18T16:10:21.7627496Z  Container yarnitt-mongo-1  Created
+2025-11-18T16:10:21.7627943Z  Container yarnitt-backend-1  Creating
+2025-11-18T16:10:21.7878615Z  Container yarnitt-backend-1  Created
+2025-11-18T16:10:21.7891269Z  Container yarnitt-db-1  Starting
+2025-11-18T16:10:21.7892359Z  Container yarnitt-redis-1  Starting
+2025-11-18T16:10:21.7894137Z  Container yarnitt-mongo-1  Starting
+2025-11-18T16:10:22.6671874Z  Container yarnitt-db-1  Started
+2025-11-18T16:10:22.6706747Z  Container yarnitt-mongo-1  Started
+2025-11-18T16:10:22.6707889Z  Container yarnitt-redis-1  Started
+2025-11-18T16:10:22.6709782Z  Container yarnitt-backend-1  Starting
+2025-11-18T16:10:22.8412798Z  Container yarnitt-backend-1  Started
+2025-11-18T16:10:22.8493793Z ##[group]Run echo "Waiting up to 60s for backend at http://localhost:4000/"
+2025-11-18T16:10:22.8494656Z [36;1mecho "Waiting up to 60s for backend at http://localhost:4000/"[0m
+2025-11-18T16:10:22.8495264Z [36;1mfor i in $(seq 1 60); do[0m
+2025-11-18T16:10:22.8495793Z [36;1m  if curl -sSf http://localhost:4000/ >/dev/null 2>&1; then[0m
+2025-11-18T16:10:22.8496525Z [36;1m    echo "Backend ready"[0m
+2025-11-18T16:10:22.8496946Z [36;1m    exit 0[0m
+2025-11-18T16:10:22.8497274Z [36;1m  fi[0m
+2025-11-18T16:10:22.8497593Z [36;1m  sleep 1[0m
+2025-11-18T16:10:22.8497909Z [36;1mdone[0m
+2025-11-18T16:10:22.8498343Z [36;1mecho "Backend didn't become ready within 60s" >&2[0m
+2025-11-18T16:10:22.8499057Z [36;1mdocker compose logs --no-log-prefix --tail=200 backend || true[0m
+2025-11-18T16:10:22.8499685Z [36;1mexit 1[0m
+2025-11-18T16:10:22.8529933Z shell: /usr/bin/bash -e {0}
+2025-11-18T16:10:22.8530325Z ##[endgroup]
+2025-11-18T16:10:22.8595149Z Waiting up to 60s for backend at http://localhost:4000/
+2025-11-18T16:11:23.4169736Z Backend didn't become ready within 60s
+2025-11-18T16:11:23.4945612Z npm warn deprecated try-resolve@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4949474Z npm warn deprecated natives@1.1.6: This module relies on Node.js's internals and will break at some point. Do not use it, and update to graceful-fs@4.x.
+2025-11-18T16:11:23.4950858Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-11-18T16:11:23.4952555Z npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2025-11-18T16:11:23.4953713Z npm warn deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+2025-11-18T16:11:23.4954436Z npm warn deprecated lodash.template@3.6.2: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
+2025-11-18T16:11:23.4955370Z npm warn deprecated babel-plugin-undefined-to-void@1.1.6: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4956542Z npm warn deprecated babel-plugin-remove-console@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4957623Z npm warn deprecated babel-plugin-remove-debugger@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4958605Z npm warn deprecated babel-plugin-proto-to-assign@1.0.4: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4959952Z npm warn deprecated babel-plugin-react-display-name@1.0.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4961436Z npm warn deprecated babel-plugin-react-constant-elements@1.0.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4962469Z npm warn deprecated babel-plugin-property-literals@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4963514Z npm warn deprecated babel-plugin-member-expression-literals@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4964904Z npm warn deprecated babel-plugin-jscript@1.0.4: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4966197Z npm warn deprecated babel-plugin-inline-environment-variables@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4967350Z npm warn deprecated babel-plugin-eval@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4968322Z npm warn deprecated babel-plugin-dead-code-elimination@1.0.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4969322Z npm warn deprecated babel-plugin-constant-folding@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4970074Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2025-11-18T16:11:23.4970849Z npm warn deprecated babel-plugin-runtime@1.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.4971564Z npm warn deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+2025-11-18T16:11:23.4972202Z npm warn deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:11:23.4972873Z npm warn deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:11:23.4973495Z npm warn deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+2025-11-18T16:11:23.4974375Z npm warn deprecated graceful-fs@1.2.3: please upgrade to graceful-fs 4 for compatibility with current and future versions of Node.js
+2025-11-18T16:11:23.4975370Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.4976264Z npm warn deprecated glob@4.5.3: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.4977239Z npm warn deprecated glob@5.0.15: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.4978225Z npm warn deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+2025-11-18T16:11:23.4979939Z npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+2025-11-18T16:11:23.4980996Z npm warn deprecated
+2025-11-18T16:11:23.4981425Z npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+2025-11-18T16:11:23.4982258Z npm warn deprecated gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+2025-11-18T16:11:23.4983078Z npm warn deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:11:23.4983662Z npm warn deprecated glob@3.1.21: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.4985230Z npm warn deprecated core-js@1.2.7: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+2025-11-18T16:11:23.4986283Z 
+2025-11-18T16:11:23.4986606Z added 951 packages, and audited 953 packages in 8s
+2025-11-18T16:11:23.4986878Z 
+2025-11-18T16:11:23.4987018Z 68 packages are looking for funding
+2025-11-18T16:11:23.4987296Z   run `npm fund` for details
+2025-11-18T16:11:23.4987446Z 
+2025-11-18T16:11:23.4987619Z 22 vulnerabilities (4 moderate, 17 high, 1 critical)
+2025-11-18T16:11:23.4987995Z 
+2025-11-18T16:11:23.4988178Z To address issues that do not require attention, run:
+2025-11-18T16:11:23.4988446Z   npm audit fix
+2025-11-18T16:11:23.4988555Z 
+2025-11-18T16:11:23.4988747Z To address all issues (including breaking changes), run:
+2025-11-18T16:11:23.4989031Z   npm audit fix --force
+2025-11-18T16:11:23.4989360Z 
+2025-11-18T16:11:23.4989466Z Run `npm audit` for details.
+2025-11-18T16:11:23.4989603Z 
+2025-11-18T16:11:23.4989700Z > backend@1.0.0 build
+2025-11-18T16:11:23.4990050Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+2025-11-18T16:11:23.4990304Z 
+2025-11-18T16:11:23.4990310Z 
+2025-11-18T16:11:23.4990608Z   dist/index.js  4.7mb ⚠️
+2025-11-18T16:11:23.4990743Z 
+2025-11-18T16:11:23.4990864Z ⚡ Done in 230ms
+2025-11-18T16:11:23.4991103Z npm error Missing script: "start:dev"
+2025-11-18T16:11:23.4991343Z npm error
+2025-11-18T16:11:23.4991578Z npm error To see a list of scripts, run:
+2025-11-18T16:11:23.4991829Z npm error   npm run
+2025-11-18T16:11:23.4992297Z npm error A complete log of this run can be found in: /root/.npm/_logs/2025-11-18T16_10_31_194Z-debug-0.log
+2025-11-18T16:11:23.4992607Z 
+2025-11-18T16:11:23.4992708Z > backend@1.0.0 start
+2025-11-18T16:11:23.4992909Z > node dist/index.js
+2025-11-18T16:11:23.4993034Z 
+2025-11-18T16:11:23.4993468Z [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2025-11-18T16:11:23.4993857Z Connected to MongoDB
+2025-11-18T16:11:23.4994130Z Backend listening on http://localhost:4000
+2025-11-18T16:11:23.5004742Z ##[error]Process completed with exit code 1.
+2025-11-18T16:11:23.5058115Z ##[group]Run docker compose logs --no-log-prefix --tail=500 backend || true
+2025-11-18T16:11:23.5058577Z [36;1mdocker compose logs --no-log-prefix --tail=500 backend || true[0m
+2025-11-18T16:11:23.5078360Z shell: /usr/bin/bash -e {0}
+2025-11-18T16:11:23.5078598Z ##[endgroup]
+2025-11-18T16:11:23.5807874Z npm warn deprecated try-resolve@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5809616Z npm warn deprecated natives@1.1.6: This module relies on Node.js's internals and will break at some point. Do not use it, and update to graceful-fs@4.x.
+2025-11-18T16:11:23.5811830Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-11-18T16:11:23.5815343Z npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2025-11-18T16:11:23.5817699Z npm warn deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+2025-11-18T16:11:23.5819046Z npm warn deprecated lodash.template@3.6.2: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
+2025-11-18T16:11:23.5820776Z npm warn deprecated babel-plugin-undefined-to-void@1.1.6: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5822282Z npm warn deprecated babel-plugin-remove-console@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5824003Z npm warn deprecated babel-plugin-remove-debugger@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5825807Z npm warn deprecated babel-plugin-proto-to-assign@1.0.4: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5827467Z npm warn deprecated babel-plugin-react-display-name@1.0.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5829173Z npm warn deprecated babel-plugin-react-constant-elements@1.0.3: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5831502Z npm warn deprecated babel-plugin-property-literals@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5833415Z npm warn deprecated babel-plugin-member-expression-literals@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5834974Z npm warn deprecated babel-plugin-jscript@1.0.4: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5836791Z npm warn deprecated babel-plugin-inline-environment-variables@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5838439Z npm warn deprecated babel-plugin-eval@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5840032Z npm warn deprecated babel-plugin-dead-code-elimination@1.0.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5841546Z npm warn deprecated babel-plugin-constant-folding@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5842575Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2025-11-18T16:11:23.5844041Z npm warn deprecated babel-plugin-runtime@1.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-11-18T16:11:23.5845319Z npm warn deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+2025-11-18T16:11:23.5846160Z npm warn deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:11:23.5847061Z npm warn deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:11:23.5847679Z npm warn deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+2025-11-18T16:11:23.5848782Z npm warn deprecated graceful-fs@1.2.3: please upgrade to graceful-fs 4 for compatibility with current and future versions of Node.js
+2025-11-18T16:11:23.5849892Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.5850564Z npm warn deprecated glob@4.5.3: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.5851087Z npm warn deprecated glob@5.0.15: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.5851698Z npm warn deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+2025-11-18T16:11:23.5853210Z npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+2025-11-18T16:11:23.5854291Z npm warn deprecated
+2025-11-18T16:11:23.5854726Z npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+2025-11-18T16:11:23.5855551Z npm warn deprecated gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+2025-11-18T16:11:23.5856488Z npm warn deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+2025-11-18T16:11:23.5857265Z npm warn deprecated glob@3.1.21: Glob versions prior to v9 are no longer supported
+2025-11-18T16:11:23.5858811Z npm warn deprecated core-js@1.2.7: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+2025-11-18T16:11:23.5860028Z 
+2025-11-18T16:11:23.5860204Z added 951 packages, and audited 953 packages in 8s
+2025-11-18T16:11:23.5860411Z 
+2025-11-18T16:11:23.5860541Z 68 packages are looking for funding
+2025-11-18T16:11:23.5860809Z   run `npm fund` for details
+2025-11-18T16:11:23.5860949Z 
+2025-11-18T16:11:23.5861128Z 22 vulnerabilities (4 moderate, 17 high, 1 critical)
+2025-11-18T16:11:23.5861335Z 
+2025-11-18T16:11:23.5861504Z To address issues that do not require attention, run:
+2025-11-18T16:11:23.5861790Z   npm audit fix
+2025-11-18T16:11:23.5861916Z 
+2025-11-18T16:11:23.5862103Z To address all issues (including breaking changes), run:
+2025-11-18T16:11:23.5862402Z   npm audit fix --force
+2025-11-18T16:11:23.5862530Z 
+2025-11-18T16:11:23.5862629Z Run `npm audit` for details.
+2025-11-18T16:11:23.5862776Z 
+2025-11-18T16:11:23.5862864Z > backend@1.0.0 build
+2025-11-18T16:11:23.5863226Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+2025-11-18T16:11:23.5863476Z 
+2025-11-18T16:11:23.5863482Z 
+2025-11-18T16:11:23.5863771Z   dist/index.js  4.7mb ⚠️
+2025-11-18T16:11:23.5863917Z 
+2025-11-18T16:11:23.5864030Z ⚡ Done in 230ms
+2025-11-18T16:11:23.5864292Z npm error Missing script: "start:dev"
+2025-11-18T16:11:23.5864535Z npm error
+2025-11-18T16:11:23.5864775Z npm error To see a list of scripts, run:
+2025-11-18T16:11:23.5865042Z npm error   npm run
+2025-11-18T16:11:23.5865500Z npm error A complete log of this run can be found in: /root/.npm/_logs/2025-11-18T16_10_31_194Z-debug-0.log
+2025-11-18T16:11:23.5865971Z 
+2025-11-18T16:11:23.5866069Z > backend@1.0.0 start
+2025-11-18T16:11:23.5866270Z > node dist/index.js
+2025-11-18T16:11:23.5866539Z 
+2025-11-18T16:11:23.5867041Z [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2025-11-18T16:11:23.5867447Z Connected to MongoDB
+2025-11-18T16:11:23.5867726Z Backend listening on http://localhost:4000
+2025-11-18T16:11:23.5892452Z ##[group]Run docker compose down --remove-orphans
+2025-11-18T16:11:23.5892816Z [36;1mdocker compose down --remove-orphans[0m
+2025-11-18T16:11:23.5912790Z shell: /usr/bin/bash -e {0}
+2025-11-18T16:11:23.5913063Z ##[endgroup]
+2025-11-18T16:11:23.6618156Z  Container yarnitt-backend-1  Stopping
+2025-11-18T16:11:23.8544300Z  Container yarnitt-backend-1  Stopped
+2025-11-18T16:11:23.8544846Z  Container yarnitt-backend-1  Removing
+2025-11-18T16:11:24.1913807Z  Container yarnitt-backend-1  Removed
+2025-11-18T16:11:24.1914387Z  Container yarnitt-redis-1  Stopping
+2025-11-18T16:11:24.1914841Z  Container yarnitt-db-1  Stopping
+2025-11-18T16:11:24.1915302Z  Container yarnitt-mongo-1  Stopping
+2025-11-18T16:11:24.3282057Z  Container yarnitt-db-1  Stopped
+2025-11-18T16:11:24.3284058Z  Container yarnitt-db-1  Removing
+2025-11-18T16:11:24.3344826Z  Container yarnitt-db-1  Removed
+2025-11-18T16:11:24.3385064Z  Container yarnitt-mongo-1  Stopped
+2025-11-18T16:11:24.3385696Z  Container yarnitt-mongo-1  Removing
+2025-11-18T16:11:24.3439407Z  Container yarnitt-mongo-1  Removed
+2025-11-18T16:11:24.3537689Z  Container yarnitt-redis-1  Stopped
+2025-11-18T16:11:24.3538232Z  Container yarnitt-redis-1  Removing
+2025-11-18T16:11:24.3572963Z  Container yarnitt-redis-1  Removed
+2025-11-18T16:11:24.3580339Z  Network yarnitt_default  Removing
+2025-11-18T16:11:24.4499009Z  Network yarnitt_default  Removed
+2025-11-18T16:11:24.4604324Z Post job cleanup.
+2025-11-18T16:11:24.5556689Z [command]/usr/bin/git version
+2025-11-18T16:11:24.5591311Z git version 2.51.2
+2025-11-18T16:11:24.5639050Z Temporarily overriding HOME='/home/runner/work/_temp/397e02cc-87d5-4898-b3d3-fd6bd18b6ca5' before making global git config changes
+2025-11-18T16:11:24.5640444Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-18T16:11:24.5645046Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yarnitt/yarnitt
+2025-11-18T16:11:24.5675197Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-18T16:11:24.5703604Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-18T16:11:24.5888805Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-18T16:11:24.5908262Z http.https://github.com/.extraheader
+2025-11-18T16:11:24.5919973Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-11-18T16:11:24.5946036Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-18T16:11:24.6209483Z Cleaning up orphan processes

@@ -1,0 +1,164 @@
+integration	Set up job	﻿2025-11-19T10:28:43.4188743Z Current runner version: '2.329.0'
+integration	Set up job	2025-11-19T10:28:43.4213040Z ##[group]Runner Image Provisioner
+integration	Set up job	2025-11-19T10:28:43.4213949Z Hosted Compute Agent
+integration	Set up job	2025-11-19T10:28:43.4214469Z Version: 20251016.436
+integration	Set up job	2025-11-19T10:28:43.4215071Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+integration	Set up job	2025-11-19T10:28:43.4215976Z Build Date: 2025-10-15T20:44:12Z
+integration	Set up job	2025-11-19T10:28:43.4216546Z ##[endgroup]
+integration	Set up job	2025-11-19T10:28:43.4217105Z ##[group]Operating System
+integration	Set up job	2025-11-19T10:28:43.4217671Z Ubuntu
+integration	Set up job	2025-11-19T10:28:43.4218176Z 24.04.3
+integration	Set up job	2025-11-19T10:28:43.4218610Z LTS
+integration	Set up job	2025-11-19T10:28:43.4219109Z ##[endgroup]
+integration	Set up job	2025-11-19T10:28:43.4219585Z ##[group]Runner Image
+integration	Set up job	2025-11-19T10:28:43.4220167Z Image: ubuntu-24.04
+integration	Set up job	2025-11-19T10:28:43.4220625Z Version: 20251112.124.1
+integration	Set up job	2025-11-19T10:28:43.4221698Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+integration	Set up job	2025-11-19T10:28:43.4223051Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+integration	Set up job	2025-11-19T10:28:43.4224192Z ##[endgroup]
+integration	Set up job	2025-11-19T10:28:43.4225261Z ##[group]GITHUB_TOKEN Permissions
+integration	Set up job	2025-11-19T10:28:43.4227960Z Contents: read
+integration	Set up job	2025-11-19T10:28:43.4228496Z Metadata: read
+integration	Set up job	2025-11-19T10:28:43.4228984Z Packages: read
+integration	Set up job	2025-11-19T10:28:43.4229546Z ##[endgroup]
+integration	Set up job	2025-11-19T10:28:43.4231776Z Secret source: Actions
+integration	Set up job	2025-11-19T10:28:43.4232623Z Prepare workflow directory
+integration	Set up job	2025-11-19T10:28:43.4547039Z Prepare all required actions
+integration	Set up job	2025-11-19T10:28:43.4587265Z Getting action download info
+integration	Set up job	2025-11-19T10:28:43.9019526Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+integration	Set up job	2025-11-19T10:28:44.0681967Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+integration	Set up job	2025-11-19T10:28:44.2361617Z Complete job name: integration
+integration	Checkout	﻿2025-11-19T10:28:44.3033369Z ##[group]Run actions/checkout@v4
+integration	Checkout	2025-11-19T10:28:44.3034199Z with:
+integration	Checkout	2025-11-19T10:28:44.3034584Z   repository: l-incoln/yarnitt
+integration	Checkout	2025-11-19T10:28:44.3035214Z   token: ***
+integration	Checkout	2025-11-19T10:28:44.3035795Z   ssh-strict: true
+integration	Checkout	2025-11-19T10:28:44.3036188Z   ssh-user: git
+integration	Checkout	2025-11-19T10:28:44.3036589Z   persist-credentials: true
+integration	Checkout	2025-11-19T10:28:44.3037029Z   clean: true
+integration	Checkout	2025-11-19T10:28:44.3037420Z   sparse-checkout-cone-mode: true
+integration	Checkout	2025-11-19T10:28:44.3037893Z   fetch-depth: 1
+integration	Checkout	2025-11-19T10:28:44.3038265Z   fetch-tags: false
+integration	Checkout	2025-11-19T10:28:44.3038665Z   show-progress: true
+integration	Checkout	2025-11-19T10:28:44.3039071Z   lfs: false
+integration	Checkout	2025-11-19T10:28:44.3039434Z   submodules: false
+integration	Checkout	2025-11-19T10:28:44.3039831Z   set-safe-directory: true
+integration	Checkout	2025-11-19T10:28:44.3040513Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:44.4148568Z Syncing repository: l-incoln/yarnitt
+integration	Checkout	2025-11-19T10:28:44.4150355Z ##[group]Getting Git version info
+integration	Checkout	2025-11-19T10:28:44.4151047Z Working directory is '/home/runner/work/yarnitt/yarnitt'
+integration	Checkout	2025-11-19T10:28:44.4152275Z [command]/usr/bin/git version
+integration	Checkout	2025-11-19T10:28:44.4254901Z git version 2.51.2
+integration	Checkout	2025-11-19T10:28:44.4280885Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:44.4296595Z Temporarily overriding HOME='/home/runner/work/_temp/48f71d03-b4c1-4383-af1e-ccbe5ead08db' before making global git config changes
+integration	Checkout	2025-11-19T10:28:44.4299014Z Adding repository directory to the temporary git global config as a safe directory
+integration	Checkout	2025-11-19T10:28:44.4302898Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yarnitt/yarnitt
+integration	Checkout	2025-11-19T10:28:44.4341642Z Deleting the contents of '/home/runner/work/yarnitt/yarnitt'
+integration	Checkout	2025-11-19T10:28:44.4345675Z ##[group]Initializing the repository
+integration	Checkout	2025-11-19T10:28:44.4350115Z [command]/usr/bin/git init /home/runner/work/yarnitt/yarnitt
+integration	Checkout	2025-11-19T10:28:44.4464940Z hint: Using 'master' as the name for the initial branch. This default branch name
+integration	Checkout	2025-11-19T10:28:44.4466505Z hint: is subject to change. To configure the initial branch name to use in all
+integration	Checkout	2025-11-19T10:28:44.4467426Z hint: of your new repositories, which will suppress this warning, call:
+integration	Checkout	2025-11-19T10:28:44.4468160Z hint:
+integration	Checkout	2025-11-19T10:28:44.4469010Z hint: 	git config --global init.defaultBranch <name>
+integration	Checkout	2025-11-19T10:28:44.4469995Z hint:
+integration	Checkout	2025-11-19T10:28:44.4471256Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+integration	Checkout	2025-11-19T10:28:44.4472925Z hint: 'development'. The just-created branch can be renamed via this command:
+integration	Checkout	2025-11-19T10:28:44.4474247Z hint:
+integration	Checkout	2025-11-19T10:28:44.4474989Z hint: 	git branch -m <name>
+integration	Checkout	2025-11-19T10:28:44.4476006Z hint:
+integration	Checkout	2025-11-19T10:28:44.4477153Z hint: Disable this message with "git config set advice.defaultBranchName false"
+integration	Checkout	2025-11-19T10:28:44.4478936Z Initialized empty Git repository in /home/runner/work/yarnitt/yarnitt/.git/
+integration	Checkout	2025-11-19T10:28:44.4483235Z [command]/usr/bin/git remote add origin https://github.com/l-incoln/yarnitt
+integration	Checkout	2025-11-19T10:28:44.4518389Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:44.4519642Z ##[group]Disabling automatic garbage collection
+integration	Checkout	2025-11-19T10:28:44.4523195Z [command]/usr/bin/git config --local gc.auto 0
+integration	Checkout	2025-11-19T10:28:44.4551942Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:44.4553212Z ##[group]Setting up auth
+integration	Checkout	2025-11-19T10:28:44.4559446Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+integration	Checkout	2025-11-19T10:28:44.4589743Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+integration	Checkout	2025-11-19T10:28:44.4966785Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+integration	Checkout	2025-11-19T10:28:44.5000747Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+integration	Checkout	2025-11-19T10:28:44.5243469Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+integration	Checkout	2025-11-19T10:28:44.5292944Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:44.5294096Z ##[group]Fetching the repository
+integration	Checkout	2025-11-19T10:28:44.5304716Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f52ae5d8ff9d7dde7ca00fa7df70262d499981cc:refs/remotes/pull/13/merge
+integration	Checkout	2025-11-19T10:28:45.1816036Z From https://github.com/l-incoln/yarnitt
+integration	Checkout	2025-11-19T10:28:45.1817904Z  * [new ref]         f52ae5d8ff9d7dde7ca00fa7df70262d499981cc -> pull/13/merge
+integration	Checkout	2025-11-19T10:28:45.1851415Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:45.1854182Z ##[group]Determining the checkout info
+integration	Checkout	2025-11-19T10:28:45.1855775Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:45.1860590Z [command]/usr/bin/git sparse-checkout disable
+integration	Checkout	2025-11-19T10:28:45.1901655Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+integration	Checkout	2025-11-19T10:28:45.1931858Z ##[group]Checking out the ref
+integration	Checkout	2025-11-19T10:28:45.1933435Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/13/merge
+integration	Checkout	2025-11-19T10:28:45.2472011Z Note: switching to 'refs/remotes/pull/13/merge'.
+integration	Checkout	2025-11-19T10:28:45.2473263Z 
+integration	Checkout	2025-11-19T10:28:45.2473912Z You are in 'detached HEAD' state. You can look around, make experimental
+integration	Checkout	2025-11-19T10:28:45.2475135Z changes and commit them, and you can discard any commits you make in this
+integration	Checkout	2025-11-19T10:28:45.2476651Z state without impacting any branches by switching back to a branch.
+integration	Checkout	2025-11-19T10:28:45.2477360Z 
+integration	Checkout	2025-11-19T10:28:45.2477910Z If you want to create a new branch to retain commits you create, you may
+integration	Checkout	2025-11-19T10:28:45.2479027Z do so (now or later) by using -c with the switch command. Example:
+integration	Checkout	2025-11-19T10:28:45.2479935Z 
+integration	Checkout	2025-11-19T10:28:45.2480414Z   git switch -c <new-branch-name>
+integration	Checkout	2025-11-19T10:28:45.2480925Z 
+integration	Checkout	2025-11-19T10:28:45.2481255Z Or undo this operation with:
+integration	Checkout	2025-11-19T10:28:45.2481738Z 
+integration	Checkout	2025-11-19T10:28:45.2482023Z   git switch -
+integration	Checkout	2025-11-19T10:28:45.2482445Z 
+integration	Checkout	2025-11-19T10:28:45.2483057Z Turn off this advice by setting config variable advice.detachedHead to false
+integration	Checkout	2025-11-19T10:28:45.2483892Z 
+integration	Checkout	2025-11-19T10:28:45.2484821Z HEAD is now at f52ae5d Merge 005a578f0c9f5ffef79f3bffa863978c44dce87a into 1157948a9227772e9cfbd72eb568eca03810fc71
+integration	Checkout	2025-11-19T10:28:45.2488128Z ##[endgroup]
+integration	Checkout	2025-11-19T10:28:45.2520859Z [command]/usr/bin/git log -1 --format=%H
+integration	Checkout	2025-11-19T10:28:45.2543865Z f52ae5d8ff9d7dde7ca00fa7df70262d499981cc
+integration	Set up Node.js	﻿2025-11-19T10:28:45.2849024Z ##[group]Run actions/setup-node@v4
+integration	Set up Node.js	2025-11-19T10:28:45.2850123Z with:
+integration	Set up Node.js	2025-11-19T10:28:45.2850914Z   node-version: 18
+integration	Set up Node.js	2025-11-19T10:28:45.2851800Z   always-auth: false
+integration	Set up Node.js	2025-11-19T10:28:45.2852697Z   check-latest: false
+integration	Set up Node.js	2025-11-19T10:28:45.2853862Z   token: ***
+integration	Set up Node.js	2025-11-19T10:28:45.2854727Z ##[endgroup]
+integration	Set up Node.js	2025-11-19T10:28:45.4723882Z Attempting to download 18...
+integration	Set up Node.js	2025-11-19T10:28:46.2266205Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+integration	Set up Node.js	2025-11-19T10:28:46.6998957Z Extracting ...
+integration	Set up Node.js	2025-11-19T10:28:46.7097649Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/c6d76966-e1f5-4620-be3e-7d35d54c5107 -f /home/runner/work/_temp/0ba3533e-39dd-415f-a8fb-4b922afa5581
+integration	Set up Node.js	2025-11-19T10:28:47.6573484Z Adding to the cache ...
+integration	Set up Node.js	2025-11-19T10:28:49.2145879Z ##[group]Environment details
+integration	Set up Node.js	2025-11-19T10:28:49.4453806Z node: v18.20.8
+integration	Set up Node.js	2025-11-19T10:28:49.4454425Z npm: 10.8.2
+integration	Set up Node.js	2025-11-19T10:28:49.4454864Z yarn: 1.22.22
+integration	Set up Node.js	2025-11-19T10:28:49.4457644Z ##[endgroup]
+integration	Build and start services with docker compose	﻿2025-11-19T10:28:49.4623576Z ##[group]Run docker compose down --remove-orphans || true
+integration	Build and start services with docker compose	2025-11-19T10:28:49.4624054Z [36;1mdocker compose down --remove-orphans || true[0m
+integration	Build and start services with docker compose	2025-11-19T10:28:49.4624366Z [36;1mdocker compose up -d --build[0m
+integration	Build and start services with docker compose	2025-11-19T10:28:49.4663115Z shell: /usr/bin/bash -e {0}
+integration	Build and start services with docker compose	2025-11-19T10:28:49.4663399Z ##[endgroup]
+integration	Build and start services with docker compose	2025-11-19T10:28:51.6707099Z services.ports must be a mapping
+integration	Build and start services with docker compose	2025-11-19T10:28:51.7342946Z services.ports must be a mapping
+integration	Build and start services with docker compose	2025-11-19T10:28:51.7387334Z ##[error]Process completed with exit code 1.
+integration	Upload backend logs (on failure)	﻿2025-11-19T10:28:51.7448631Z ##[group]Run docker compose logs --no-log-prefix --tail=500 backend || true
+integration	Upload backend logs (on failure)	2025-11-19T10:28:51.7449194Z [36;1mdocker compose logs --no-log-prefix --tail=500 backend || true[0m
+integration	Upload backend logs (on failure)	2025-11-19T10:28:51.7483308Z shell: /usr/bin/bash -e {0}
+integration	Upload backend logs (on failure)	2025-11-19T10:28:51.7483554Z ##[endgroup]
+integration	Upload backend logs (on failure)	2025-11-19T10:28:51.8199998Z services.ports must be a mapping
+integration	Teardown	﻿2025-11-19T10:28:51.8259381Z ##[group]Run docker compose down --remove-orphans
+integration	Teardown	2025-11-19T10:28:51.8259764Z [36;1mdocker compose down --remove-orphans[0m
+integration	Teardown	2025-11-19T10:28:51.8294017Z shell: /usr/bin/bash -e {0}
+integration	Teardown	2025-11-19T10:28:51.8294262Z ##[endgroup]
+integration	Teardown	2025-11-19T10:28:51.8962409Z services.ports must be a mapping
+integration	Teardown	2025-11-19T10:28:51.8996512Z ##[error]Process completed with exit code 1.
+integration	Post Checkout	﻿2025-11-19T10:28:51.9076006Z Post job cleanup.
+integration	Post Checkout	2025-11-19T10:28:52.0024442Z [command]/usr/bin/git version
+integration	Post Checkout	2025-11-19T10:28:52.0061857Z git version 2.51.2
+integration	Post Checkout	2025-11-19T10:28:52.0104752Z Temporarily overriding HOME='/home/runner/work/_temp/d85742ee-6107-4eaf-9208-bcb1c3801811' before making global git config changes
+integration	Post Checkout	2025-11-19T10:28:52.0106246Z Adding repository directory to the temporary git global config as a safe directory
+integration	Post Checkout	2025-11-19T10:28:52.0117058Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yarnitt/yarnitt
+integration	Post Checkout	2025-11-19T10:28:52.0150744Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+integration	Post Checkout	2025-11-19T10:28:52.0182923Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+integration	Post Checkout	2025-11-19T10:28:52.0410555Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+integration	Post Checkout	2025-11-19T10:28:52.0430150Z http.https://github.com/.extraheader
+integration	Post Checkout	2025-11-19T10:28:52.0443068Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+integration	Post Checkout	2025-11-19T10:28:52.0473018Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+integration	Complete job	﻿2025-11-19T10:28:52.0794256Z Cleaning up orphan processes

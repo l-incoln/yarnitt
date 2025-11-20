@@ -5,14 +5,13 @@ const db = require('../db'); // adjust to your DB layer
 const paymentAdapter = require('./paymentAdapter');
 
 async function validatePayload(payload) {
-  // add validation logic or reuse your existing validators
-  if (!payload.items || !Array.isArray(payload.items) || payload.items.length === 0) {
+  if (!payload || !payload.items || !Array.isArray(payload.items) || payload.items.length === 0) {
     const err = new Error('items is required');
     err.code = 'validation_error';
     err.details = [{ field: 'items', message: 'required' }];
     throw err;
   }
-  // more validation...
+  // Add more validation as needed
 }
 
 async function createOrder(payload) {
@@ -25,13 +24,13 @@ async function createOrder(payload) {
   const orderRecord = {
     status: 'pending',
     total,
-    items: JSON.stringify(payload.items),
+    items: payload.items,
     metadata: payload.metadata || {},
     created_at: new Date().toISOString()
   };
 
   // Replace this with your DB insert and return the inserted id
-  const inserted = await db.insertOrder(orderRecord); // implement insertOrder in db layer
+  const inserted = await db.insertOrder(orderRecord); // implement insertOrder in your db layer
   const orderId = inserted.id || inserted; // adapt to your db method result
 
   try {
@@ -46,7 +45,7 @@ async function createOrder(payload) {
     await db.updateOrder(orderId, { status: 'confirmed', payment_provider_response: paymentResult });
     return { orderId, status: 'confirmed', total, createdAt: orderRecord.created_at };
   } catch (payErr) {
-    // Update order to payment_failed (or keep pending) and surface error
+    // Update order to payment_failed and surface error
     await db.updateOrder(orderId, { status: 'payment_failed', payment_provider_response: payErr.result || null });
     const err = new Error(payErr.message || 'Payment failed');
     err.code = 'payment_failed';
@@ -55,7 +54,6 @@ async function createOrder(payload) {
 }
 
 async function getOrderById(id) {
-  // Replace with your DB select
   return db.findOrderById(id);
 }
 

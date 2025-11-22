@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import serveIndex from 'serve-index';
 import productsRouter from './routes/products';
 import authRoutes from './routes/auth';
+import orderRoutes from './routes/orders';
 
 dotenv.config();
 
@@ -47,6 +48,9 @@ app.use('/products', productsRouter);
 
 // Mount auth routes
 app.use('/api/auth', authRoutes);
+
+// Mount order routes
+app.use('/api/orders', orderRoutes);
 
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));

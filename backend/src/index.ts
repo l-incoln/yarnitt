@@ -56,7 +56,7 @@ app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));
 
 // Mount routes
 app.use('/api/auth', authRoutes);
-app.use('/products', productsRouter);
+app.use('/api/products', productsRouter);
 
 // 404 handler for unknown routes
 app.use((_req, res) => {

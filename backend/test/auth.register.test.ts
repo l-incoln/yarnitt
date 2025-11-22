@@ -48,7 +48,12 @@ describe('POST /auth/register', () => {
   it('returns 201 and tokens on success', async () => {
     const res = await request(app)
       .post('/auth/register')
-      .send({ email: 'alice@example.com', password: 'password123', name: 'Alice' })
+      .send({ 
+        email: 'alice@example.com', 
+        password: 'password123', 
+        name: 'Alice',
+        phone: '+254700000000'
+      })
       .expect(201);
 
     expect(res.body.accessToken).toBeDefined();
@@ -58,12 +63,22 @@ describe('POST /auth/register', () => {
   it('returns 409 for duplicate email', async () => {
     await request(app)
       .post('/auth/register')
-      .send({ email: 'bob@example.com', password: 'password123', name: 'Bob' })
+      .send({ 
+        email: 'bob@example.com', 
+        password: 'password123', 
+        name: 'Bob',
+        phone: '+254700000000'
+      })
       .expect(201);
 
     await request(app)
       .post('/auth/register')
-      .send({ email: 'bob@example.com', password: 'anotherpass', name: 'Bob2' })
+      .send({ 
+        email: 'bob@example.com', 
+        password: 'anotherpass', 
+        name: 'Bob2',
+        phone: '+254700000001'
+      })
       .expect(409);
   });
 

@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import serveIndex from 'serve-index';
 import productsRouter from './routes/products';
 import authRoutes from './routes/auth';
+import adminRoutes from './routes/admin';
 
 dotenv.config();
 
@@ -46,7 +47,10 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/products', productsRouter);
 
 // Mount auth routes
-app.use('/api/auth', authRoutes);
+app.use('/api', authRoutes);
+
+// Mount admin routes
+app.use('/api/admin', adminRoutes);
 
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));

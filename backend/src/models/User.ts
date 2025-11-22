@@ -5,6 +5,17 @@ export interface IUser extends Document {
   email: string;
   passwordHash: string;
   name?: string;
+  role: 'buyer' | 'seller' | 'admin';
+  phone?: string;
+  shopName?: string;
+  address?: {
+    fullName: string;
+    phone: string;
+    address: string;
+    city: string;
+    postalCode?: string;
+    country: string;
+  };
   createdAt: Date;
   setPassword(password: string): Promise<void>;
   verifyPassword(password: string): Promise<boolean>;
@@ -14,6 +25,17 @@ const UserSchema = new Schema<IUser>({
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   passwordHash: { type: String, required: true },
   name: { type: String, default: '' },
+  role: { type: String, enum: ['buyer', 'seller', 'admin'], default: 'buyer' },
+  phone: { type: String },
+  shopName: { type: String },
+  address: {
+    fullName: String,
+    phone: String,
+    address: String,
+    city: String,
+    postalCode: String,
+    country: String,
+  },
   createdAt: { type: Date, default: Date.now },
 });
 

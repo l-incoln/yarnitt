@@ -36,7 +36,8 @@ export function calculateCommission(totalAmount: number): { commission: number; 
  * Check if order can be cancelled
  */
 export function canCancelOrder(status: string): boolean {
-  return [ORDER_STATUS.PENDING, ORDER_STATUS.CONFIRMED].includes(status);
+  const cancellableStatuses = [ORDER_STATUS.PENDING, ORDER_STATUS.CONFIRMED];
+  return cancellableStatuses.includes(status as any);
 }
 
 /**

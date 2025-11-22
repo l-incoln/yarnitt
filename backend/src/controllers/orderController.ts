@@ -11,7 +11,7 @@ import { ORDER_STATUS, PAYMENT_STATUS, DEFAULT_DELIVERY_DAYS } from '../constant
 export async function createOrder(req: Request, res: Response) {
   try {
     const user = (req as any).user;
-    const { items, shippingAddress, paymentMethod = 'pending', customization } = req.body;
+    const { items, shippingAddress, paymentMethod = 'pending' } = req.body;
 
     // Validate and fetch products
     const productIds = items.map((item: any) => item.product);

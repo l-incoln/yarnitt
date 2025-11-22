@@ -22,15 +22,31 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   }
 }
 
-export function requireRole(required: "buyer" | "seller" | "admin") {
+export function requireRole(...roles: string[]) {
   return (req: Request, res: Response, next: NextFunction) => {
     const user = (req as any).user;
     if (!user) {
       return res.status(401).json({ message: "not authenticated" });
     }
-    if (user.role !== required && user.role !== "admin") {
+    // Admin has access to everything
+    if (user.role === "admin") {
+      return next();
+    }
+    // Check if user's role is in the allowed roles
+    if (!roles.includes(user.role)) {
       return res.status(403).json({ message: "insufficient role" });
     }
     next();
   };
+}
+
+export function requireSellerApproved(req: Request, res: Response, next: NextFunction) {
+  const user = (req as any).user;
+  if (!user) {
+    return res.status(401).json({ message: "not authenticated" });
+  }
+  if (user.role === "seller" && user.sellerStatus !== "approved") {
+    return res.status(403).json({ message: "Your seller account is pending approval" });
+  }
+  next();
 }

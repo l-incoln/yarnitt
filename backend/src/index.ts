@@ -8,6 +8,10 @@ import serveIndex from 'serve-index';
 import productsRouter from './routes/products';
 import authRoutes from './routes/auth';
 
+// Mount the next router (it's implemented in backend/src/routes/next.js)
+// The route file uses CommonJS exports (module.exports = router), so require() is used here
+const nextRouter = require('./routes/next');
+
 dotenv.config();
 
 const PORT = Number(process.env.PORT || 4000);
@@ -47,6 +51,9 @@ app.use('/products', productsRouter);
 
 // Mount auth routes
 app.use('/api/auth', authRoutes);
+
+// Mount next router (contains POST /api/v1/next and GET /api/v1/next/:id)
+app.use(nextRouter);
 
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));

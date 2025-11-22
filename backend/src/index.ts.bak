@@ -11,7 +11,7 @@ import authRoutes from './routes/auth';
 dotenv.config();
 
 const PORT = Number(process.env.PORT || 4000);
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/yarnitt_dev';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://0.0.0.0:27017/yarnitt_dev';
 const UPLOADS_DIR = path.join(__dirname, '..', 'uploads'); // backend/uploads
 
 const app = express();
@@ -66,7 +66,7 @@ async function start() {
     console.log('Connected to MongoDB');
 
     const server = app.listen(PORT, () => {
-      console.log(`Backend listening on http://localhost:${PORT}`);
+      console.log(`Backend listening on http://0.0.0.0:${PORT}`);
     });
 
     // graceful shutdown

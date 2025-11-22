@@ -12,13 +12,22 @@ dotenv.config();
 
 const PORT = Number(process.env.PORT || 4000);
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/yarnitt_dev';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 const UPLOADS_DIR = path.join(__dirname, '..', 'uploads'); // backend/uploads
 
 const app = express();
 
-// Basic middleware
-app.use(cors());
+// CORS configuration with credentials support
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+    credentials: true,
+  })
+);
+
+// Body parsing middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Ensure uploads directory exists
 try {
@@ -42,45 +51,82 @@ if (process.env.NODE_ENV !== 'production') {
   app.use('/uploads', serveIndex(UPLOADS_DIR, { icons: true }));
 }
 
-// Mount product routes (see backend/src/routes/products.ts)
-app.use('/products', productsRouter);
-
-// Mount auth routes
-app.use('/api/auth', authRoutes);
-
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));
 
-// Generic error handler
+// Mount routes
+app.use('/api/auth', authRoutes);
+app.use('/products', productsRouter);
+
+// 404 handler for unknown routes
+app.use((_req, res) => {
+  res.status(404).json({ 
+    success: false, 
+    message: 'Route not found' 
+  });
+});
+
+// Enhanced error handler
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error('Unhandled error:', err);
-  res.status(500).json({ message: 'Internal server error' });
+
+  // Mongoose validation error
+  if (err.name === 'ValidationError') {
+    const errors = Object.values(err.errors).map((e: any) => e.message);
+    return res.status(400).json({ 
+      success: false, 
+      message: 'Validation error', 
+      errors 
+    });
+  }
+
+  // Mongoose duplicate key error
+  if (err.code === 11000) {
+    const field = Object.keys(err.keyPattern || {})[0];
+    return res.status(400).json({ 
+      success: false, 
+      message: `Duplicate value for field: ${field}` 
+    });
+  }
+
+  // Generic error response
+  const response: any = {
+    success: false,
+    message: err.message || 'Internal server error',
+  };
+
+  // Include stack trace in development mode
+  if (process.env.NODE_ENV === 'development') {
+    response.stack = err.stack;
+  }
+
+  res.status(err.status || 500).json(response);
 });
 
 // Connect to MongoDB and start server
 async function start() {
   try {
-    await mongoose.connect(MONGO_URI, {
-      // useNewUrlParser/useUnifiedTopology are default in mongoose v6+
-    } as any);
-    console.log('Connected to MongoDB');
+    await mongoose.connect(MONGO_URI);
+    console.log('✅ Connected to MongoDB');
 
     const server = app.listen(PORT, () => {
-      console.log(`Backend listening on http://localhost:${PORT}`);
+      console.log(`🚀 Backend listening on http://localhost:${PORT}`);
+      console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
     });
 
     // graceful shutdown
     const shutdown = async () => {
-      console.log('Shutting down...');
+      console.log('⏹️  Shutting down...');
       server.close();
       await mongoose.disconnect();
+      console.log('👋 Disconnected from MongoDB');
       process.exit(0);
     };
 
     process.on('SIGINT', shutdown);
     process.on('SIGTERM', shutdown);
   } catch (err) {
-    console.error('Failed to start app:', err);
+    console.error('❌ Failed to start app:', err);
     process.exit(1);
   }
 }

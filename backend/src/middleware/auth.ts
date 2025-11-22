@@ -3,7 +3,14 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import Seller from '../models/Seller';
 
+// WARNING: In production, JWT_SECRET must be set via environment variable
+// Using default for development purposes only
 const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production';
+
+if (!process.env.JWT_SECRET && process.env.NODE_ENV === 'production') {
+  console.error('FATAL: JWT_SECRET not set in production environment');
+  process.exit(1);
+}
 
 // Extend Express Request type
 declare global {

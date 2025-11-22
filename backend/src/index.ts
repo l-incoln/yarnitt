@@ -46,7 +46,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/products', productsRouter);
 
 // Mount auth routes
-app.use('/api/auth', authRoutes);
+app.use('/api', authRoutes);
 
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));

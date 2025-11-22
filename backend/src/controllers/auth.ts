@@ -231,9 +231,13 @@ export async function forgotPassword(req: Request, res: Response) {
     await user.save();
 
     // In production, send email with reset link
+    // For development/testing only, log the reset token
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[DEV] Password reset token for ${email}: ${resetToken}`);
+    }
+    
     return res.status(200).json({ 
-      message: 'Password reset link sent',
-      resetToken // Remove this in production
+      message: 'Password reset link sent'
     });
   } catch (err: any) {
     console.error('forgotPassword error', err);

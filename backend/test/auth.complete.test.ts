@@ -293,14 +293,14 @@ describe('POST /api/auth/forgot-password', () => {
       });
   });
 
-  it('returns reset token for valid email', async () => {
+  it('returns success message for valid email', async () => {
     const res = await request(app)
       .post('/api/auth/forgot-password')
       .send({ email: 'forgot@example.com' })
       .expect(200);
 
     expect(res.body.message).toBe('Password reset link sent');
-    expect(res.body.resetToken).toBeDefined();
+    expect(res.body.resetToken).toBeUndefined(); // Should not be in response for security
 
     // Verify token is stored in database
     const user = await User.findOne({ email: 'forgot@example.com' });
@@ -330,11 +330,13 @@ describe('POST /api/auth/reset-password/:token', () => {
         phone: '+254700000000'
       });
 
-    const forgotRes = await request(app)
+    await request(app)
       .post('/api/auth/forgot-password')
       .send({ email: 'reset@example.com' });
 
-    resetToken = forgotRes.body.resetToken;
+    // Retrieve the reset token from the database
+    const user = await User.findOne({ email: 'reset@example.com' });
+    resetToken = user?.passwordResetToken || '';
   });
 
   it('successfully resets password with valid token', async () => {

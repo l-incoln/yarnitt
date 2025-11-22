@@ -11,3 +11,11 @@ export function signAccessToken(payload: object) {
 export function signRefreshToken(payload: object) {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: REFRESH_TTL } as jwt.SignOptions);
 }
+
+export function verifyAccessToken(token: string) {
+  return jwt.verify(token, JWT_SECRET);
+}
+
+export function verifyRefreshToken(token: string) {
+  return jwt.verify(token, JWT_SECRET);
+}

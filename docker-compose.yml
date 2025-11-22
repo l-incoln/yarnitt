@@ -1,5 +1,16 @@
 version: "3.8"
 services:
+  mongodb:
+    image: mongo:7
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: yarnitt
+      MONGO_INITDB_ROOT_PASSWORD: yarnittpass
+      MONGO_INITDB_DATABASE: yarnitt_dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
   db:
     image: postgres:15
     environment:
@@ -19,5 +30,6 @@ services:
       - redis-data:/data
 
 volumes:
+  mongodb-data:
   db-data:
   redis-data:

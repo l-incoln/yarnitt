@@ -10,7 +10,8 @@
     "migrate:down": "node-pg-migrate down",
     "migrate:create": "node-pg-migrate create",
     "migrate:reset": "node-pg-migrate reset",
-    "db:seed": "psql \"$DATABASE_URL\" -f ./backend/seeds/seed_users.sql || true"
+    "db:seed": "psql \"$DATABASE_URL\" -f ./backend/seeds/seed_users.sql || true",
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

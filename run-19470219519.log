@@ -1,0 +1,1303 @@
+integration	Set up job	﻿2025-11-18T15:45:09.2771667Z Current runner version: '2.329.0'
+integration	Set up job	2025-11-18T15:45:09.2806224Z ##[group]Runner Image Provisioner
+integration	Set up job	2025-11-18T15:45:09.2807583Z Hosted Compute Agent
+integration	Set up job	2025-11-18T15:45:09.2808469Z Version: 20251016.436
+integration	Set up job	2025-11-18T15:45:09.2809439Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+integration	Set up job	2025-11-18T15:45:09.2810743Z Build Date: 2025-10-15T20:44:12Z
+integration	Set up job	2025-11-18T15:45:09.2811678Z ##[endgroup]
+integration	Set up job	2025-11-18T15:45:09.2813239Z ##[group]Operating System
+integration	Set up job	2025-11-18T15:45:09.2814111Z Ubuntu
+integration	Set up job	2025-11-18T15:45:09.2814814Z 24.04.3
+integration	Set up job	2025-11-18T15:45:09.2815599Z LTS
+integration	Set up job	2025-11-18T15:45:09.2816286Z ##[endgroup]
+integration	Set up job	2025-11-18T15:45:09.2817211Z ##[group]Runner Image
+integration	Set up job	2025-11-18T15:45:09.2818042Z Image: ubuntu-24.04
+integration	Set up job	2025-11-18T15:45:09.2818824Z Version: 20251112.124.1
+integration	Set up job	2025-11-18T15:45:09.2820394Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251112.124/images/ubuntu/Ubuntu2404-Readme.md
+integration	Set up job	2025-11-18T15:45:09.2822695Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251112.124
+integration	Set up job	2025-11-18T15:45:09.2824543Z ##[endgroup]
+integration	Set up job	2025-11-18T15:45:09.2826383Z ##[group]GITHUB_TOKEN Permissions
+integration	Set up job	2025-11-18T15:45:09.2829864Z Contents: read
+integration	Set up job	2025-11-18T15:45:09.2830821Z Metadata: read
+integration	Set up job	2025-11-18T15:45:09.2831781Z Packages: read
+integration	Set up job	2025-11-18T15:45:09.2832614Z ##[endgroup]
+integration	Set up job	2025-11-18T15:45:09.2835399Z Secret source: Actions
+integration	Set up job	2025-11-18T15:45:09.2836628Z Prepare workflow directory
+integration	Set up job	2025-11-18T15:45:09.3342303Z Prepare all required actions
+integration	Set up job	2025-11-18T15:45:09.3380871Z Getting action download info
+integration	Set up job	2025-11-18T15:45:09.6912348Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+integration	Set up job	2025-11-18T15:45:09.8194991Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+integration	Set up job	2025-11-18T15:45:09.9897483Z Complete job name: integration
+integration	Checkout	﻿2025-11-18T15:45:10.0610896Z ##[group]Run actions/checkout@v4
+integration	Checkout	2025-11-18T15:45:10.0611823Z with:
+integration	Checkout	2025-11-18T15:45:10.0612270Z   repository: l-incoln/yarnitt
+integration	Checkout	2025-11-18T15:45:10.0612973Z   token: ***
+integration	Checkout	2025-11-18T15:45:10.0613413Z   ssh-strict: true
+integration	Checkout	2025-11-18T15:45:10.0613844Z   ssh-user: git
+integration	Checkout	2025-11-18T15:45:10.0614280Z   persist-credentials: true
+integration	Checkout	2025-11-18T15:45:10.0614759Z   clean: true
+integration	Checkout	2025-11-18T15:45:10.0615196Z   sparse-checkout-cone-mode: true
+integration	Checkout	2025-11-18T15:45:10.0615724Z   fetch-depth: 1
+integration	Checkout	2025-11-18T15:45:10.0616161Z   fetch-tags: false
+integration	Checkout	2025-11-18T15:45:10.0616844Z   show-progress: true
+integration	Checkout	2025-11-18T15:45:10.0617314Z   lfs: false
+integration	Checkout	2025-11-18T15:45:10.0617722Z   submodules: false
+integration	Checkout	2025-11-18T15:45:10.0618167Z   set-safe-directory: true
+integration	Checkout	2025-11-18T15:45:10.0618915Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.1694221Z Syncing repository: l-incoln/yarnitt
+integration	Checkout	2025-11-18T15:45:10.1696151Z ##[group]Getting Git version info
+integration	Checkout	2025-11-18T15:45:10.1697240Z Working directory is '/home/runner/work/yarnitt/yarnitt'
+integration	Checkout	2025-11-18T15:45:10.1698282Z [command]/usr/bin/git version
+integration	Checkout	2025-11-18T15:45:10.1797046Z git version 2.51.2
+integration	Checkout	2025-11-18T15:45:10.1822425Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.1836308Z Temporarily overriding HOME='/home/runner/work/_temp/65135839-9ca2-457e-b466-07114e56c1d6' before making global git config changes
+integration	Checkout	2025-11-18T15:45:10.1838770Z Adding repository directory to the temporary git global config as a safe directory
+integration	Checkout	2025-11-18T15:45:10.1841402Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yarnitt/yarnitt
+integration	Checkout	2025-11-18T15:45:10.1879946Z Deleting the contents of '/home/runner/work/yarnitt/yarnitt'
+integration	Checkout	2025-11-18T15:45:10.1883647Z ##[group]Initializing the repository
+integration	Checkout	2025-11-18T15:45:10.1887308Z [command]/usr/bin/git init /home/runner/work/yarnitt/yarnitt
+integration	Checkout	2025-11-18T15:45:10.2013120Z hint: Using 'master' as the name for the initial branch. This default branch name
+integration	Checkout	2025-11-18T15:45:10.2014570Z hint: is subject to change. To configure the initial branch name to use in all
+integration	Checkout	2025-11-18T15:45:10.2015748Z hint: of your new repositories, which will suppress this warning, call:
+integration	Checkout	2025-11-18T15:45:10.2016919Z hint:
+integration	Checkout	2025-11-18T15:45:10.2017553Z hint: 	git config --global init.defaultBranch <name>
+integration	Checkout	2025-11-18T15:45:10.2018887Z hint:
+integration	Checkout	2025-11-18T15:45:10.2020081Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+integration	Checkout	2025-11-18T15:45:10.2021261Z hint: 'development'. The just-created branch can be renamed via this command:
+integration	Checkout	2025-11-18T15:45:10.2022180Z hint:
+integration	Checkout	2025-11-18T15:45:10.2022690Z hint: 	git branch -m <name>
+integration	Checkout	2025-11-18T15:45:10.2023291Z hint:
+integration	Checkout	2025-11-18T15:45:10.2024118Z hint: Disable this message with "git config set advice.defaultBranchName false"
+integration	Checkout	2025-11-18T15:45:10.2025248Z Initialized empty Git repository in /home/runner/work/yarnitt/yarnitt/.git/
+integration	Checkout	2025-11-18T15:45:10.2029686Z [command]/usr/bin/git remote add origin https://github.com/l-incoln/yarnitt
+integration	Checkout	2025-11-18T15:45:10.2064194Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.2065022Z ##[group]Disabling automatic garbage collection
+integration	Checkout	2025-11-18T15:45:10.2068258Z [command]/usr/bin/git config --local gc.auto 0
+integration	Checkout	2025-11-18T15:45:10.2098504Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.2099939Z ##[group]Setting up auth
+integration	Checkout	2025-11-18T15:45:10.2106177Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+integration	Checkout	2025-11-18T15:45:10.2137918Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+integration	Checkout	2025-11-18T15:45:10.2517328Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+integration	Checkout	2025-11-18T15:45:10.2552513Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+integration	Checkout	2025-11-18T15:45:10.2800893Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+integration	Checkout	2025-11-18T15:45:10.2852144Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.2853589Z ##[group]Fetching the repository
+integration	Checkout	2025-11-18T15:45:10.2861985Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +7c98f57ece276925ec302ee51e847f875c6027b5:refs/remotes/pull/13/merge
+integration	Checkout	2025-11-18T15:45:10.6672042Z From https://github.com/l-incoln/yarnitt
+integration	Checkout	2025-11-18T15:45:10.6673783Z  * [new ref]         7c98f57ece276925ec302ee51e847f875c6027b5 -> pull/13/merge
+integration	Checkout	2025-11-18T15:45:10.6704668Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.6705408Z ##[group]Determining the checkout info
+integration	Checkout	2025-11-18T15:45:10.6706881Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.6711948Z [command]/usr/bin/git sparse-checkout disable
+integration	Checkout	2025-11-18T15:45:10.6754013Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+integration	Checkout	2025-11-18T15:45:10.6782128Z ##[group]Checking out the ref
+integration	Checkout	2025-11-18T15:45:10.6784994Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/13/merge
+integration	Checkout	2025-11-18T15:45:10.7321918Z Note: switching to 'refs/remotes/pull/13/merge'.
+integration	Checkout	2025-11-18T15:45:10.7322797Z 
+integration	Checkout	2025-11-18T15:45:10.7323494Z You are in 'detached HEAD' state. You can look around, make experimental
+integration	Checkout	2025-11-18T15:45:10.7324852Z changes and commit them, and you can discard any commits you make in this
+integration	Checkout	2025-11-18T15:45:10.7326169Z state without impacting any branches by switching back to a branch.
+integration	Checkout	2025-11-18T15:45:10.7327169Z 
+integration	Checkout	2025-11-18T15:45:10.7327667Z If you want to create a new branch to retain commits you create, you may
+integration	Checkout	2025-11-18T15:45:10.7329521Z do so (now or later) by using -c with the switch command. Example:
+integration	Checkout	2025-11-18T15:45:10.7330772Z 
+integration	Checkout	2025-11-18T15:45:10.7331279Z   git switch -c <new-branch-name>
+integration	Checkout	2025-11-18T15:45:10.7332100Z 
+integration	Checkout	2025-11-18T15:45:10.7332583Z Or undo this operation with:
+integration	Checkout	2025-11-18T15:45:10.7333314Z 
+integration	Checkout	2025-11-18T15:45:10.7333721Z   git switch -
+integration	Checkout	2025-11-18T15:45:10.7334358Z 
+integration	Checkout	2025-11-18T15:45:10.7335305Z Turn off this advice by setting config variable advice.detachedHead to false
+integration	Checkout	2025-11-18T15:45:10.7337011Z 
+integration	Checkout	2025-11-18T15:45:10.7338608Z HEAD is now at 7c98f57 Merge f73f69045bdb5044620c8b48dc4bfbda494f442d into 1157948a9227772e9cfbd72eb568eca03810fc71
+integration	Checkout	2025-11-18T15:45:10.7343848Z ##[endgroup]
+integration	Checkout	2025-11-18T15:45:10.7377340Z [command]/usr/bin/git log -1 --format=%H
+integration	Checkout	2025-11-18T15:45:10.7400106Z 7c98f57ece276925ec302ee51e847f875c6027b5
+integration	Set up Node.js	﻿2025-11-18T15:45:10.7712596Z ##[group]Run actions/setup-node@v4
+integration	Set up Node.js	2025-11-18T15:45:10.7713762Z with:
+integration	Set up Node.js	2025-11-18T15:45:10.7714558Z   node-version: 18
+integration	Set up Node.js	2025-11-18T15:45:10.7715458Z   always-auth: false
+integration	Set up Node.js	2025-11-18T15:45:10.7716376Z   check-latest: false
+integration	Set up Node.js	2025-11-18T15:45:10.7717750Z   token: ***
+integration	Set up Node.js	2025-11-18T15:45:10.7718584Z ##[endgroup]
+integration	Set up Node.js	2025-11-18T15:45:10.9707408Z Attempting to download 18...
+integration	Set up Node.js	2025-11-18T15:45:11.3522729Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+integration	Set up Node.js	2025-11-18T15:45:11.7570983Z Extracting ...
+integration	Set up Node.js	2025-11-18T15:45:11.7704544Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/06b633b9-45b1-49a6-82b2-9ad5bfaf2746 -f /home/runner/work/_temp/c90c05ab-d008-459b-838b-b4d3c7032b9b
+integration	Set up Node.js	2025-11-18T15:45:12.7512678Z Adding to the cache ...
+integration	Set up Node.js	2025-11-18T15:45:14.3226716Z ##[group]Environment details
+integration	Set up Node.js	2025-11-18T15:45:14.5631998Z node: v18.20.8
+integration	Set up Node.js	2025-11-18T15:45:14.5632897Z npm: 10.8.2
+integration	Set up Node.js	2025-11-18T15:45:14.5633372Z yarn: 1.22.22
+integration	Set up Node.js	2025-11-18T15:45:14.5634141Z ##[endgroup]
+integration	Build and start services with docker compose	﻿2025-11-18T15:45:14.5793273Z ##[group]Run docker compose down --remove-orphans || true
+integration	Build and start services with docker compose	2025-11-18T15:45:14.5793759Z [36;1mdocker compose down --remove-orphans || true[0m
+integration	Build and start services with docker compose	2025-11-18T15:45:14.5794079Z [36;1mdocker compose up -d --build[0m
+integration	Build and start services with docker compose	2025-11-18T15:45:14.5834479Z shell: /usr/bin/bash -e {0}
+integration	Build and start services with docker compose	2025-11-18T15:45:14.5834778Z ##[endgroup]
+integration	Build and start services with docker compose	2025-11-18T15:45:15.0430541Z  mongo Pulling 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.0431229Z  redis Pulling 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.0431617Z  db Pulling 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4083963Z  0e4bc2bd6656 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4085557Z  e213bd2560e2 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4086107Z  9fcd228516aa Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4086691Z  2e6036390374 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4087021Z  5a19b1f63ace Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4087300Z  dd23ed782cae Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4087588Z  b10108f2d223 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4087898Z  4eb4a683c389 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4088173Z  b475dc4bba47 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4088443Z  2c64a0db539b Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4088764Z  6e6c09f9e058 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4089031Z  304e9b7c93e6 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4089297Z  95bcad39f7ff Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4089574Z  fa51353b2c9b Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4089836Z  2e6036390374 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4090077Z  5a19b1f63ace Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4090325Z  dd23ed782cae Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4090542Z  b10108f2d223 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4090741Z  4eb4a683c389 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4090959Z  b475dc4bba47 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4091163Z  2c64a0db539b Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4091367Z  304e9b7c93e6 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4091570Z  6e6c09f9e058 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4091847Z  95bcad39f7ff Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4092058Z  fa51353b2c9b Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4934915Z  e213bd2560e2 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.4935911Z  e213bd2560e2 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.5377535Z  0e4bc2bd6656 Downloading [>                                                  ]  299.1kB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.5725891Z  9fcd228516aa Downloading [>                                                  ]  67.47kB/6.437MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.6073334Z  2e6036390374 Downloading [>                                                  ]  13.25kB/1.257MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.6302242Z  2e6036390374 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.6302877Z  2e6036390374 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.6428848Z  0e4bc2bd6656 Downloading [===>                                               ]   2.13MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.6841801Z  9fcd228516aa Downloading [================================>                  ]  4.231MB/6.437MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.7291413Z  5a19b1f63ace Downloading [>                                                  ]  84.39kB/8.204MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.7789237Z  0e4bc2bd6656 Downloading [========>                                          ]  4.882MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.7885702Z  9fcd228516aa Downloading [============================================>      ]  5.722MB/6.437MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.8026691Z  9fcd228516aa Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.8027240Z  9fcd228516aa Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.8303702Z  5a19b1f63ace Downloading [======================================>            ]  6.394MB/8.204MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.8390688Z  5a19b1f63ace Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.8391258Z  5a19b1f63ace Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.8792334Z  0e4bc2bd6656 Downloading [================>                                  ]  9.781MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.8951429Z  dd23ed782cae Downloading [>                                                  ]  13.69kB/1.311MB
+integration	Build and start services with docker compose	2025-11-18T15:45:15.9275594Z  dd23ed782cae Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.9276093Z  dd23ed782cae Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.9394000Z  b10108f2d223 Downloading [==================================================>]     116B/116B
+integration	Build and start services with docker compose	2025-11-18T15:45:15.9394895Z  b10108f2d223 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.9395484Z  b10108f2d223 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:15.9814212Z  0e4bc2bd6656 Downloading [=========================>                         ]     15MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.0659191Z  b475dc4bba47 Downloading [>                                                  ]    534kB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.0964358Z  0e4bc2bd6656 Downloading [=============================>                     ]  17.76MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1088499Z  4eb4a683c389 Downloading [==============>                                    ]     935B/3.14kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1089754Z  4eb4a683c389 Downloading [==================================================>]   3.14kB/3.14kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1093192Z  4eb4a683c389 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1093689Z  4eb4a683c389 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1229585Z  8e44f01296e3 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1230149Z  44fc29a25beb Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1230698Z  39af693970c0 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1234959Z  517b08eaf3cc Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1236387Z  186a03b51bfa Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1237004Z  fe77c85f37cb Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1237444Z  4f4fb700ef54 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1237934Z  a43f12641297 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1238307Z  8e44f01296e3 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1238651Z  44fc29a25beb Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1238982Z  fe77c85f37cb Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1239305Z  39af693970c0 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1239633Z  517b08eaf3cc Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1239955Z  4f4fb700ef54 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1240251Z  a43f12641297 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1240484Z  186a03b51bfa Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.1790003Z  b475dc4bba47 Downloading [===>                                               ]  8.005MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2072219Z  2c64a0db539b Downloading [====>                                              ]     936B/9.881kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2073885Z  2c64a0db539b Downloading [==================================================>]  9.881kB/9.881kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2074733Z  2c64a0db539b Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2075297Z  2c64a0db539b Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2240887Z  0e4bc2bd6656 Downloading [===============================>                   ]  18.99MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2376903Z  af6eca94c810 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2377469Z  1ad79419bb76 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2377847Z  afdef96060ff Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2378237Z  dc9abaf2c8ff Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2378642Z  a2be9b1fc57a Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2379380Z  9d81a4e85c6a Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2379757Z  9d6e74542339 Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2380202Z  cde22982277a Pulling fs layer 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2380622Z  af6eca94c810 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2381085Z  1ad79419bb76 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2381864Z  a2be9b1fc57a Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2382319Z  9d81a4e85c6a Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2382759Z  afdef96060ff Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2383231Z  dc9abaf2c8ff Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2383681Z  9d6e74542339 Waiting 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2909208Z  b475dc4bba47 Downloading [=====>                                             ]  11.74MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.2956582Z  6e6c09f9e058 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.3580698Z  0e4bc2bd6656 Downloading [===================================>               ]  21.14MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.3757571Z  304e9b7c93e6 Downloading [==================================================>]     167B/167B
+integration	Build and start services with docker compose	2025-11-18T15:45:16.3758545Z  304e9b7c93e6 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.3990041Z  b475dc4bba47 Downloading [=======>                                           ]  16.03MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.4587820Z  0e4bc2bd6656 Downloading [====================================>              ]  21.74MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.4595419Z  95bcad39f7ff Downloading [========>                                          ]     935B/5.839kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.4597938Z  95bcad39f7ff Downloading [==================================================>]  5.839kB/5.839kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.4599092Z  95bcad39f7ff Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.4599584Z  95bcad39f7ff Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.5012158Z  b475dc4bba47 Downloading [========>                                          ]  19.21MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.5733744Z  fa51353b2c9b Downloading [==================================================>]     185B/185B
+integration	Build and start services with docker compose	2025-11-18T15:45:16.5734873Z  fa51353b2c9b Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.5735402Z  fa51353b2c9b Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.5774442Z  0e4bc2bd6656 Downloading [======================================>            ]  22.66MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.6020069Z  b475dc4bba47 Downloading [===========>                                       ]  25.07MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.6711131Z  8e44f01296e3 Downloading [>                                                  ]  294.4kB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.6818109Z  0e4bc2bd6656 Downloading [===========================================>       ]  25.97MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.7276993Z  b475dc4bba47 Downloading [==============>                                    ]  32.56MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.7715996Z  8e44f01296e3 Downloading [==================>                                ]   10.2MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.7846224Z  0e4bc2bd6656 Downloading [=================================================> ]  29.29MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8030107Z  0e4bc2bd6656 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8033119Z  0e4bc2bd6656 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8395553Z  b475dc4bba47 Downloading [=================>                                 ]  39.46MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8402889Z  0e4bc2bd6656 Extracting [>                                                  ]  327.7kB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8729557Z  8e44f01296e3 Downloading [===============================>                   ]  18.02MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8846537Z  44fc29a25beb Downloading [==========================================>        ]     935B/1.105kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8850621Z  44fc29a25beb Downloading [==================================================>]  1.105kB/1.105kB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8851419Z  44fc29a25beb Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.8851901Z  44fc29a25beb Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9421140Z  0e4bc2bd6656 Extracting [==========>                                        ]  6.226MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9811724Z  39af693970c0 Downloading [==================================================>]     874B/874B
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9813243Z  39af693970c0 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9814393Z  39af693970c0 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9832223Z  b475dc4bba47 Downloading [===================>                               ]  44.25MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9856117Z  8e44f01296e3 Downloading [===============================================>   ]  26.96MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9928576Z  8e44f01296e3 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:16.9930087Z  8e44f01296e3 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.0279908Z  8e44f01296e3 Extracting [>                                                  ]  294.9kB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.0500991Z  0e4bc2bd6656 Extracting [=================>                                 ]  10.49MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.0671318Z  517b08eaf3cc Downloading [>                                                  ]  14.62kB/1.438MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.0864431Z  b475dc4bba47 Downloading [=====================>                             ]  48.51MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1189224Z  517b08eaf3cc Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1198002Z  517b08eaf3cc Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1356373Z  8e44f01296e3 Extracting [=========>                                         ]  5.308MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1410262Z  186a03b51bfa Downloading [>                                                  ]  156.9kB/15.35MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1505233Z  0e4bc2bd6656 Extracting [======================>                            ]  13.43MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1896270Z  b475dc4bba47 Downloading [========================>                          ]  54.41MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1986880Z  fe77c85f37cb Downloading [==================================================>]      97B/97B
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1988657Z  fe77c85f37cb Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.1989375Z  fe77c85f37cb Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.2442842Z  186a03b51bfa Downloading [=================>                                 ]  5.357MB/15.35MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.2526052Z  0e4bc2bd6656 Extracting [=================================>                 ]  19.66MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.2584612Z  8e44f01296e3 Extracting [================>                                  ]  9.142MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.2838590Z  4f4fb700ef54 Downloading [==================================================>]      32B/32B
+integration	Build and start services with docker compose	2025-11-18T15:45:17.2839355Z  4f4fb700ef54 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.2839755Z  4f4fb700ef54 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.2918293Z  b475dc4bba47 Downloading [===========================>                       ]  60.81MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.3555935Z  186a03b51bfa Downloading [=================================>                 ]  10.37MB/15.35MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.3728286Z  0e4bc2bd6656 Extracting [==========================================>        ]  25.56MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.3763577Z  8e44f01296e3 Extracting [===================>                               ]  11.21MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.3816256Z  a43f12641297 Downloading [==================================================>]     571B/571B
+integration	Build and start services with docker compose	2025-11-18T15:45:17.3817782Z  a43f12641297 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.3823841Z  a43f12641297 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.3993042Z  b475dc4bba47 Downloading [===============================>                   ]  69.85MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.4170481Z  186a03b51bfa Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.4171051Z  186a03b51bfa Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.4804577Z  8e44f01296e3 Extracting [===============================>                   ]  17.69MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5057230Z  b475dc4bba47 Downloading [==================================>                ]  77.27MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5064876Z  1ad79419bb76 Downloading [==========================>                        ]     934B/1.781kB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5071022Z  1ad79419bb76 Downloading [==================================================>]  1.781kB/1.781kB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5071818Z  1ad79419bb76 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5072390Z  1ad79419bb76 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5502362Z  0e4bc2bd6656 Extracting [============================================>      ]  26.21MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5516787Z  af6eca94c810 Downloading [>                                                  ]  303.1kB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5910066Z  8e44f01296e3 Extracting [=========================================>         ]   23.3MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.5919200Z  afdef96060ff Downloading [>                                                  ]  15.99kB/1.514MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.6109764Z  b475dc4bba47 Downloading [====================================>              ]  82.06MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.6263810Z  afdef96060ff Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.6265153Z  afdef96060ff Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.6530389Z  af6eca94c810 Downloading [========>                                          ]  5.194MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.6733961Z  0e4bc2bd6656 Extracting [===============================================>   ]  28.51MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.7197156Z  dc9abaf2c8ff Downloading [>                                                  ]   9.65kB/898.1kB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.7205465Z  b475dc4bba47 Downloading [======================================>            ]  86.31MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.7455473Z  dc9abaf2c8ff Downloading [==================================================>]  898.1kB/898.1kB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.7464474Z  dc9abaf2c8ff Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.7465441Z  dc9abaf2c8ff Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.7598533Z  8e44f01296e3 Extracting [==========================================>        ]  23.89MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.7767871Z  af6eca94c810 Downloading [===================>                               ]   11.6MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.8322276Z  b475dc4bba47 Downloading [=========================================>         ]  91.65MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.8654642Z  a2be9b1fc57a Downloading [==================================================>]     116B/116B
+integration	Build and start services with docker compose	2025-11-18T15:45:17.8658304Z  a2be9b1fc57a Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.8659915Z  a2be9b1fc57a Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.8813454Z  af6eca94c810 Downloading [==========================>                        ]  15.57MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.8827739Z  0e4bc2bd6656 Extracting [================================================>  ]  29.16MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.8954145Z  8e44f01296e3 Extracting [===============================================>   ]  26.84MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.9513811Z  b475dc4bba47 Downloading [==========================================>        ]  94.32MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.9572756Z  9d81a4e85c6a Downloading [==================================================>]     267B/267B
+integration	Build and start services with docker compose	2025-11-18T15:45:17.9573670Z  9d81a4e85c6a Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.9574281Z  9d81a4e85c6a Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:17.9919103Z  0e4bc2bd6656 Extracting [==================================================>]  29.78MB/29.78MB
+integration	Build and start services with docker compose	2025-11-18T15:45:17.9946579Z  af6eca94c810 Downloading [===================================>               ]  20.75MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.0223582Z  0e4bc2bd6656 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.0348312Z  e213bd2560e2 Extracting [==================================================>]  1.169kB/1.169kB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.0353037Z  e213bd2560e2 Extracting [==================================================>]  1.169kB/1.169kB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.0708189Z  b475dc4bba47 Downloading [=============================================>     ]  101.2MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.0779734Z  9d6e74542339 Downloading [>                                                  ]  528.1kB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.1123197Z  af6eca94c810 Downloading [=========================================>         ]  24.42MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.1822669Z  9d6e74542339 Downloading [=>                                                 ]  6.942MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.1930376Z  b475dc4bba47 Downloading [===============================================>   ]  105.5MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.2130977Z  af6eca94c810 Downloading [================================================>  ]  28.72MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.2173708Z  af6eca94c810 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.2175076Z  af6eca94c810 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.2339718Z  8e44f01296e3 Extracting [================================================>  ]  27.43MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.2565929Z  b475dc4bba47 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.2566879Z  b475dc4bba47 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.2834700Z  9d6e74542339 Downloading [==>                                                ]  11.75MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.3264047Z  cde22982277a Downloading [=========>                                         ]     933B/5.002kB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.3265059Z  cde22982277a Downloading [==================================================>]  5.002kB/5.002kB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.3265749Z  cde22982277a Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.3266362Z  cde22982277a Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.3527892Z  8e44f01296e3 Extracting [==================================================>]  28.23MB/28.23MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.3909657Z  9d6e74542339 Downloading [===>                                               ]  18.69MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.4474965Z  8e44f01296e3 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:18.4500489Z  44fc29a25beb Extracting [==================================================>]  1.105kB/1.105kB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.4507314Z  44fc29a25beb Extracting [==================================================>]  1.105kB/1.105kB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.4874296Z  af6eca94c810 Extracting [>                                                  ]  327.7kB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.4930314Z  9d6e74542339 Downloading [====>                                              ]  22.42MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.5912759Z  af6eca94c810 Extracting [=========>                                         ]  5.571MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.5958517Z  9d6e74542339 Downloading [======>                                            ]  28.32MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.7037428Z  af6eca94c810 Extracting [==============>                                    ]   8.52MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.7215396Z  9d6e74542339 Downloading [=======>                                           ]   34.2MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.8044785Z  af6eca94c810 Extracting [=====================>                             ]  12.78MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.8912311Z  9d6e74542339 Downloading [=======>                                           ]  36.88MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.9060461Z  af6eca94c810 Extracting [============================>                      ]  17.04MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:18.9907365Z  9d6e74542339 Downloading [=========>                                         ]  43.83MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.0090802Z  af6eca94c810 Extracting [=========================================>         ]  24.58MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.1141860Z  9d6e74542339 Downloading [==========>                                        ]  49.13MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.1816039Z  af6eca94c810 Extracting [===========================================>       ]  25.89MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.2281353Z  9d6e74542339 Downloading [===========>                                       ]  53.93MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.2846657Z  af6eca94c810 Extracting [===============================================>   ]  28.18MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.3298462Z  9d6e74542339 Downloading [============>                                      ]  56.59MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.3959554Z  af6eca94c810 Extracting [=================================================> ]  29.16MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.4479399Z  9d6e74542339 Downloading [============>                                      ]  59.79MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.4888607Z  af6eca94c810 Extracting [==================================================>]  29.54MB/29.54MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.5627462Z  9d6e74542339 Downloading [==============>                                    ]  66.18MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.6958962Z  af6eca94c810 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:19.8502309Z  9d6e74542339 Downloading [==============>                                    ]  68.32MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.8526640Z  1ad79419bb76 Extracting [==================================================>]  1.781kB/1.781kB
+integration	Build and start services with docker compose	2025-11-18T15:45:19.8528176Z  1ad79419bb76 Extracting [==================================================>]  1.781kB/1.781kB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.0052547Z  9d6e74542339 Downloading [===============>                                   ]  72.06MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.1054882Z  9d6e74542339 Downloading [================>                                  ]  76.33MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.2056815Z  9d6e74542339 Downloading [=================>                                 ]  80.08MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.3077479Z  9d6e74542339 Downloading [==================>                                ]  84.89MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.4327115Z  9d6e74542339 Downloading [===================>                               ]  89.69MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.4945422Z  e213bd2560e2 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.4962580Z  44fc29a25beb Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.4968172Z  1ad79419bb76 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.4974481Z  9fcd228516aa Extracting [>                                                  ]  65.54kB/6.437MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5048844Z  afdef96060ff Extracting [=>                                                 ]  32.77kB/1.514MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5051493Z  39af693970c0 Extracting [==================================================>]     874B/874B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5052734Z  39af693970c0 Extracting [==================================================>]     874B/874B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5267399Z  39af693970c0 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5289258Z  517b08eaf3cc Extracting [=>                                                 ]  32.77kB/1.438MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5329875Z  9d6e74542339 Downloading [===================>                               ]  92.37MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5731969Z  517b08eaf3cc Extracting [==================================================>]  1.438MB/1.438MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5745454Z  517b08eaf3cc Extracting [==================================================>]  1.438MB/1.438MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.5979936Z  9fcd228516aa Extracting [===================================>               ]  4.522MB/6.437MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.6043664Z  afdef96060ff Extracting [===========================>                       ]  819.2kB/1.514MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.6062080Z  517b08eaf3cc Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.6128049Z  186a03b51bfa Extracting [>                                                  ]  163.8kB/15.35MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.6340627Z  9d6e74542339 Downloading [====================>                              ]  94.49MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.6708192Z  9fcd228516aa Extracting [==================================================>]  6.437MB/6.437MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.6917443Z  afdef96060ff Extracting [==================================================>]  1.514MB/1.514MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7129573Z  186a03b51bfa Extracting [=====================>                             ]  6.717MB/15.35MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7415097Z  afdef96060ff Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7441651Z  dc9abaf2c8ff Extracting [=>                                                 ]  32.77kB/898.1kB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7535572Z  9fcd228516aa Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7553221Z  2e6036390374 Extracting [=>                                                 ]  32.77kB/1.257MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7726609Z  dc9abaf2c8ff Extracting [==================================================>]  898.1kB/898.1kB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7842990Z  9d6e74542339 Downloading [====================>                              ]  95.56MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.7911841Z  2e6036390374 Extracting [==================================================>]  1.257MB/1.257MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8015542Z  dc9abaf2c8ff Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8033945Z  a2be9b1fc57a Extracting [==================================================>]     116B/116B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8041702Z  a2be9b1fc57a Extracting [==================================================>]     116B/116B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8145843Z  186a03b51bfa Extracting [==========================================>        ]  12.94MB/15.35MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8157333Z  2e6036390374 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8177714Z  a2be9b1fc57a Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8183351Z  5a19b1f63ace Extracting [>                                                  ]   98.3kB/8.204MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8200946Z  9d81a4e85c6a Extracting [==================================================>]     267B/267B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8202135Z  9d81a4e85c6a Extracting [==================================================>]     267B/267B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8387729Z  9d81a4e85c6a Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8663823Z  186a03b51bfa Extracting [==================================================>]  15.35MB/15.35MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8857560Z  9d6e74542339 Downloading [=====================>                             ]  99.83MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8897407Z  186a03b51bfa Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8910228Z  fe77c85f37cb Extracting [==================================================>]      97B/97B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.8915607Z  fe77c85f37cb Extracting [==================================================>]      97B/97B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9002919Z  fe77c85f37cb Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9019074Z  4f4fb700ef54 Extracting [==================================================>]      32B/32B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9026999Z  4f4fb700ef54 Extracting [==================================================>]      32B/32B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9117318Z  4f4fb700ef54 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9129321Z  a43f12641297 Extracting [==================================================>]     571B/571B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9134238Z  a43f12641297 Extracting [==================================================>]     571B/571B
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9234423Z  a43f12641297 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9240220Z  5a19b1f63ace Extracting [===================>                               ]  3.146MB/8.204MB
+integration	Build and start services with docker compose	2025-11-18T15:45:20.9302645Z  redis Pulled 
+integration	Build and start services with docker compose	2025-11-18T15:45:21.0154469Z  9d6e74542339 Downloading [=====================>                             ]    103MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.0481260Z  5a19b1f63ace Extracting [===================================>               ]  5.898MB/8.204MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.1153830Z  9d6e74542339 Downloading [======================>                            ]  103.6MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.1189963Z  5a19b1f63ace Extracting [==================================================>]  8.204MB/8.204MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.1577009Z  5a19b1f63ace Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:21.1616243Z  dd23ed782cae Extracting [=>                                                 ]  32.77kB/1.311MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2074932Z  dd23ed782cae Extracting [==================================================>]  1.311MB/1.311MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2241430Z  9d6e74542339 Downloading [======================>                            ]  106.3MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2362437Z  dd23ed782cae Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2374707Z  b10108f2d223 Extracting [==================================================>]     116B/116B
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2378784Z  b10108f2d223 Extracting [==================================================>]     116B/116B
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2477759Z  b10108f2d223 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2490305Z  4eb4a683c389 Extracting [==================================================>]   3.14kB/3.14kB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2493559Z  4eb4a683c389 Extracting [==================================================>]   3.14kB/3.14kB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.2582518Z  4eb4a683c389 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:21.3165221Z  b475dc4bba47 Extracting [>                                                  ]  557.1kB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.3390956Z  9d6e74542339 Downloading [=======================>                           ]  108.9MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.4389047Z  b475dc4bba47 Extracting [===>                                               ]  7.799MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.4391812Z  9d6e74542339 Downloading [========================>                          ]  114.2MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.5411522Z  9d6e74542339 Downloading [=========================>                         ]    119MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.5448636Z  b475dc4bba47 Extracting [=====>                                             ]  11.14MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.6524033Z  b475dc4bba47 Extracting [======>                                            ]  15.04MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.6612155Z  9d6e74542339 Downloading [==========================>                        ]  124.9MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.7579464Z  b475dc4bba47 Extracting [=========>                                         ]  20.05MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.7714476Z  9d6e74542339 Downloading [===========================>                       ]  129.7MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.8603061Z  b475dc4bba47 Extracting [============>                                      ]  26.74MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.8851615Z  9d6e74542339 Downloading [============================>                      ]    135MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:21.9622033Z  b475dc4bba47 Extracting [================>                                  ]  36.21MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.0092105Z  9d6e74542339 Downloading [=============================>                     ]  138.8MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.0637046Z  b475dc4bba47 Extracting [====================>                              ]  45.12MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.1173281Z  9d6e74542339 Downloading [==============================>                    ]  144.1MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.1796863Z  b475dc4bba47 Extracting [========================>                          ]  53.48MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.2185479Z  9d6e74542339 Downloading [===============================>                   ]  147.8MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.2812738Z  b475dc4bba47 Extracting [==========================>                        ]  59.05MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.3245945Z  9d6e74542339 Downloading [================================>                  ]  152.6MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.3826956Z  b475dc4bba47 Extracting [==============================>                    ]  67.96MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.4485025Z  9d6e74542339 Downloading [==================================>                ]  160.1MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.4831991Z  b475dc4bba47 Extracting [==================================>                ]  77.43MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.5542810Z  9d6e74542339 Downloading [==================================>                ]  163.9MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.5887103Z  b475dc4bba47 Extracting [======================================>            ]  86.34MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.6560856Z  9d6e74542339 Downloading [===================================>               ]  164.9MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.7149182Z  b475dc4bba47 Extracting [==========================================>        ]   94.7MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.7686556Z  9d6e74542339 Downloading [====================================>              ]  172.9MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.8271529Z  b475dc4bba47 Extracting [============================================>      ]   98.6MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.8831190Z  9d6e74542339 Downloading [======================================>            ]  179.3MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.9349101Z  b475dc4bba47 Extracting [=============================================>     ]  100.8MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:22.9848093Z  9d6e74542339 Downloading [=======================================>           ]  183.6MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.0377073Z  b475dc4bba47 Extracting [==============================================>    ]  104.2MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.0912523Z  9d6e74542339 Downloading [========================================>          ]  189.4MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.1486727Z  b475dc4bba47 Extracting [===============================================>   ]  105.8MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.1991489Z  9d6e74542339 Downloading [=========================================>         ]  192.6MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.2825971Z  b475dc4bba47 Extracting [================================================>  ]  107.5MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.3235297Z  9d6e74542339 Downloading [==========================================>        ]  198.5MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.4375859Z  9d6e74542339 Downloading [===========================================>       ]  202.2MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.5403888Z  9d6e74542339 Downloading [============================================>      ]    207MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.5451363Z  b475dc4bba47 Extracting [=================================================> ]  109.7MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.6450648Z  9d6e74542339 Downloading [=============================================>     ]  211.3MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.6565951Z  b475dc4bba47 Extracting [==================================================>]    111MB/111MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.7529901Z  9d6e74542339 Downloading [==============================================>    ]  217.2MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:23.9485827Z  9d6e74542339 Downloading [===============================================>   ]  220.9MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.0682590Z  9d6e74542339 Downloading [=================================================> ]  231.1MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.1375617Z  9d6e74542339 Verifying Checksum 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.1376223Z  9d6e74542339 Download complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.4506875Z  9d6e74542339 Extracting [>                                                  ]  557.1kB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.5477842Z  b475dc4bba47 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.5493398Z  2c64a0db539b Extracting [==================================================>]  9.881kB/9.881kB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.5499917Z  2c64a0db539b Extracting [==================================================>]  9.881kB/9.881kB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.5573364Z  9d6e74542339 Extracting [=>                                                 ]  8.356MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6448023Z  2c64a0db539b Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6462410Z  6e6c09f9e058 Extracting [==================================================>]     129B/129B
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6465897Z  6e6c09f9e058 Extracting [==================================================>]     129B/129B
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6592634Z  9d6e74542339 Extracting [==>                                                ]  10.03MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6610370Z  6e6c09f9e058 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6627012Z  304e9b7c93e6 Extracting [==================================================>]     167B/167B
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6630999Z  304e9b7c93e6 Extracting [==================================================>]     167B/167B
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6739833Z  304e9b7c93e6 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6759928Z  95bcad39f7ff Extracting [==================================================>]  5.839kB/5.839kB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6760972Z  95bcad39f7ff Extracting [==================================================>]  5.839kB/5.839kB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6884363Z  95bcad39f7ff Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6898386Z  fa51353b2c9b Extracting [==================================================>]     185B/185B
+integration	Build and start services with docker compose	2025-11-18T15:45:24.6907145Z  fa51353b2c9b Extracting [==================================================>]     185B/185B
+integration	Build and start services with docker compose	2025-11-18T15:45:24.7075462Z  fa51353b2c9b Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.7150698Z  db Pulled 
+integration	Build and start services with docker compose	2025-11-18T15:45:24.7630680Z  9d6e74542339 Extracting [===>                                               ]  18.38MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.8689565Z  9d6e74542339 Extracting [=====>                                             ]  27.85MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:24.9766312Z  9d6e74542339 Extracting [=======>                                           ]  37.32MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.0847856Z  9d6e74542339 Extracting [==========>                                        ]  47.91MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.1907484Z  9d6e74542339 Extracting [===========>                                       ]  52.36MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.2914911Z  9d6e74542339 Extracting [=============>                                     ]  64.06MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.3922122Z  9d6e74542339 Extracting [================>                                  ]  77.99MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.4954559Z  9d6e74542339 Extracting [===================>                               ]  89.69MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.5965407Z  9d6e74542339 Extracting [====================>                              ]  98.04MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.6978579Z  9d6e74542339 Extracting [======================>                            ]  107.5MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.7998248Z  9d6e74542339 Extracting [========================>                          ]    117MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:25.9358972Z  9d6e74542339 Extracting [===========================>                       ]    127MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.0400395Z  9d6e74542339 Extracting [=============================>                     ]  136.5MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.1411134Z  9d6e74542339 Extracting [==============================>                    ]  144.8MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.2471839Z  9d6e74542339 Extracting [================================>                  ]  152.6MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.3511267Z  9d6e74542339 Extracting [=================================>                 ]  156.5MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.4571274Z  9d6e74542339 Extracting [===================================>               ]  167.7MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.5652221Z  9d6e74542339 Extracting [=====================================>             ]  178.3MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.6656341Z  9d6e74542339 Extracting [========================================>          ]  189.4MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.7659709Z  9d6e74542339 Extracting [==========================================>        ]  201.1MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.8705206Z  9d6e74542339 Extracting [=============================================>     ]  212.2MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:26.9749349Z  9d6e74542339 Extracting [===============================================>   ]  221.7MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:27.0790260Z  9d6e74542339 Extracting [================================================>  ]  230.1MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:27.1913538Z  9d6e74542339 Extracting [=================================================> ]  231.7MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:27.4117535Z  9d6e74542339 Extracting [=================================================> ]    234MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:27.6074652Z  9d6e74542339 Extracting [=================================================> ]  234.5MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:27.6336802Z  9d6e74542339 Extracting [==================================================>]  234.8MB/234.8MB
+integration	Build and start services with docker compose	2025-11-18T15:45:28.9510714Z  9d6e74542339 Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:28.9523390Z  cde22982277a Extracting [==================================================>]  5.002kB/5.002kB
+integration	Build and start services with docker compose	2025-11-18T15:45:28.9527425Z  cde22982277a Extracting [==================================================>]  5.002kB/5.002kB
+integration	Build and start services with docker compose	2025-11-18T15:45:28.9630915Z  cde22982277a Pull complete 
+integration	Build and start services with docker compose	2025-11-18T15:45:28.9705791Z  mongo Pulled 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.3206251Z #1 [internal] load local bake definitions
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4216764Z #1 reading from stdin 388B done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4217283Z #1 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4217493Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4217817Z #2 [internal] load build definition from Dockerfile
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4218463Z #2 transferring dockerfile: 476B done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4218855Z #2 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4219046Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.4219460Z #3 [internal] load metadata for docker.io/library/node:18-alpine
+integration	Build and start services with docker compose	2025-11-18T15:45:29.5979856Z #3 ...
+integration	Build and start services with docker compose	2025-11-18T15:45:29.5980135Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.5980536Z #4 [auth] library/node:pull token for registry-1.docker.io
+integration	Build and start services with docker compose	2025-11-18T15:45:29.5980933Z #4 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:29.7353715Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.7354495Z #3 [internal] load metadata for docker.io/library/node:18-alpine
+integration	Build and start services with docker compose	2025-11-18T15:45:29.7356162Z #3 DONE 0.3s
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8368349Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8369074Z #5 [internal] load .dockerignore
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8374727Z #5 transferring context: 2B done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8375228Z #5 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8375427Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8375670Z #6 [internal] load build context
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8376238Z #6 transferring context: 1.88MB 0.0s done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8376797Z #6 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8377270Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8378109Z #7 [1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8379401Z #7 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.8380729Z #7 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9567425Z #7 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9569123Z #7 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.1s done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9570103Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 2.10MB / 40.01MB 0.2s
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9570964Z #7 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 1.26MB / 1.26MB 0.2s done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9572276Z #7 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 446B / 446B 0.1s done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9573207Z #7 sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 7.67kB / 7.67kB done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9575655Z #7 sha256:929b04d7c782f04f615cf785488fed452b6569f87c73ff666ad553a7554f0006 1.72kB / 1.72kB done
+integration	Build and start services with docker compose	2025-11-18T15:45:29.9576725Z #7 sha256:ee77c6cd7c1886ecc802ad6cedef3a8ec1ea27d1fb96162bf03dd3710839b8da 6.18kB / 6.18kB done
+integration	Build and start services with docker compose	2025-11-18T15:45:30.0568973Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 8.39MB / 40.01MB 0.3s
+integration	Build and start services with docker compose	2025-11-18T15:45:30.1574002Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 16.78MB / 40.01MB 0.4s
+integration	Build and start services with docker compose	2025-11-18T15:45:30.3573875Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 22.02MB / 40.01MB 0.6s
+integration	Build and start services with docker compose	2025-11-18T15:45:30.5570329Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 28.31MB / 40.01MB 0.8s
+integration	Build and start services with docker compose	2025-11-18T15:45:30.7565037Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 34.60MB / 40.01MB 1.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:30.8572443Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 37.75MB / 40.01MB 1.1s
+integration	Build and start services with docker compose	2025-11-18T15:45:31.0405485Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 40.01MB / 40.01MB 1.2s done
+integration	Build and start services with docker compose	2025-11-18T15:45:31.0406991Z #7 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.1s
+integration	Build and start services with docker compose	2025-11-18T15:45:31.9199580Z #7 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 1.0s done
+integration	Build and start services with docker compose	2025-11-18T15:45:32.0471455Z #7 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+integration	Build and start services with docker compose	2025-11-18T15:45:32.2532462Z #7 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.0s done
+integration	Build and start services with docker compose	2025-11-18T15:45:32.2533304Z #7 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 done
+integration	Build and start services with docker compose	2025-11-18T15:45:32.2533751Z #7 DONE 2.4s
+integration	Build and start services with docker compose	2025-11-18T15:45:32.2533864Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:32.2534075Z #8 [2/6] RUN apk add --no-cache python3 make g++ || true
+integration	Build and start services with docker compose	2025-11-18T15:45:32.2534682Z #8 0.134 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+integration	Build and start services with docker compose	2025-11-18T15:45:32.4880928Z #8 0.218 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+integration	Build and start services with docker compose	2025-11-18T15:45:32.6171420Z #8 0.497 (1/29) Installing libstdc++-dev (14.2.0-r4)
+integration	Build and start services with docker compose	2025-11-18T15:45:32.7905883Z #8 0.671 (2/29) Installing jansson (2.14-r4)
+integration	Build and start services with docker compose	2025-11-18T15:45:32.8960672Z #8 0.678 (3/29) Installing zstd-libs (1.5.6-r2)
+integration	Build and start services with docker compose	2025-11-18T15:45:32.8961139Z #8 0.690 (4/29) Installing binutils (2.43.1-r3)
+integration	Build and start services with docker compose	2025-11-18T15:45:32.8961504Z #8 0.767 (5/29) Installing libgomp (14.2.0-r4)
+integration	Build and start services with docker compose	2025-11-18T15:45:32.8961845Z #8 0.777 (6/29) Installing libatomic (14.2.0-r4)
+integration	Build and start services with docker compose	2025-11-18T15:45:33.1025736Z #8 0.783 (7/29) Installing gmp (6.3.0-r2)
+integration	Build and start services with docker compose	2025-11-18T15:45:33.1026583Z #8 0.793 (8/29) Installing isl26 (0.26-r1)
+integration	Build and start services with docker compose	2025-11-18T15:45:33.1027158Z #8 0.813 (9/29) Installing mpfr4 (4.2.1-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:33.1027693Z #8 0.826 (10/29) Installing mpc1 (1.3.1-r1)
+integration	Build and start services with docker compose	2025-11-18T15:45:33.1028604Z #8 0.833 (11/29) Installing gcc (14.2.0-r4)
+integration	Build and start services with docker compose	2025-11-18T15:45:33.7394667Z #8 1.620 (12/29) Installing musl-dev (1.2.5-r9)
+integration	Build and start services with docker compose	2025-11-18T15:45:33.9558726Z #8 1.686 (13/29) Installing g++ (14.2.0-r4)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.0463293Z #8 1.927 (14/29) Installing make (4.4.1-r2)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1534097Z #8 1.935 (15/29) Installing libbz2 (1.0.8-r6)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1534774Z #8 1.942 (16/29) Installing libexpat (2.7.3-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1535222Z #8 1.950 (17/29) Installing libffi (3.4.7-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1535588Z #8 1.957 (18/29) Installing gdbm (1.24-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1535939Z #8 1.964 (19/29) Installing xz-libs (5.6.3-r1)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1536289Z #8 1.972 (20/29) Installing mpdecimal (4.0.0-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1536970Z #8 1.982 (21/29) Installing ncurses-terminfo-base (6.5_p20241006-r3)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1537410Z #8 1.992 (22/29) Installing libncursesw (6.5_p20241006-r3)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1537810Z #8 2.002 (23/29) Installing libpanelw (6.5_p20241006-r3)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1538200Z #8 2.008 (24/29) Installing readline (8.2.13-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1538550Z #8 2.016 (25/29) Installing sqlite-libs (3.48.0-r4)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.1539246Z #8 2.034 (26/29) Installing python3 (3.12.12-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.3428796Z #8 2.223 (27/29) Installing python3-pycache-pyc0 (3.12.12-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.4642008Z #8 2.345 (28/29) Installing pyc (3.12.12-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.4642622Z #8 2.345 (29/29) Installing python3-pyc (3.12.12-r0)
+integration	Build and start services with docker compose	2025-11-18T15:45:34.6242313Z #8 2.346 Executing busybox-1.37.0-r12.trigger
+integration	Build and start services with docker compose	2025-11-18T15:45:34.6242962Z #8 2.354 OK: 269 MiB in 46 packages
+integration	Build and start services with docker compose	2025-11-18T15:45:34.9457589Z #8 DONE 2.8s
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1523760Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1524419Z #9 [3/6] WORKDIR /usr/src/app
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1524844Z #9 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1524995Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1525216Z #10 [4/6] COPY package*.json ./
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1525530Z #10 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1525683Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:35.1525891Z #11 [5/6] RUN npm ci --no-audit --no-fund
+integration	Build and start services with docker compose	2025-11-18T15:45:38.1989976Z #11 3.197 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Build and start services with docker compose	2025-11-18T15:45:38.5942720Z #11 3.591 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Build and start services with docker compose	2025-11-18T15:45:38.7090816Z #11 3.707 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Build and start services with docker compose	2025-11-18T15:45:41.7248012Z #11 6.723 
+integration	Build and start services with docker compose	2025-11-18T15:45:41.7248561Z #11 6.723 added 568 packages in 7s
+integration	Build and start services with docker compose	2025-11-18T15:45:41.8765075Z #11 6.724 npm notice
+integration	Build and start services with docker compose	2025-11-18T15:45:41.8765714Z #11 6.724 npm notice New major version of npm available! 10.8.2 -> 11.6.2
+integration	Build and start services with docker compose	2025-11-18T15:45:41.8766595Z #11 6.724 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+integration	Build and start services with docker compose	2025-11-18T15:45:41.8767257Z #11 6.724 npm notice To update run: npm install -g npm@11.6.2
+integration	Build and start services with docker compose	2025-11-18T15:45:41.8767660Z #11 6.724 npm notice
+integration	Build and start services with docker compose	2025-11-18T15:45:41.9385331Z #11 DONE 6.9s
+integration	Build and start services with docker compose	2025-11-18T15:45:42.1130631Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:42.1131175Z #12 [6/6] COPY . .
+integration	Build and start services with docker compose	2025-11-18T15:45:42.1131548Z #12 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:42.1131775Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:42.1131951Z #13 exporting to image
+integration	Build and start services with docker compose	2025-11-18T15:45:42.1132349Z #13 exporting layers
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4385822Z #13 exporting layers 2.5s done
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4693687Z #13 writing image sha256:eb370b209e68c536dc661cb41b1cab742421c0e5c639616f3ccba286b4081fca done
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4694625Z #13 naming to docker.io/library/yarnitt-backend done
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4695071Z #13 DONE 2.5s
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4695279Z 
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4696028Z  backend  Built
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4696822Z #14 resolving provenance for metadata file
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4698866Z #14 DONE 0.0s
+integration	Build and start services with docker compose	2025-11-18T15:45:44.4706109Z  Network yarnitt_default  Creating
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5039936Z  Network yarnitt_default  Created
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5467694Z  Volume "yarnitt_db-data"  Creating
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5482247Z  Volume "yarnitt_db-data"  Created
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5485464Z  Volume "yarnitt_mongo-data"  Creating
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5493431Z  Volume "yarnitt_mongo-data"  Created
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5497209Z  Container yarnitt-redis-1  Creating
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5498177Z  Container yarnitt-db-1  Creating
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5498701Z  Container yarnitt-mongo-1  Creating
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5790614Z  Container yarnitt-redis-1  Created
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5791128Z  Container yarnitt-db-1  Created
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5803679Z  Container yarnitt-mongo-1  Created
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5804297Z  Container yarnitt-backend-1  Creating
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5918217Z  Container yarnitt-backend-1  Created
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5932125Z  Container yarnitt-redis-1  Starting
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5932664Z  Container yarnitt-mongo-1  Starting
+integration	Build and start services with docker compose	2025-11-18T15:45:44.5933176Z  Container yarnitt-db-1  Starting
+integration	Build and start services with docker compose	2025-11-18T15:45:44.8170471Z  Container yarnitt-db-1  Started
+integration	Build and start services with docker compose	2025-11-18T15:45:44.8317368Z  Container yarnitt-redis-1  Started
+integration	Build and start services with docker compose	2025-11-18T15:45:44.8391561Z  Container yarnitt-mongo-1  Started
+integration	Build and start services with docker compose	2025-11-18T15:45:44.8399552Z  Container yarnitt-backend-1  Starting
+integration	Build and start services with docker compose	2025-11-18T15:45:45.0245040Z  Container yarnitt-backend-1  Started
+integration	Wait for backend to be ready	﻿2025-11-18T15:45:45.0354016Z ##[group]Run echo "Waiting up to 60s for backend at http://localhost:4000/"
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0354880Z [36;1mecho "Waiting up to 60s for backend at http://localhost:4000/"[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0355464Z [36;1mfor i in $(seq 1 60); do[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0355972Z [36;1m  if curl -sSf http://localhost:4000/ >/dev/null 2>&1; then[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0356683Z [36;1m    echo "Backend ready"[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0357077Z [36;1m    exit 0[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0357378Z [36;1m  fi[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0357669Z [36;1m  sleep 1[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0357972Z [36;1mdone[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0358361Z [36;1mecho "Backend didn't become ready within 60s" >&2[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0359018Z [36;1mdocker compose logs --no-log-prefix --tail=200 backend || true[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0359595Z [36;1mexit 1[0m
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0404959Z shell: /usr/bin/bash -e {0}
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0405339Z ##[endgroup]
+integration	Wait for backend to be ready	2025-11-18T15:45:45.0487759Z Waiting up to 60s for backend at http://localhost:4000/
+integration	Wait for backend to be ready	2025-11-18T15:46:45.6368227Z Backend didn't become ready within 60s
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7052064Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7052781Z     src/index.ts:4:17:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7053752Z       4 │ import cors from 'cors';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7055540Z         ╵                  ~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7055825Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7057060Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7057974Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7084678Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7085035Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7085195Z     src/index.ts:6:19:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7085755Z       6 │ import dotenv from 'dotenv';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7086296Z         ╵                    ~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7086778Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7087592Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7088416Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7088764Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7089064Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7089206Z     src/index.ts:7:23:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7089706Z       7 │ import serveIndex from 'serve-index';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7090298Z         ╵                        ~~~~~~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7090547Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7091388Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7092199Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7092323Z 3 errors
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7094008Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7096146Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7097281Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7097774Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7098057Z added 568 packages, and audited 569 packages in 5s
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7098375Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7098576Z 64 packages are looking for funding
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7098969Z   run `npm fund` for details
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7099188Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7099383Z 1 moderate severity vulnerability
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7099620Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7099777Z To address all issues, run:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7100116Z   npm audit fix
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7100297Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7100458Z Run `npm audit` for details.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7100690Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7100841Z > backend@1.0.0 build
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7101435Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7101865Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7102150Z ✘ [ERROR] Could not resolve "cors"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7102392Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7102531Z     src/index.ts:4:17:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7103253Z       4 │ import cors from 'cors';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7103722Z         ╵                  ~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7103965Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7104742Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7105516Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7105804Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7106082Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7106213Z     src/index.ts:6:19:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7106820Z       6 │ import dotenv from 'dotenv';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7107315Z         ╵                    ~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7107607Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7108200Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7108677Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7108870Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7109054Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7109135Z     src/index.ts:7:23:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7109449Z       7 │ import serveIndex from 'serve-index';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7109778Z         ╵                        ~~~~~~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7109948Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7110414Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7111050Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7111188Z 3 errors
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7113365Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7114388Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7114968Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7115241Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7115411Z added 568 packages, and audited 569 packages in 5s
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7115621Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7115748Z 64 packages are looking for funding
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7115998Z   run `npm fund` for details
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7116137Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7116264Z 1 moderate severity vulnerability
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7116590Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7116724Z To address all issues, run:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7116941Z   npm audit fix
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7117048Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7117145Z Run `npm audit` for details.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7117290Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7117374Z > backend@1.0.0 build
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7117745Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7118002Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7118195Z ✘ [ERROR] Could not resolve "cors"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7118360Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7118616Z     src/index.ts:4:17:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7118893Z       4 │ import cors from 'cors';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7119174Z         ╵                  ~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7119324Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7119783Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7120233Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7120401Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7120560Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7120641Z     src/index.ts:6:19:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7120914Z       6 │ import dotenv from 'dotenv';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7121211Z         ╵                    ~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7121426Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7121875Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7122361Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7122539Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7122735Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7122811Z     src/index.ts:7:23:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7123101Z       7 │ import serveIndex from 'serve-index';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7123426Z         ╵                        ~~~~~~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7123737Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7124199Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7124665Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7124741Z 3 errors
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7125690Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7126987Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7127559Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7127837Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7128018Z added 568 packages, and audited 569 packages in 5s
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7128213Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7128339Z 64 packages are looking for funding
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7128589Z   run `npm fund` for details
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7128735Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7128865Z 1 moderate severity vulnerability
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7129020Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7129117Z To address all issues, run:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7129348Z   npm audit fix
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7129454Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7129552Z Run `npm audit` for details.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7129695Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7129780Z > backend@1.0.0 build
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7130144Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7130406Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7130578Z ✘ [ERROR] Could not resolve "cors"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7130737Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7130813Z     src/index.ts:4:17:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7131071Z       4 │ import cors from 'cors';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7131343Z         ╵                  ~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7131493Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7131945Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7132407Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7132574Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7132733Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7132809Z     src/index.ts:6:19:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7133076Z       6 │ import dotenv from 'dotenv';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7133370Z         ╵                    ~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7133516Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7133957Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7134418Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7134592Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7134770Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7134845Z     src/index.ts:7:23:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7135122Z       7 │ import serveIndex from 'serve-index';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7135456Z         ╵                        ~~~~~~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7135782Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7136254Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7137061Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7137143Z 3 errors
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7138101Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7139105Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7139668Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7139940Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7140105Z added 568 packages, and audited 569 packages in 5s
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7140303Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7140427Z 64 packages are looking for funding
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7140678Z   run `npm fund` for details
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7140814Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7140937Z 1 moderate severity vulnerability
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7141098Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7141196Z To address all issues, run:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7141554Z   npm audit fix
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7141659Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7141755Z Run `npm audit` for details.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7141895Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7141979Z > backend@1.0.0 build
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7142335Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7142597Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7142771Z ✘ [ERROR] Could not resolve "cors"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7142930Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7143008Z     src/index.ts:4:17:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7143261Z       4 │ import cors from 'cors';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7143533Z         ╵                  ~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7143670Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7144118Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7144577Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7144741Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7144897Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7144976Z     src/index.ts:6:19:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7145247Z       6 │ import dotenv from 'dotenv';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7145536Z         ╵                    ~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7145687Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7146130Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7146828Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7147018Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7147191Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7147275Z     src/index.ts:7:23:
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7147553Z       7 │ import serveIndex from 'serve-index';
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7147879Z         ╵                        ~~~~~~~~~~~~~
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7148038Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7148499Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7148977Z 
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7149045Z 3 errors
+integration	Wait for backend to be ready	2025-11-18T15:46:45.7160614Z ##[error]Process completed with exit code 1.
+integration	Upload backend logs (on failure)	﻿2025-11-18T15:46:45.7217356Z ##[group]Run docker compose logs --no-log-prefix --tail=500 backend || true
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7217883Z [36;1mdocker compose logs --no-log-prefix --tail=500 backend || true[0m
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7250280Z shell: /usr/bin/bash -e {0}
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7250513Z ##[endgroup]
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7956916Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7965103Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7966134Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7967286Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7967619Z added 568 packages, and audited 569 packages in 6s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7967992Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7968225Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7968667Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7968987Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7969218Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7969497Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7969673Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7970040Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7970238Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7970411Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7972302Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7972791Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7974261Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7974741Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7975245Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7975512Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7975653Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7976105Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7976754Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7976997Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7977771Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7978561Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7978858Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7979143Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7979274Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7979744Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7980249Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7980510Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7981288Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7982068Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7982385Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7982679Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7982814Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7983295Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7983860Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7984125Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7984921Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7985729Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7985842Z 3 errors
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7987697Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7989411Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7990362Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7990831Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7991116Z added 568 packages, and audited 569 packages in 5s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7991440Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7991674Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7992064Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7992300Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7992514Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7992767Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7993337Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7993681Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7993864Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7994023Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7994248Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7994397Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7995005Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7995447Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7995731Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7995987Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7996117Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7996694Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7997152Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7997384Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7998149Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7999039Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7999312Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7999564Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.7999679Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8000116Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8000627Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8000889Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8001672Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8002448Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8002768Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8003041Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8003155Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8003614Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8004178Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8004445Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8005214Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8006029Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8006148Z 3 errors
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8007920Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8008980Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8009569Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8009915Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8010085Z added 568 packages, and audited 569 packages in 5s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8010309Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8010437Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8010689Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8010829Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8010963Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8011120Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8011219Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8011443Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8011553Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8011653Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8011801Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8011889Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8012260Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8012520Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8012719Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8012887Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8012966Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8013225Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8013494Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8013632Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8014081Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8014525Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8014690Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8014858Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8014934Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8015199Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8015497Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8015855Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8016295Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8016998Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8017205Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8017385Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8017470Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8017763Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8018093Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8018252Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8018714Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8019328Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8019401Z 3 errors
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8020706Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8022432Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8023395Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8023893Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8024170Z added 568 packages, and audited 569 packages in 5s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8024509Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8024649Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8024897Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025037Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025160Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025317Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025414Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025617Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025739Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025834Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8025974Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8026058Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8026601Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8026909Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8027116Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8027274Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8027357Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8027608Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8027880Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8028018Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8028460Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8028899Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8029061Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8029223Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8029298Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8029559Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8029857Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8030010Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8030443Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8030902Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8031077Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8031250Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8031328Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8031606Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8031932Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8032090Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8032548Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8033008Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8033076Z 3 errors
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8034028Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8035023Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8035763Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8036034Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8036206Z added 568 packages, and audited 569 packages in 5s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8036559Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8036789Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037052Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037193Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037323Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037480Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037581Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037790Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037895Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8037991Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8038134Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8038222Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8038734Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8038993Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8039173Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8039332Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8039409Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8039676Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8039943Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8040085Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8040520Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8040958Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8041123Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8041280Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8041357Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8041619Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8041910Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8042056Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8042489Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8042950Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8043123Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8043299Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8043382Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8043659Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8043983Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8044141Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8044604Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8045067Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8045140Z 3 errors
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8046074Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8047516Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8048079Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8048352Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8048528Z added 568 packages, and audited 569 packages in 5s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8048722Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8048845Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8049093Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8049227Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8049346Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8049501Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8049598Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8049809Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8049914Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8050011Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8050149Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8050232Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8050586Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8050848Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8051017Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8051182Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8051261Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8051511Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8051782Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8052076Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8052519Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8052958Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8053127Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8053286Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8053361Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8053623Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8053907Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8054058Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8054495Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8054944Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8055234Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8055406Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8055485Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8055758Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8056100Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8056268Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8056948Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8057428Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8057498Z 3 errors
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8058440Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8059431Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8059980Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8060268Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8060431Z added 568 packages, and audited 569 packages in 5s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8060622Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8060751Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8060990Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8061133Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8061255Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8061406Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8061507Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8061706Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8061816Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8061911Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8062045Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8062129Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8062488Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8062742Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8062914Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8063067Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8063145Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8063393Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8063673Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8063814Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8064244Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8064694Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8064850Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8065009Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8065085Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8065339Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8065629Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8065775Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8066216Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8066949Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8067149Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8067326Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8067405Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8067687Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8068016Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8068179Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8068636Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8069269Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8069338Z 3 errors
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8070279Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8071254Z npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8071807Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8072078Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8072248Z added 568 packages, and audited 569 packages in 5s
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8072554Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8072678Z 64 packages are looking for funding
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8072915Z   run `npm fund` for details
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073053Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073178Z 1 moderate severity vulnerability
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073329Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073430Z To address all issues, run:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073637Z   npm audit fix
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073745Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073847Z Run `npm audit` for details.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8073981Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8074065Z > backend@1.0.0 build
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8074422Z > esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8074675Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8074839Z ✘ [ERROR] Could not resolve "cors"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8074991Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8075068Z     src/index.ts:4:17:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8075320Z       4 │ import cors from 'cors';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8075588Z         ╵                  ~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8075731Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8076161Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8076836Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8077008Z ✘ [ERROR] Could not resolve "dotenv"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8077166Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8077256Z     src/index.ts:6:19:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8077514Z       6 │ import dotenv from 'dotenv';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8077801Z         ╵                    ~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8077946Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8078387Z   You can mark the path "dotenv" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8078831Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8079003Z ✘ [ERROR] Could not resolve "serve-index"
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8079178Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8079253Z     src/index.ts:7:23:
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8079534Z       7 │ import serveIndex from 'serve-index';
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8079849Z         ╵                        ~~~~~~~~~~~~~
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8080013Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8080475Z   You can mark the path "serve-index" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8080933Z 
+integration	Upload backend logs (on failure)	2025-11-18T15:46:45.8081005Z 3 errors
+integration	Teardown	﻿2025-11-18T15:46:45.8107213Z ##[group]Run docker compose down --remove-orphans
+integration	Teardown	2025-11-18T15:46:45.8107603Z [36;1mdocker compose down --remove-orphans[0m
+integration	Teardown	2025-11-18T15:46:45.8139750Z shell: /usr/bin/bash -e {0}
+integration	Teardown	2025-11-18T15:46:45.8139984Z ##[endgroup]
+integration	Teardown	2025-11-18T15:46:45.8909093Z  Container yarnitt-backend-1  Stopping
+integration	Teardown	2025-11-18T15:46:45.8931682Z  Container yarnitt-backend-1  Stopped
+integration	Teardown	2025-11-18T15:46:45.8932650Z  Container yarnitt-backend-1  Removing
+integration	Teardown	2025-11-18T15:46:46.2958201Z  Container yarnitt-backend-1  Removed
+integration	Teardown	2025-11-18T15:46:46.2960552Z  Container yarnitt-mongo-1  Stopping
+integration	Teardown	2025-11-18T15:46:46.2961185Z  Container yarnitt-redis-1  Stopping
+integration	Teardown	2025-11-18T15:46:46.2961789Z  Container yarnitt-db-1  Stopping
+integration	Teardown	2025-11-18T15:46:46.4543693Z  Container yarnitt-redis-1  Stopped
+integration	Teardown	2025-11-18T15:46:46.4544704Z  Container yarnitt-redis-1  Removing
+integration	Teardown	2025-11-18T15:46:46.4590462Z  Container yarnitt-redis-1  Removed
+integration	Teardown	2025-11-18T15:46:46.4849034Z  Container yarnitt-db-1  Stopped
+integration	Teardown	2025-11-18T15:46:46.4849777Z  Container yarnitt-db-1  Removing
+integration	Teardown	2025-11-18T15:46:46.4898495Z  Container yarnitt-db-1  Removed
+integration	Teardown	2025-11-18T15:46:46.4941860Z  Container yarnitt-mongo-1  Stopped
+integration	Teardown	2025-11-18T15:46:46.4943271Z  Container yarnitt-mongo-1  Removing
+integration	Teardown	2025-11-18T15:46:46.4993297Z  Container yarnitt-mongo-1  Removed
+integration	Teardown	2025-11-18T15:46:46.5002135Z  Network yarnitt_default  Removing
+integration	Teardown	2025-11-18T15:46:46.5973486Z  Network yarnitt_default  Removed
+integration	Post Checkout	﻿2025-11-18T15:46:46.6102867Z Post job cleanup.
+integration	Post Checkout	2025-11-18T15:46:46.7060195Z [command]/usr/bin/git version
+integration	Post Checkout	2025-11-18T15:46:46.7101238Z git version 2.51.2
+integration	Post Checkout	2025-11-18T15:46:46.7153276Z Temporarily overriding HOME='/home/runner/work/_temp/b3475dc6-7df9-41f0-bb56-389a3356b75b' before making global git config changes
+integration	Post Checkout	2025-11-18T15:46:46.7154374Z Adding repository directory to the temporary git global config as a safe directory
+integration	Post Checkout	2025-11-18T15:46:46.7158778Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yarnitt/yarnitt
+integration	Post Checkout	2025-11-18T15:46:46.7198376Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+integration	Post Checkout	2025-11-18T15:46:46.7233339Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+integration	Post Checkout	2025-11-18T15:46:46.7482621Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+integration	Post Checkout	2025-11-18T15:46:46.7503977Z http.https://github.com/.extraheader
+integration	Post Checkout	2025-11-18T15:46:46.7516944Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+integration	Post Checkout	2025-11-18T15:46:46.7548403Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+integration	Complete job	﻿2025-11-18T15:46:46.7881408Z Cleaning up orphan processes

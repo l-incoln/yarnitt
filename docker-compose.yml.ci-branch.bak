@@ -21,21 +21,22 @@ services:
 
   redis:
     image: redis:7
+    container_name: redis-local
     ports:
       - "6379:6379"
     restart: unless-stopped
 
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: backend/Dockerfile
     environment:
       DATABASE_URL: "postgres://yarnitt:yarnittpass@db:5432/yarnitt_test"
       MONGO_URI: "mongodb://mongo:27017/yarnitt"
       NODE_ENV: "development"
       PORT: "4000"
-      REDIS_URL: "redis://redis:6379"
-      REDIS_HOST: "redis"
+      REDIS_URL: "redis://redis-local:6379"
+      REDIS_HOST: "redis-local"
       REDIS_PORT: "6379"
     ports:
       - "3000:3000"
@@ -44,9 +45,9 @@ services:
       - db
       - mongo
       - redis
+    command: sh -c "npm ci && (npm run start:dev || npm run start)"
     restart: unless-stopped
 
 volumes:
   db-data:
   mongo-data:
-  redis-data:

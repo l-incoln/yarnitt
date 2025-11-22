@@ -6,11 +6,12 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import serveIndex from 'serve-index';
 import productsRouter from './routes/products';
+import authRoutes from './routes/auth';
 
 dotenv.config();
 
 const PORT = Number(process.env.PORT || 4000);
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/yarnitt_dev';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://0.0.0.0:27017/yarnitt_dev';
 const UPLOADS_DIR = path.join(__dirname, '..', 'uploads'); // backend/uploads
 
 const app = express();
@@ -44,6 +45,9 @@ if (process.env.NODE_ENV !== 'production') {
 // Mount product routes (see backend/src/routes/products.ts)
 app.use('/products', productsRouter);
 
+// Mount auth routes
+app.use('/api/auth', authRoutes);
+
 // Health check
 app.get('/healthz', (_req, res) => res.json({ status: 'ok' }));
 
@@ -62,7 +66,7 @@ async function start() {
     console.log('Connected to MongoDB');
 
     const server = app.listen(PORT, () => {
-      console.log(`Backend listening on http://localhost:${PORT}`);
+      console.log(`Backend listening on http://0.0.0.0:${PORT}`);
     });
 
     // graceful shutdown
@@ -82,10 +86,3 @@ async function start() {
 }
 
 start();
-// --- auth bootstrap (inserted by feat/auth-mongoose) --- import mongoose from "mongoose"; import dotenv from "dotenv"; import authRoutes from "./routes/auth";
-
-dotenv.config();
-
-const mongoUri = process.env.MONGO_URI || "mongodb://localhost:27017/yarnitt"; mongoose.connect(mongoUri).then(() => console.log("Mongo connected")).catch((err) => console.error("Mongo connect error", err));
-
-app.use("/api/auth", authRoutes); // --- end auth bootstrap ---

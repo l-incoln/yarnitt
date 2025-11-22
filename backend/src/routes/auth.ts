@@ -12,6 +12,11 @@ import { authenticate } from '../middleware/auth';
 
 const router = Router();
 
+// TODO: Add rate limiting middleware to prevent brute force attacks
+// Consider using express-rate-limit package for production
+// Example: const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 5 });
+// Then apply: router.post('/login', limiter, login);
+
 router.post('/register/buyer', registerBuyer);
 router.post('/register/seller', registerSeller);
 router.post('/login', login);

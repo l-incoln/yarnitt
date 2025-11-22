@@ -6,6 +6,7 @@ import Loading from '@/components/Common/Loading';
 import { useAuthStore } from '@/store/authStore';
 import { ordersApi } from '@/lib/api';
 import { formatPrice, formatDate, getOrderStatusColor } from '@/lib/utils';
+import { PLACEHOLDER_PRODUCT_IMAGE } from '@/lib/constants';
 import { Package, MapPin, CreditCard } from 'lucide-react';
 import type { Product } from '@/types';
 
@@ -82,7 +83,7 @@ export default function OrderDetailsPage() {
                       {product && (
                         <>
                           <img
-                            src={product.images?.[0]?.url || '/images/placeholder.jpg'}
+                            src={product.images?.[0]?.url || PLACEHOLDER_PRODUCT_IMAGE}
                             alt={product.name}
                             className="w-20 h-20 object-cover rounded"
                           />

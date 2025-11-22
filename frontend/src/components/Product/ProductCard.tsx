@@ -4,6 +4,7 @@ import { ShoppingCart } from 'lucide-react';
 import type { Product } from '@/types';
 import { formatPrice } from '@/lib/utils';
 import { useCartStore } from '@/store/cartStore';
+import { PLACEHOLDER_PRODUCT_IMAGE } from '@/lib/constants';
 import toast from 'react-hot-toast';
 
 interface ProductCardProps {
@@ -20,7 +21,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     toast.success('Added to cart!');
   };
 
-  const imageUrl = product.images?.[0]?.url || '/images/placeholder.jpg';
+  const imageUrl = product.images?.[0]?.url || PLACEHOLDER_PRODUCT_IMAGE;
 
   return (
     <Link href={`/product/${product._id}`}>

@@ -4,6 +4,7 @@ import { Minus, Plus, ShoppingCart, Store } from 'lucide-react';
 import type { Product } from '@/types';
 import { formatPrice } from '@/lib/utils';
 import { useCartStore } from '@/store/cartStore';
+import { PLACEHOLDER_PRODUCT_IMAGE } from '@/lib/constants';
 import Button from '@/components/Common/Button';
 import toast from 'react-hot-toast';
 
@@ -32,7 +33,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     }
   };
 
-  const imageUrl = product.images?.[0]?.url || '/images/placeholder.jpg';
+  const imageUrl = product.images?.[0]?.url || PLACEHOLDER_PRODUCT_IMAGE;
   const sellerId = typeof product.seller === 'string' ? product.seller : product.seller._id;
   const sellerName = typeof product.seller === 'object' ? product.seller.shopName || product.seller.name : 'Seller';
 

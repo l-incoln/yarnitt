@@ -4,6 +4,7 @@ import { formatPrice } from '@/lib/utils';
 import Button from '@/components/Common/Button';
 import { useCartStore } from '@/store/cartStore';
 import { useAuthStore } from '@/store/authStore';
+import { SHIPPING_COST } from '@/lib/constants';
 
 export default function CartSummary() {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function CartSummary() {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const items = useCartStore((state) => state.items);
 
-  const shippingCost = 200; // Fixed shipping cost
+  const shippingCost = SHIPPING_COST;
   const finalTotal = total + shippingCost;
 
   const handleCheckout = () => {

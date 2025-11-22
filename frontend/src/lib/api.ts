@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 import { getAuthToken, removeAuthToken } from './utils';
+import { API_URL } from './constants';
 import type {
   Product,
   User,
@@ -12,7 +13,7 @@ import type {
 
 // Create axios instance
 const api: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000',
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

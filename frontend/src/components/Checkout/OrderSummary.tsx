@@ -1,12 +1,13 @@
 import React from 'react';
 import { formatPrice } from '@/lib/utils';
 import { useCartStore } from '@/store/cartStore';
+import { SHIPPING_COST } from '@/lib/constants';
 
 export default function OrderSummary() {
   const items = useCartStore((state) => state.items);
   const total = useCartStore((state) => state.getTotal());
   
-  const shippingCost = 200;
+  const shippingCost = SHIPPING_COST;
   const finalTotal = total + shippingCost;
 
   return (

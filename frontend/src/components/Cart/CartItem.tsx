@@ -4,6 +4,7 @@ import { Minus, Plus, Trash2 } from 'lucide-react';
 import type { CartItem as CartItemType } from '@/types';
 import { formatPrice } from '@/lib/utils';
 import { useCartStore } from '@/store/cartStore';
+import { PLACEHOLDER_PRODUCT_IMAGE } from '@/lib/constants';
 
 interface CartItemProps {
   item: CartItemType;
@@ -13,7 +14,7 @@ export default function CartItem({ item }: CartItemProps) {
   const { updateQuantity, removeItem } = useCartStore();
   const { product, quantity } = item;
 
-  const imageUrl = product.images?.[0]?.url || '/images/placeholder.jpg';
+  const imageUrl = product.images?.[0]?.url || PLACEHOLDER_PRODUCT_IMAGE;
   const itemTotal = product.price * quantity;
 
   const handleIncrement = () => {

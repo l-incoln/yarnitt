@@ -5,6 +5,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import authRoutes from '../src/routes/auth';
 import { User } from '../src/models/User';
+import { Seller } from '../src/models/Seller';
 
 let mongod: MongoMemoryServer | undefined;
 let app: express.Express;
@@ -23,13 +24,14 @@ beforeAll(async () => {
 
   app = express();
   app.use(bodyParser.json());
-  app.use(authRoutes);
+  app.use('/api/auth', authRoutes);
 });
 
 afterEach(async () => {
   // Ensure connection is ready before deleting
   if (mongoose.connection.readyState === 1) {
     await User.deleteMany({});
+    await Seller.deleteMany({});
   }
 });
 
@@ -44,33 +46,38 @@ afterAll(async () => {
   }
 });
 
-describe('POST /auth/register', () => {
-  it('returns 201 and tokens on success', async () => {
+describe('POST /api/auth/register/buyer', () => {
+  it('returns 201 and token on success', async () => {
     const res = await request(app)
-      .post('/auth/register')
+      .post('/api/auth/register/buyer')
       .send({ email: 'alice@example.com', password: 'password123', name: 'Alice' })
       .expect(201);
 
-    expect(res.body.accessToken).toBeDefined();
-    expect(res.body.refreshToken).toBeDefined();
+    expect(res.body.success).toBe(true);
+    expect(res.body.token).toBeDefined();
+    expect(res.body.user.role).toBe('buyer');
   });
 
-  it('returns 409 for duplicate email', async () => {
+  it('returns 400 for duplicate email', async () => {
     await request(app)
-      .post('/auth/register')
+      .post('/api/auth/register/buyer')
       .send({ email: 'bob@example.com', password: 'password123', name: 'Bob' })
       .expect(201);
 
-    await request(app)
-      .post('/auth/register')
+    const res = await request(app)
+      .post('/api/auth/register/buyer')
       .send({ email: 'bob@example.com', password: 'anotherpass', name: 'Bob2' })
-      .expect(409);
+      .expect(400);
+
+    expect(res.body.success).toBe(false);
   });
 
-  it('returns 400 for invalid input', async () => {
-    await request(app)
-      .post('/auth/register')
-      .send({ email: 'invalid-email', password: 'short' })
+  it('returns 400 for missing fields', async () => {
+    const res = await request(app)
+      .post('/api/auth/register/buyer')
+      .send({ email: 'test@example.com' })
       .expect(400);
+
+    expect(res.body.success).toBe(false);
   });
 });

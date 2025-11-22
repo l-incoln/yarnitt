@@ -239,14 +239,6 @@ describe('GET /api/products', () => {
       .expect(200);
 
     expect(res.body.success).toBe(true);
-    // Debug: log if test fails
-    if (res.body.products.length !== 1) {
-      console.log('Products returned:', res.body.products.map((p: any) => ({ 
-        title: p.title, 
-        categoryId: p.categoryId._id || p.categoryId 
-      })));
-      console.log('Expected category:', category1._id.toString());
-    }
     expect(res.body.products.length).toBe(1);
     expect(res.body.products[0].title).toBe('Product 1');
   });
